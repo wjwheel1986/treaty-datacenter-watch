@@ -72,7 +72,7 @@
   Data: <a href="https://www.eqb.state.mn.us/eqb-monitor" target="_blank">Minnesota EQB Monitor</a> (public notices) ·
   <a href="https://tigerweb.geo.census.gov/" target="_blank">U.S. Census Bureau TIGERweb</a> (reservations, trust lands) ·
   <a href="https://data-usfs.hub.arcgis.com/datasets/usfs::tribal-lands-ceded-to-the-united-states-feature-layer" target="_blank">USDA Forest Service, Tribal Lands Ceded to the United States</a> (CC BY 4.0) ·
-  Basemap © OpenStreetMap contributors · Last updated: <span id="upd"></span> ·
+  Basemap © OpenStreetMap contributors · Data through EQB Monitor of Nov 17, 2026 · Built <span id="upd"></span> ·
   <a href="https://github.com/wjwheel1986/treaty-datacenter-watch" target="_blank">Code and method (GitHub)</a>
 </footer>
 <script>
@@ -94,8 +94,9 @@ L.control.layers(null,{'Reservations & trust land':resLayer,'Treaty cession area
 const lg=L.control({position:'bottomright'});
 lg.onAdd=()=>{const d=L.DomUtil.create('div','legend');d.innerHTML='<span class="sw" style="background:#b3261e"></span>On reservation/trust land or within 10 mi<br><span class="sw" style="background:#c77700"></span>Inside a treaty cession area<br><span class="sw" style="background:#4a6fa5"></span>Other<br><span class="sw" style="background:#2f6b4f"></span>Reservation / trust land<br><span class="sw" style="border:1px dashed #b5651d"></span>Cession area (approx.)';return d};lg.addTo(map);
 
-const today = new Date(UPDATED+'T12:00:00');
-const daysLeft = d => d ? Math.round((new Date(d+'T23:59:00') - today)/86400000) : null;
+const today = new Date();
+const daysLeft = d => d ? Math.floor((new Date(d+'T23:59:00') - today)/86400000) : null;
+const isOpen = p => !!p.comment_deadline && daysLeft(p.comment_deadline) >= 0;
 const level = p => (p.on_reservation_or_trust || (p.nearest_reservation_mi!==null && p.nearest_reservation_mi<=10)) ? 'hi' : (p.cessions.length ? 'mid' : 'lo');
 const color = {hi:'#b3261e',mid:'#c77700',lo:'#4a6fa5'};
 
@@ -117,17 +118,17 @@ function relevant(p,n){ return !n || p.relevant_nations.includes(n); }
 function render(){
   const n=sel.value, f=document.getElementById('flt').value;
   let ps = PROJECTS.filter(p=>relevant(p,n));
-  if(f==='open') ps=ps.filter(p=>daysLeft(p.comment_deadline)>=0);
+  if(f==='open') ps=ps.filter(isOpen);
   if(f==='hi') ps=ps.filter(p=>level(p)!=='lo');
   if(['confirmed','possible','related'].includes(f)) ps=ps.filter(p=>p.category===f);
   ps.sort((a,b)=>(b.last_notice||'').localeCompare(a.last_notice||''));
   Object.entries(markers).forEach(([id,m])=>{ps.find(p=>p.id===id)?m.addTo(map):m.remove()});
   document.getElementById('sTot').textContent=ps.length;
   document.getElementById('sCed').textContent=ps.filter(p=>p.cessions.length).length;
-  document.getElementById('sOpen').textContent=ps.filter(p=>daysLeft(p.comment_deadline)>=0).length;
+  document.getElementById('sOpen').textContent=ps.filter(isOpen).length;
   document.getElementById('list').innerHTML = ps.map(p=>{
     const dl=daysLeft(p.comment_deadline);
-    const dls = p.comment_deadline ? (dl>=0?`<span class="dl-open">Comments due ${p.comment_deadline} (${dl} days left)</span>`:`Comment period ended ${p.comment_deadline}`) : 'No comment deadline listed';
+    const dls = p.comment_deadline ? (isOpen(p)?`<span class="dl-open">Comments due ${p.comment_deadline} (${dl} days left)</span>`:`Comment period ended ${p.comment_deadline}`) : 'No comment deadline listed';
     const cat={confirmed:'<span class="badge" style="background:#1d2433">Confirmed data center</span>',possible:'<span class="badge" style="background:#6b4fa0">Possible data center: needs checking</span>',related:'<span class="badge" style="background:#5b6475">Related power line</span>'}[p.category];
     const b=[cat];
     if(p.on_reservation_or_trust) b.push(`<span class="badge b-hi">On ${p.on_reservation_or_trust}</span>`);

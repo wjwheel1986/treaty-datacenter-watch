@@ -27,10 +27,14 @@ Built for tribal environmental and natural resource staff, and useful to local a
 | `index.html` | The public map (one self-contained page). |
 | `data/projects.json` | One record per project, with boundary results and notice history. |
 | `data/boundaries.geojson` | Reservations and off-reservation trust land (U.S. Census TIGERweb), plus treaty cession areas (USDA Forest Service, Royce cessions), clipped to Minnesota and nearby areas. |
+| `data/boundaries_by_treaty.geojson` | Same boundaries, with cession pieces merged into one area per treaty (year and nation), flagged where Ojibwe bands kept treaty rights (1837, 1842, 1854). The map uses this file. |
+| `img/hero.jpg` | Lake Superior, by Courtney Celley, U.S. Fish and Wildlife Service (public domain). |
 | `agent/SKILL.md` | **The agent:** goal, rules, tools and loop that Claude follows each week. |
 | `agent/parse_eqb.py` | Tool: splits a Monitor issue into one entry per project. |
 | `agent/geo.py` | Tool: boundary check for a point (on reservation? which treaty cession? miles to nearest reservation). |
 | `agent/build_site.py` | Tool: rebuilds the map from the project table. |
+| `agent/merge_treaties.py` | Merges cession pieces by treaty for the map. |
+| `agent/merge_treaties.py` | Merges cession pieces by treaty for the map. |
 | `eval/` | Answer key, test bulletins, predictions, scoring script and results. |
 
 ## How the agent works

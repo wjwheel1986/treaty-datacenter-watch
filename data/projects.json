@@ -36,19 +36,55 @@
   "on_reservation_or_trust": null,
   "cessions": [
    {
-    "cession": "332",
+    "label": "1854 treaty \u00b7 Ojibwe (Chippewa)",
     "year": 1854,
-    "historical_tribe": "Chippewa of the Mississippi and Lake Superior",
-    "present_day_tribes": "Bad River Band of the Lake Superior Tribe of Chippewa Indians of the Bad River Reservation, Wisconsin; Lac Courte Oreilles Band of Lake Superior Chippewa Indians of Wisconsin; Lac du Flambeau Band of Lake Superior Chippewa Indians of the Lac du Flambeau Reservation of Wisconsin; Lac Vieux Desert Band of Lake Superior Chippewa Indians, Michigan; Leech Lake Band of the Minnesota Chippewa Tribe, Minnesota; Mille Lacs Band of the Minnesota Chippewa Tribe, Minnesota; Red Cliff Band of Lake Superior Chippewa Indians of Wisconsin; White Earth Band of Minnesota Chippewa Tribe, Minnesota",
+    "nation": "Ojibwe (Chippewa)",
+    "rights_kept": true,
     "treaty_link": "https://babel.hathitrust.org/cgi/pt?id=uc1.31210003349790;view=1up;seq=656"
    }
   ],
+  "reservation_miles": {
+   "White Earth Reservation": 144.9,
+   "Lac du Flambeau Reservation": 117.7,
+   "Ho-Chunk Nation Reservation": 184.0,
+   "Prairie Island Indian Community": 151.1,
+   "Ontonagon Reservation": 147.5,
+   "Red Lake Reservation": 142.0,
+   "Upper Sioux Community": 211.1,
+   "Bois Forte Reservation": 69.0,
+   "Fond du Lac Reservation": 10.5,
+   "Shakopee Mdewakanton Sioux Community": 153.2,
+   "St. Croix Reservation": 63.1,
+   "Leech Lake Reservation": 76.5,
+   "Lac Courte Oreilles Reservation": 69.1,
+   "Bad River Reservation": 68.3,
+   "Flandreau Reservation": 281.9,
+   "Sokaogon Chippewa Community": 178.5,
+   "Grand Portage Reservation": 133.3,
+   "Lac Vieux Desert Reservation": 142.9,
+   "Lake Traverse Reservation": 215.6,
+   "Red Cliff Reservation": 59.3,
+   "Lower Sioux Indian Community": 204.8,
+   "Mille Lacs Reservation": 55.2
+  },
   "nearest_reservation": "Fond du Lac Reservation",
   "nearest_reservation_mi": 10.5,
-  "relevant_nations": [
+  "near_nations": [
+   "Fond du Lac Reservation"
+  ],
+  "treaty_nations": [
+   "Bad River Reservation",
    "Bois Forte Reservation",
-   "Fond du Lac Reservation",
-   "Grand Portage Reservation"
+   "Grand Portage Reservation",
+   "Lac Courte Oreilles Reservation",
+   "Lac du Flambeau Reservation",
+   "Red Cliff Reservation"
+  ],
+  "site": "Hermantown",
+  "same_site_as": [
+   "Harmony Group Data Center",
+   "Hermantown Industrial AUAR (possible data center site)",
+   "St. Louis County 230 kV Transmission Line (to a facility in Hermantown)"
   ],
   "last_notice": "2025-12-09"
  },
@@ -89,19 +125,55 @@
   "on_reservation_or_trust": null,
   "cessions": [
    {
-    "cession": "332",
+    "label": "1854 treaty \u00b7 Ojibwe (Chippewa)",
     "year": 1854,
-    "historical_tribe": "Chippewa of the Mississippi and Lake Superior",
-    "present_day_tribes": "Bad River Band of the Lake Superior Tribe of Chippewa Indians of the Bad River Reservation, Wisconsin; Lac Courte Oreilles Band of Lake Superior Chippewa Indians of Wisconsin; Lac du Flambeau Band of Lake Superior Chippewa Indians of the Lac du Flambeau Reservation of Wisconsin; Lac Vieux Desert Band of Lake Superior Chippewa Indians, Michigan; Leech Lake Band of the Minnesota Chippewa Tribe, Minnesota; Mille Lacs Band of the Minnesota Chippewa Tribe, Minnesota; Red Cliff Band of Lake Superior Chippewa Indians of Wisconsin; White Earth Band of Minnesota Chippewa Tribe, Minnesota",
+    "nation": "Ojibwe (Chippewa)",
+    "rights_kept": true,
     "treaty_link": "https://babel.hathitrust.org/cgi/pt?id=uc1.31210003349790;view=1up;seq=656"
    }
   ],
+  "reservation_miles": {
+   "White Earth Reservation": 144.9,
+   "Lac du Flambeau Reservation": 117.7,
+   "Ho-Chunk Nation Reservation": 184.0,
+   "Prairie Island Indian Community": 151.1,
+   "Ontonagon Reservation": 147.5,
+   "Red Lake Reservation": 142.0,
+   "Upper Sioux Community": 211.1,
+   "Bois Forte Reservation": 69.0,
+   "Fond du Lac Reservation": 10.5,
+   "Shakopee Mdewakanton Sioux Community": 153.2,
+   "St. Croix Reservation": 63.1,
+   "Leech Lake Reservation": 76.5,
+   "Lac Courte Oreilles Reservation": 69.1,
+   "Bad River Reservation": 68.3,
+   "Flandreau Reservation": 281.9,
+   "Sokaogon Chippewa Community": 178.5,
+   "Grand Portage Reservation": 133.3,
+   "Lac Vieux Desert Reservation": 142.9,
+   "Lake Traverse Reservation": 215.6,
+   "Red Cliff Reservation": 59.3,
+   "Lower Sioux Indian Community": 204.8,
+   "Mille Lacs Reservation": 55.2
+  },
   "nearest_reservation": "Fond du Lac Reservation",
   "nearest_reservation_mi": 10.5,
-  "relevant_nations": [
+  "near_nations": [
+   "Fond du Lac Reservation"
+  ],
+  "treaty_nations": [
+   "Bad River Reservation",
    "Bois Forte Reservation",
-   "Fond du Lac Reservation",
-   "Grand Portage Reservation"
+   "Grand Portage Reservation",
+   "Lac Courte Oreilles Reservation",
+   "Lac du Flambeau Reservation",
+   "Red Cliff Reservation"
+  ],
+  "site": "Hermantown",
+  "same_site_as": [
+   "Hermantown Data Center",
+   "Hermantown Industrial AUAR (possible data center site)",
+   "St. Louis County 230 kV Transmission Line (to a facility in Hermantown)"
   ],
   "last_notice": "2026-11-10"
  },
@@ -142,23 +214,51 @@
   "on_reservation_or_trust": null,
   "cessions": [
    {
-    "cession": "289",
+    "label": "1851 treaty \u00b7 Dakota (Sioux)",
     "year": 1851,
-    "historical_tribe": "Sioux (Wahpeton and Sisseton Bands)",
-    "present_day_tribes": "Sisseton-Wahpeton Oyate of the Lake Traverse Reservation, South Dakota",
+    "nation": "Dakota (Sioux)",
+    "rights_kept": false,
     "treaty_link": "https://babel.hathitrust.org/cgi/pt?id=uc1.31210003349790;view=1up;seq=596"
    }
   ],
+  "reservation_miles": {
+   "White Earth Reservation": 182.7,
+   "Lac du Flambeau Reservation": 166.6,
+   "Ho-Chunk Nation Reservation": 117.3,
+   "Prairie Island Indian Community": 23.6,
+   "Ontonagon Reservation": 238.3,
+   "Red Lake Reservation": 220.8,
+   "Upper Sioux Community": 119.8,
+   "Bois Forte Reservation": 205.6,
+   "Fond du Lac Reservation": 126.4,
+   "Shakopee Mdewakanton Sioux Community": 21.1,
+   "St. Croix Reservation": 55.7,
+   "Leech Lake Reservation": 156.3,
+   "Lac Courte Oreilles Reservation": 100.5,
+   "Bad River Reservation": 153.2,
+   "Flandreau Reservation": 180.7,
+   "Sokaogon Chippewa Community": 200.9,
+   "Grand Portage Reservation": 258.1,
+   "Lac Vieux Desert Reservation": 207.1,
+   "Lake Traverse Reservation": 184.6,
+   "Red Cliff Reservation": 173.7,
+   "Lower Sioux Indian Community": 97.0,
+   "Mille Lacs Reservation": 70.5
+  },
   "nearest_reservation": "Shakopee Mdewakanton Sioux Community",
   "nearest_reservation_mi": 21.1,
-  "relevant_nations": [
+  "near_nations": [
+   "Prairie Island Indian Community",
+   "Shakopee Mdewakanton Sioux Community"
+  ],
+  "treaty_nations": [
    "Flandreau Reservation",
    "Lake Traverse Reservation",
    "Lower Sioux Indian Community",
-   "Prairie Island Indian Community",
-   "Shakopee Mdewakanton Sioux Community",
    "Upper Sioux Community"
   ],
+  "site": null,
+  "same_site_as": [],
   "last_notice": "2026-08-04"
  },
  {
@@ -189,23 +289,51 @@
   "on_reservation_or_trust": null,
   "cessions": [
    {
-    "cession": "289",
+    "label": "1851 treaty \u00b7 Dakota (Sioux)",
     "year": 1851,
-    "historical_tribe": "Sioux (Wahpeton and Sisseton Bands)",
-    "present_day_tribes": "Sisseton-Wahpeton Oyate of the Lake Traverse Reservation, South Dakota",
+    "nation": "Dakota (Sioux)",
+    "rights_kept": false,
     "treaty_link": "https://babel.hathitrust.org/cgi/pt?id=uc1.31210003349790;view=1up;seq=596"
    }
   ],
+  "reservation_miles": {
+   "White Earth Reservation": 228.2,
+   "Lac du Flambeau Reservation": 322.0,
+   "Ho-Chunk Nation Reservation": 251.7,
+   "Prairie Island Indian Community": 166.6,
+   "Ontonagon Reservation": 393.9,
+   "Red Lake Reservation": 276.7,
+   "Upper Sioux Community": 75.1,
+   "Bois Forte Reservation": 304.2,
+   "Fond du Lac Reservation": 253.6,
+   "Shakopee Mdewakanton Sioux Community": 134.7,
+   "St. Croix Reservation": 207.8,
+   "Leech Lake Reservation": 239.5,
+   "Lac Courte Oreilles Reservation": 256.4,
+   "Bad River Reservation": 307.1,
+   "Flandreau Reservation": 46.9,
+   "Sokaogon Chippewa Community": 354.2,
+   "Grand Portage Reservation": 405.6,
+   "Lac Vieux Desert Reservation": 363.8,
+   "Lake Traverse Reservation": 112.5,
+   "Red Cliff Reservation": 322.0,
+   "Lower Sioux Indian Community": 69.4,
+   "Mille Lacs Reservation": 191.0
+  },
   "nearest_reservation": "Flandreau Reservation",
   "nearest_reservation_mi": 46.9,
-  "relevant_nations": [
-   "Flandreau Reservation",
+  "near_nations": [
+   "Flandreau Reservation"
+  ],
+  "treaty_nations": [
    "Lake Traverse Reservation",
    "Lower Sioux Indian Community",
    "Prairie Island Indian Community",
    "Shakopee Mdewakanton Sioux Community",
    "Upper Sioux Community"
   ],
+  "site": null,
+  "same_site_as": [],
   "last_notice": "2026-03-17"
  },
  {
@@ -236,23 +364,51 @@
   "on_reservation_or_trust": null,
   "cessions": [
    {
-    "cession": "289",
+    "label": "1851 treaty \u00b7 Dakota (Sioux)",
     "year": 1851,
-    "historical_tribe": "Sioux (Wahpeton and Sisseton Bands)",
-    "present_day_tribes": "Sisseton-Wahpeton Oyate of the Lake Traverse Reservation, South Dakota",
+    "nation": "Dakota (Sioux)",
+    "rights_kept": false,
     "treaty_link": "https://babel.hathitrust.org/cgi/pt?id=uc1.31210003349790;view=1up;seq=596"
    }
   ],
+  "reservation_miles": {
+   "White Earth Reservation": 209.6,
+   "Lac du Flambeau Reservation": 194.8,
+   "Ho-Chunk Nation Reservation": 123.5,
+   "Prairie Island Indian Community": 37.4,
+   "Ontonagon Reservation": 272.0,
+   "Red Lake Reservation": 253.3,
+   "Upper Sioux Community": 113.4,
+   "Bois Forte Reservation": 243.0,
+   "Fond du Lac Reservation": 165.7,
+   "Shakopee Mdewakanton Sioux Community": 31.2,
+   "St. Croix Reservation": 94.6,
+   "Leech Lake Reservation": 190.1,
+   "Lac Courte Oreilles Reservation": 135.4,
+   "Bad River Reservation": 189.3,
+   "Flandreau Reservation": 162.7,
+   "Sokaogon Chippewa Community": 223.7,
+   "Grand Portage Reservation": 296.2,
+   "Lac Vieux Desert Reservation": 237.7,
+   "Lake Traverse Reservation": 193.1,
+   "Red Cliff Reservation": 212.0,
+   "Lower Sioux Indian Community": 85.3,
+   "Mille Lacs Reservation": 109.2
+  },
   "nearest_reservation": "Shakopee Mdewakanton Sioux Community",
   "nearest_reservation_mi": 31.2,
-  "relevant_nations": [
+  "near_nations": [
+   "Prairie Island Indian Community",
+   "Shakopee Mdewakanton Sioux Community"
+  ],
+  "treaty_nations": [
    "Flandreau Reservation",
    "Lake Traverse Reservation",
    "Lower Sioux Indian Community",
-   "Prairie Island Indian Community",
-   "Shakopee Mdewakanton Sioux Community",
    "Upper Sioux Community"
   ],
+  "site": null,
+  "same_site_as": [],
   "last_notice": "2025-09-02"
  },
  {
@@ -355,19 +511,55 @@
   "on_reservation_or_trust": null,
   "cessions": [
    {
-    "cession": "332",
+    "label": "1854 treaty \u00b7 Ojibwe (Chippewa)",
     "year": 1854,
-    "historical_tribe": "Chippewa of the Mississippi and Lake Superior",
-    "present_day_tribes": "Bad River Band of the Lake Superior Tribe of Chippewa Indians of the Bad River Reservation, Wisconsin; Lac Courte Oreilles Band of Lake Superior Chippewa Indians of Wisconsin; Lac du Flambeau Band of Lake Superior Chippewa Indians of the Lac du Flambeau Reservation of Wisconsin; Lac Vieux Desert Band of Lake Superior Chippewa Indians, Michigan; Leech Lake Band of the Minnesota Chippewa Tribe, Minnesota; Mille Lacs Band of the Minnesota Chippewa Tribe, Minnesota; Red Cliff Band of Lake Superior Chippewa Indians of Wisconsin; White Earth Band of Minnesota Chippewa Tribe, Minnesota",
+    "nation": "Ojibwe (Chippewa)",
+    "rights_kept": true,
     "treaty_link": "https://babel.hathitrust.org/cgi/pt?id=uc1.31210003349790;view=1up;seq=656"
    }
   ],
+  "reservation_miles": {
+   "White Earth Reservation": 144.9,
+   "Lac du Flambeau Reservation": 117.7,
+   "Ho-Chunk Nation Reservation": 184.0,
+   "Prairie Island Indian Community": 151.1,
+   "Ontonagon Reservation": 147.5,
+   "Red Lake Reservation": 142.0,
+   "Upper Sioux Community": 211.1,
+   "Bois Forte Reservation": 69.0,
+   "Fond du Lac Reservation": 10.5,
+   "Shakopee Mdewakanton Sioux Community": 153.2,
+   "St. Croix Reservation": 63.1,
+   "Leech Lake Reservation": 76.5,
+   "Lac Courte Oreilles Reservation": 69.1,
+   "Bad River Reservation": 68.3,
+   "Flandreau Reservation": 281.9,
+   "Sokaogon Chippewa Community": 178.5,
+   "Grand Portage Reservation": 133.3,
+   "Lac Vieux Desert Reservation": 142.9,
+   "Lake Traverse Reservation": 215.6,
+   "Red Cliff Reservation": 59.3,
+   "Lower Sioux Indian Community": 204.8,
+   "Mille Lacs Reservation": 55.2
+  },
   "nearest_reservation": "Fond du Lac Reservation",
   "nearest_reservation_mi": 10.5,
-  "relevant_nations": [
+  "near_nations": [
+   "Fond du Lac Reservation"
+  ],
+  "treaty_nations": [
+   "Bad River Reservation",
    "Bois Forte Reservation",
-   "Fond du Lac Reservation",
-   "Grand Portage Reservation"
+   "Grand Portage Reservation",
+   "Lac Courte Oreilles Reservation",
+   "Lac du Flambeau Reservation",
+   "Red Cliff Reservation"
+  ],
+  "site": "Hermantown",
+  "same_site_as": [
+   "Hermantown Data Center",
+   "Harmony Group Data Center",
+   "St. Louis County 230 kV Transmission Line (to a facility in Hermantown)"
   ],
   "last_notice": "2026-10-20"
  },
@@ -408,23 +600,51 @@
   "on_reservation_or_trust": null,
   "cessions": [
    {
-    "cession": "289",
+    "label": "1851 treaty \u00b7 Dakota (Sioux)",
     "year": 1851,
-    "historical_tribe": "Sioux (Wahpeton and Sisseton Bands)",
-    "present_day_tribes": "Sisseton-Wahpeton Oyate of the Lake Traverse Reservation, South Dakota",
+    "nation": "Dakota (Sioux)",
+    "rights_kept": false,
     "treaty_link": "https://babel.hathitrust.org/cgi/pt?id=uc1.31210003349790;view=1up;seq=596"
    }
   ],
+  "reservation_miles": {
+   "White Earth Reservation": 206.0,
+   "Lac du Flambeau Reservation": 171.7,
+   "Ho-Chunk Nation Reservation": 106.0,
+   "Prairie Island Indian Community": 14.3,
+   "Ontonagon Reservation": 248.9,
+   "Red Lake Reservation": 245.2,
+   "Upper Sioux Community": 127.9,
+   "Bois Forte Reservation": 229.3,
+   "Fond du Lac Reservation": 149.3,
+   "Shakopee Mdewakanton Sioux Community": 30.4,
+   "St. Croix Reservation": 74.2,
+   "Leech Lake Reservation": 180.8,
+   "Lac Courte Oreilles Reservation": 112.6,
+   "Bad River Reservation": 166.7,
+   "Flandreau Reservation": 182.3,
+   "Sokaogon Chippewa Community": 201.6,
+   "Grand Portage Reservation": 274.3,
+   "Lac Vieux Desert Reservation": 214.5,
+   "Lake Traverse Reservation": 200.8,
+   "Red Cliff Reservation": 190.4,
+   "Lower Sioux Indian Community": 101.6,
+   "Mille Lacs Reservation": 94.3
+  },
   "nearest_reservation": "Prairie Island Indian Community",
   "nearest_reservation_mi": 14.3,
-  "relevant_nations": [
+  "near_nations": [
+   "Prairie Island Indian Community",
+   "Shakopee Mdewakanton Sioux Community"
+  ],
+  "treaty_nations": [
    "Flandreau Reservation",
    "Lake Traverse Reservation",
    "Lower Sioux Indian Community",
-   "Prairie Island Indian Community",
-   "Shakopee Mdewakanton Sioux Community",
    "Upper Sioux Community"
   ],
+  "site": null,
+  "same_site_as": [],
   "last_notice": "2025-09-16"
  },
  {
@@ -455,23 +675,51 @@
   "on_reservation_or_trust": null,
   "cessions": [
    {
-    "cession": "289",
+    "label": "1851 treaty \u00b7 Dakota (Sioux)",
     "year": 1851,
-    "historical_tribe": "Sioux (Wahpeton and Sisseton Bands)",
-    "present_day_tribes": "Sisseton-Wahpeton Oyate of the Lake Traverse Reservation, South Dakota",
+    "nation": "Dakota (Sioux)",
+    "rights_kept": false,
     "treaty_link": "https://babel.hathitrust.org/cgi/pt?id=uc1.31210003349790;view=1up;seq=596"
    }
   ],
+  "reservation_miles": {
+   "White Earth Reservation": 186.6,
+   "Lac du Flambeau Reservation": 172.4,
+   "Ho-Chunk Nation Reservation": 119.3,
+   "Prairie Island Indian Community": 23.8,
+   "Ontonagon Reservation": 246.2,
+   "Red Lake Reservation": 226.3,
+   "Upper Sioux Community": 115.7,
+   "Bois Forte Reservation": 212.8,
+   "Fond du Lac Reservation": 134.3,
+   "Shakopee Mdewakanton Sioux Community": 15.4,
+   "St. Croix Reservation": 64.2,
+   "Leech Lake Reservation": 162.2,
+   "Lac Courte Oreilles Reservation": 108.5,
+   "Bad River Reservation": 161.4,
+   "Flandreau Reservation": 174.8,
+   "Sokaogon Chippewa Community": 206.8,
+   "Grand Portage Reservation": 266.6,
+   "Lac Vieux Desert Reservation": 214.4,
+   "Lake Traverse Reservation": 183.9,
+   "Red Cliff Reservation": 182.2,
+   "Lower Sioux Indian Community": 91.7,
+   "Mille Lacs Reservation": 78.1
+  },
   "nearest_reservation": "Shakopee Mdewakanton Sioux Community",
   "nearest_reservation_mi": 15.4,
-  "relevant_nations": [
+  "near_nations": [
+   "Prairie Island Indian Community",
+   "Shakopee Mdewakanton Sioux Community"
+  ],
+  "treaty_nations": [
    "Flandreau Reservation",
    "Lake Traverse Reservation",
    "Lower Sioux Indian Community",
-   "Prairie Island Indian Community",
-   "Shakopee Mdewakanton Sioux Community",
    "Upper Sioux Community"
   ],
+  "site": null,
+  "same_site_as": [],
   "last_notice": "2025-07-22"
  },
  {
@@ -502,23 +750,51 @@
   "on_reservation_or_trust": null,
   "cessions": [
    {
-    "cession": "289",
+    "label": "1851 treaty \u00b7 Dakota (Sioux)",
     "year": 1851,
-    "historical_tribe": "Sioux (Wahpeton and Sisseton Bands)",
-    "present_day_tribes": "Sisseton-Wahpeton Oyate of the Lake Traverse Reservation, South Dakota",
+    "nation": "Dakota (Sioux)",
+    "rights_kept": false,
     "treaty_link": "https://babel.hathitrust.org/cgi/pt?id=uc1.31210003349790;view=1up;seq=596"
    }
   ],
+  "reservation_miles": {
+   "White Earth Reservation": 203.2,
+   "Lac du Flambeau Reservation": 230.9,
+   "Ho-Chunk Nation Reservation": 161.8,
+   "Prairie Island Indian Community": 74.4,
+   "Ontonagon Reservation": 305.7,
+   "Red Lake Reservation": 253.5,
+   "Upper Sioux Community": 81.7,
+   "Bois Forte Reservation": 252.2,
+   "Fond du Lac Reservation": 183.3,
+   "Shakopee Mdewakanton Sioux Community": 47.7,
+   "St. Croix Reservation": 122.3,
+   "Leech Lake Reservation": 194.0,
+   "Lac Courte Oreilles Reservation": 168.0,
+   "Bad River Reservation": 220.7,
+   "Flandreau Reservation": 124.4,
+   "Sokaogon Chippewa Community": 261.9,
+   "Grand Portage Reservation": 324.5,
+   "Lac Vieux Desert Reservation": 273.3,
+   "Lake Traverse Reservation": 168.8,
+   "Red Cliff Reservation": 240.0,
+   "Lower Sioux Indian Community": 52.0,
+   "Mille Lacs Reservation": 131.5
+  },
   "nearest_reservation": "Shakopee Mdewakanton Sioux Community",
   "nearest_reservation_mi": 47.7,
-  "relevant_nations": [
+  "near_nations": [
+   "Shakopee Mdewakanton Sioux Community"
+  ],
+  "treaty_nations": [
    "Flandreau Reservation",
    "Lake Traverse Reservation",
    "Lower Sioux Indian Community",
    "Prairie Island Indian Community",
-   "Shakopee Mdewakanton Sioux Community",
    "Upper Sioux Community"
   ],
+  "site": null,
+  "same_site_as": [],
   "last_notice": "2025-07-01"
  },
  {
@@ -558,23 +834,51 @@
   "on_reservation_or_trust": null,
   "cessions": [
    {
-    "cession": "289",
+    "label": "1851 treaty \u00b7 Dakota (Sioux)",
     "year": 1851,
-    "historical_tribe": "Sioux (Wahpeton and Sisseton Bands)",
-    "present_day_tribes": "Sisseton-Wahpeton Oyate of the Lake Traverse Reservation, South Dakota",
+    "nation": "Dakota (Sioux)",
+    "rights_kept": false,
     "treaty_link": "https://babel.hathitrust.org/cgi/pt?id=uc1.31210003349790;view=1up;seq=596"
    }
   ],
+  "reservation_miles": {
+   "White Earth Reservation": 136.1,
+   "Lac du Flambeau Reservation": 188.6,
+   "Ho-Chunk Nation Reservation": 162.7,
+   "Prairie Island Indian Community": 71.9,
+   "Ontonagon Reservation": 251.1,
+   "Red Lake Reservation": 179.1,
+   "Upper Sioux Community": 90.8,
+   "Bois Forte Reservation": 173.4,
+   "Fond du Lac Reservation": 106.8,
+   "Shakopee Mdewakanton Sioux Community": 41.2,
+   "St. Croix Reservation": 68.0,
+   "Leech Lake Reservation": 116.8,
+   "Lac Courte Oreilles Reservation": 118.4,
+   "Bad River Reservation": 163.2,
+   "Flandreau Reservation": 159.9,
+   "Sokaogon Chippewa Community": 231.9,
+   "Grand Portage Reservation": 257.4,
+   "Lac Vieux Desert Reservation": 227.0,
+   "Lake Traverse Reservation": 139.5,
+   "Red Cliff Reservation": 174.4,
+   "Lower Sioux Indian Community": 78.2,
+   "Mille Lacs Reservation": 52.8
+  },
   "nearest_reservation": "Shakopee Mdewakanton Sioux Community",
   "nearest_reservation_mi": 41.2,
-  "relevant_nations": [
+  "near_nations": [
+   "Shakopee Mdewakanton Sioux Community"
+  ],
+  "treaty_nations": [
    "Flandreau Reservation",
    "Lake Traverse Reservation",
    "Lower Sioux Indian Community",
    "Prairie Island Indian Community",
-   "Shakopee Mdewakanton Sioux Community",
    "Upper Sioux Community"
   ],
+  "site": null,
+  "same_site_as": [],
   "last_notice": "2026-04-21"
  },
  {
@@ -605,22 +909,52 @@
   "on_reservation_or_trust": null,
   "cessions": [
    {
-    "cession": "289",
+    "label": "1851 treaty \u00b7 Dakota (Sioux)",
     "year": 1851,
-    "historical_tribe": "Sioux (Wahpeton and Sisseton Bands)",
-    "present_day_tribes": "Sisseton-Wahpeton Oyate of the Lake Traverse Reservation, South Dakota",
+    "nation": "Dakota (Sioux)",
+    "rights_kept": false,
     "treaty_link": "https://babel.hathitrust.org/cgi/pt?id=uc1.31210003349790;view=1up;seq=596"
    }
   ],
+  "reservation_miles": {
+   "White Earth Reservation": 230.7,
+   "Lac du Flambeau Reservation": 175.1,
+   "Ho-Chunk Nation Reservation": 93.2,
+   "Prairie Island Indian Community": 28.8,
+   "Ontonagon Reservation": 255.6,
+   "Red Lake Reservation": 269.5,
+   "Upper Sioux Community": 144.8,
+   "Bois Forte Reservation": 249.3,
+   "Fond du Lac Reservation": 170.2,
+   "Shakopee Mdewakanton Sioux Community": 53.5,
+   "St. Croix Reservation": 86.1,
+   "Leech Lake Reservation": 205.0,
+   "Lac Courte Oreilles Reservation": 123.2,
+   "Bad River Reservation": 177.3,
+   "Flandreau Reservation": 193.1,
+   "Sokaogon Chippewa Community": 198.7,
+   "Grand Portage Reservation": 286.7,
+   "Lac Vieux Desert Reservation": 218.3,
+   "Lake Traverse Reservation": 222.5,
+   "Red Cliff Reservation": 204.0,
+   "Lower Sioux Indian Community": 116.7,
+   "Mille Lacs Reservation": 116.8
+  },
   "nearest_reservation": "Prairie Island Indian Community",
   "nearest_reservation_mi": 28.8,
-  "relevant_nations": [
+  "near_nations": [
+   "Prairie Island Indian Community"
+  ],
+  "treaty_nations": [
    "Flandreau Reservation",
    "Lake Traverse Reservation",
    "Lower Sioux Indian Community",
-   "Prairie Island Indian Community",
    "Shakopee Mdewakanton Sioux Community",
    "Upper Sioux Community"
+  ],
+  "site": "Pine Island",
+  "same_site_as": [
+   "Project Skyway, Pine Island (possible data center)"
   ],
   "last_notice": "2026-09-08"
  },
@@ -652,19 +986,55 @@
   "on_reservation_or_trust": null,
   "cessions": [
    {
-    "cession": "332",
+    "label": "1854 treaty \u00b7 Ojibwe (Chippewa)",
     "year": 1854,
-    "historical_tribe": "Chippewa of the Mississippi and Lake Superior",
-    "present_day_tribes": "Bad River Band of the Lake Superior Tribe of Chippewa Indians of the Bad River Reservation, Wisconsin; Lac Courte Oreilles Band of Lake Superior Chippewa Indians of Wisconsin; Lac du Flambeau Band of Lake Superior Chippewa Indians of the Lac du Flambeau Reservation of Wisconsin; Lac Vieux Desert Band of Lake Superior Chippewa Indians, Michigan; Leech Lake Band of the Minnesota Chippewa Tribe, Minnesota; Mille Lacs Band of the Minnesota Chippewa Tribe, Minnesota; Red Cliff Band of Lake Superior Chippewa Indians of Wisconsin; White Earth Band of Minnesota Chippewa Tribe, Minnesota",
+    "nation": "Ojibwe (Chippewa)",
+    "rights_kept": true,
     "treaty_link": "https://babel.hathitrust.org/cgi/pt?id=uc1.31210003349790;view=1up;seq=656"
    }
   ],
+  "reservation_miles": {
+   "White Earth Reservation": 144.9,
+   "Lac du Flambeau Reservation": 117.7,
+   "Ho-Chunk Nation Reservation": 184.0,
+   "Prairie Island Indian Community": 151.1,
+   "Ontonagon Reservation": 147.5,
+   "Red Lake Reservation": 142.0,
+   "Upper Sioux Community": 211.1,
+   "Bois Forte Reservation": 69.0,
+   "Fond du Lac Reservation": 10.5,
+   "Shakopee Mdewakanton Sioux Community": 153.2,
+   "St. Croix Reservation": 63.1,
+   "Leech Lake Reservation": 76.5,
+   "Lac Courte Oreilles Reservation": 69.1,
+   "Bad River Reservation": 68.3,
+   "Flandreau Reservation": 281.9,
+   "Sokaogon Chippewa Community": 178.5,
+   "Grand Portage Reservation": 133.3,
+   "Lac Vieux Desert Reservation": 142.9,
+   "Lake Traverse Reservation": 215.6,
+   "Red Cliff Reservation": 59.3,
+   "Lower Sioux Indian Community": 204.8,
+   "Mille Lacs Reservation": 55.2
+  },
   "nearest_reservation": "Fond du Lac Reservation",
   "nearest_reservation_mi": 10.5,
-  "relevant_nations": [
+  "near_nations": [
+   "Fond du Lac Reservation"
+  ],
+  "treaty_nations": [
+   "Bad River Reservation",
    "Bois Forte Reservation",
-   "Fond du Lac Reservation",
-   "Grand Portage Reservation"
+   "Grand Portage Reservation",
+   "Lac Courte Oreilles Reservation",
+   "Lac du Flambeau Reservation",
+   "Red Cliff Reservation"
+  ],
+  "site": "Hermantown",
+  "same_site_as": [
+   "Hermantown Data Center",
+   "Harmony Group Data Center",
+   "Hermantown Industrial AUAR (possible data center site)"
   ],
   "last_notice": "2026-09-08"
  },
@@ -723,22 +1093,52 @@
   "on_reservation_or_trust": null,
   "cessions": [
    {
-    "cession": "289",
+    "label": "1851 treaty \u00b7 Dakota (Sioux)",
     "year": 1851,
-    "historical_tribe": "Sioux (Wahpeton and Sisseton Bands)",
-    "present_day_tribes": "Sisseton-Wahpeton Oyate of the Lake Traverse Reservation, South Dakota",
+    "nation": "Dakota (Sioux)",
+    "rights_kept": false,
     "treaty_link": "https://babel.hathitrust.org/cgi/pt?id=uc1.31210003349790;view=1up;seq=596"
    }
   ],
+  "reservation_miles": {
+   "White Earth Reservation": 230.7,
+   "Lac du Flambeau Reservation": 175.1,
+   "Ho-Chunk Nation Reservation": 93.2,
+   "Prairie Island Indian Community": 28.8,
+   "Ontonagon Reservation": 255.6,
+   "Red Lake Reservation": 269.5,
+   "Upper Sioux Community": 144.8,
+   "Bois Forte Reservation": 249.3,
+   "Fond du Lac Reservation": 170.2,
+   "Shakopee Mdewakanton Sioux Community": 53.5,
+   "St. Croix Reservation": 86.1,
+   "Leech Lake Reservation": 205.0,
+   "Lac Courte Oreilles Reservation": 123.2,
+   "Bad River Reservation": 177.3,
+   "Flandreau Reservation": 193.1,
+   "Sokaogon Chippewa Community": 198.7,
+   "Grand Portage Reservation": 286.7,
+   "Lac Vieux Desert Reservation": 218.3,
+   "Lake Traverse Reservation": 222.5,
+   "Red Cliff Reservation": 204.0,
+   "Lower Sioux Indian Community": 116.7,
+   "Mille Lacs Reservation": 116.8
+  },
   "nearest_reservation": "Prairie Island Indian Community",
   "nearest_reservation_mi": 28.8,
-  "relevant_nations": [
+  "near_nations": [
+   "Prairie Island Indian Community"
+  ],
+  "treaty_nations": [
    "Flandreau Reservation",
    "Lake Traverse Reservation",
    "Lower Sioux Indian Community",
-   "Prairie Island Indian Community",
    "Shakopee Mdewakanton Sioux Community",
    "Upper Sioux Community"
+  ],
+  "site": "Pine Island",
+  "same_site_as": [
+   "North Rochester to Skyway 345 kV Transmission Line (for Google)"
   ],
   "last_notice": "2025-12-23"
  }

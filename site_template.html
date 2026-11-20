@@ -24,7 +24,7 @@
 
   .hero{position:relative;color:#fff;background:#1d2a33 url('img/hero.jpg') center 62%/cover no-repeat;padding:56px 24px 40px}
   .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,18,26,.55),rgba(10,18,26,.72))}
-  .hero > *{position:relative;max-width:1100px;margin-left:auto;margin-right:auto}
+  .hero > *{position:relative;max-width:1100px;margin-left:auto !important;margin-right:auto !important}
   .eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin:0}
   .hero h1{font-size:clamp(28px,4vw,44px);line-height:1.1;margin:6px 0 10px;letter-spacing:-.01em}
   .hero .promise{font-size:clamp(17px,2vw,21px);margin:0 0 4px;max-width:760px}
@@ -96,8 +96,37 @@
   .tlabel.rights{color:#3f2710}
   .rlabel{background:none;border:0;box-shadow:none;color:#1f4a36;font:600 11.5px/1.2 system-ui,sans-serif;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff}
   .leaflet-tooltip-left.tlabel::before,.leaflet-tooltip-right.tlabel::before,.leaflet-tooltip-left.rlabel::before,.leaflet-tooltip-right.rlabel::before{display:none}
+  .mapwrap{position:relative;min-height:0}
+  #panel{position:absolute;top:0;right:0;bottom:0;width:min(440px,100%);background:#fbfaf7;z-index:1000;box-shadow:-6px 0 18px rgba(0,0,0,.15);overflow-y:auto;transform:translateX(105%);transition:transform .25s ease;border-left:1px solid var(--line)}
+  #panel.show{transform:none}
+  .pbar{position:sticky;top:0;display:flex;gap:8px;align-items:center;justify-content:flex-end;padding:10px 14px;background:#fbfaf7;border-bottom:1px solid var(--line);z-index:2}
+  .pbar button{border:1px solid #c9c6bd;background:#fff;border-radius:8px;padding:5px 10px;font:inherit;font-size:13.5px;cursor:pointer}
+  .pbar .x{font-size:20px;line-height:1;padding:3px 10px}
+  .pbody{padding:16px 20px 28px}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:4px 10px;border-radius:999px;background:#eef3fb;color:#1d4f8f}
+  .badge.possible{background:#fdeee6;color:#9a3d14}.badge.related{background:#e5f6ef;color:#0d6b49}
+  .pbody h2{font-size:22px;line-height:1.25;margin:10px 0 4px}
+  .ploc{color:var(--ink2);margin:0 0 14px}
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+  .tile{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+  .tile.wide{grid-column:1/-1}
+  .tile .lab{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink3);font-weight:700}
+  .tile .val{font-size:15px;margin-top:3px}
+  .tile.go{border-color:#e7b4ae;background:#fff6f5}
+  .psec{margin:18px 0 0}
+  .psec h4{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin:0 0 8px}
+  .psec p,.psec li{font-size:15px}
+  .psec ul{margin:0;padding-left:20px}
+  .psec li{margin-bottom:6px}
+  .timeline{list-style:none;padding:0;margin:0;border-left:2px solid var(--line)}
+  .timeline li{position:relative;padding:0 0 14px 16px;font-size:14.5px}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--ink2)}
+  .timeline .d{font-weight:700}
+  .timeline q{display:block;color:var(--ink2);font-style:italic;margin-top:3px}
+  .chev{margin-left:auto;color:var(--ink3);font-size:20px;line-height:1}
+  @media (max-width:860px){#panel{position:fixed;top:auto;height:78vh;width:100%;border-radius:14px 14px 0 0;transform:translateY(105%)}#panel.show{transform:none}}
   footer{font-size:13px;color:var(--ink2);padding:12px 24px;background:var(--panel);border-top:1px solid var(--line)}
-  @media (max-width:860px){.intro{grid-template-columns:1fr}main{grid-template-columns:1fr;height:auto}#map{height:440px;order:-1}aside{border-right:0}}
+  @media (max-width:860px){.intro{grid-template-columns:1fr}main{grid-template-columns:1fr;height:auto}.mapwrap{order:-1}#map{height:440px}aside{border-right:0}}
 </style>
 </head>
 <body>
@@ -186,7 +215,8 @@
     <dl id="glossary"></dl>
   </div>
 </aside>
-<div id="map" role="region" aria-label="Map of projects, reservations and treaty areas"></div>
+<div class="mapwrap"><div id="map" role="region" aria-label="Map of projects, reservations and treaty areas"></div>
+  <section id="panel" role="dialog" aria-modal="false" aria-labelledby="ptitle" aria-hidden="true"></section></div>
 </main>
 <footer>
   Sources: <a href="https://www.eqb.state.mn.us/eqb-monitor" target="_blank" rel="noopener">Minnesota EQB Monitor</a> (public notices, June 2025 to Nov 17, 2026) ·
@@ -308,29 +338,40 @@ function treatyText(p){
   return p.cessions.map(c=>`${c.year} treaty, ${c.nation}${c.rights_kept?'. <b>Treaty hunting and fishing rights apply here.</b>':''}`).join('<br>')+` <span class="hint">(${term('Cession','approximate')})</span>`;
 }
 function card(p){
-  const k=termKey(p.process), stage=(k?term(k,p.process):p.process)+' · '+p.latest_step;
   const line1=`${p.location} · ${p.on_reservation_or_trust?'<b>on '+p.on_reservation_or_trust+'</b>':p.nearest_reservation_mi+' mi from '+p.nearest_reservation.replace(/ Reservation$/,'')}${isOpen(p)?' · <span class="open">comments open</span>':''}`;
-  return `<article class="card" data-cat="${p.category}" id="c-${p.id}" onclick="select('${p.id}',true)">
-    <span class="kind"><span class="dot" style="background:${KIND[p.category][1]}"></span>${KIND[p.category][0]}</span>
+  return `<article class="card" data-cat="${p.category}" id="c-${p.id}" tabindex="0" role="button" aria-label="${p.name}: open details" onclick="select('${p.id}',true)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();select('${p.id}',true)}">
+    <span class="kind"><span class="dot" style="background:${KIND[p.category][1]}"></span>${KIND[p.category][0]}<span class="chev" aria-hidden="true">›</span></span>
     <h3>${p.name}</h3>
     <div class="line1">${line1}</div>
-    <div class="details">
-      <dl class="facts">
-        <dt>Where</dt><dd>${p.location} <span class="hint">(${p.location_precision})</span><br>${p.nearest_reservation_mi} miles from ${p.nearest_reservation}</dd>
-        <dt>Treaty land</dt><dd>${treatyText(p)}</dd>
-        <dt>Review stage</dt><dd>${stage}</dd>
-        <dt>Can I comment?</dt><dd>${commentText(p)}</dd>
-        <dt>Who decides</dt><dd>${p.rgu||'Not listed'} (${term('RGU','reviewing government')})</dd>
-        <dt>Tribal consultation</dt><dd>Not mentioned in the notices</dd>
-      </dl>
-      ${p.same_site_as.length?`<div class="note"><b>May be the same site as:</b> ${p.same_site_as.join('; ')}.</div>`:''}
-      ${p.note?`<div class="note"><b>Why it's flagged / what to check:</b> ${p.note}</div>`:''}
-      <div class="notices"><b>Official notices</b> (newest first)
-        <ul>${p.notices.map(x=>`<li>${x.date}: ${x.step}${x.deadline?', comments due '+x.deadline:''}. <a href="${x.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">EQB Monitor ${x.volume}</a>${x.quote?`<br><q>${x.quote}</q>`:''}</li>`).join('')}</ul>
-      </div>
-    </div>
-    <button type="button" class="morebtn" aria-expanded="false" onclick="event.stopPropagation();select('${p.id}',true)">Details and notices</button>
   </article>`;
+}
+function panelHTML(p){
+  const k=termKey(p.process), stage=(k?term(k,p.process):p.process)+'<br><span class="hint">'+p.latest_step+'</span>';
+  const latest=p.notices[0];
+  const todo=[];
+  if(isOpen(p)) todo.push(`<b>Send a comment by ${fmt(p.comment_deadline)}</b> to ${p.rgu||'the reviewing government'}${p.rgu_phone?' ('+p.rgu_phone+')':''}. The official notice says how.`);
+  else todo.push(`Ask ${p.rgu||'the reviewing government'}${p.rgu_phone?' ('+p.rgu_phone+')':''} what decisions and permits are still ahead, and whether tribes were notified.`);
+  todo.push(`Read the latest official notice: <a href="${latest.url}" target="_blank" rel="noopener">EQB Monitor ${latest.volume}</a>.`);
+  if(p.category!=='confirmed') todo.push('Confirm what the project actually is. This one is flagged from wording signals, not a statement that it is a data center.');
+  todo.push(`Share this project with others: <button type="button" class="term" onclick="share('${p.id}')">copy a link</button>.`);
+  return `<div class="pbar"><button type="button" onclick="zoomTo('${p.id}')">Zoom to it</button><button type="button" onclick="share('${p.id}')" id="sharebtn">Share</button><button type="button" class="x" onclick="closePanel()" aria-label="Close details">×</button></div>
+  <div class="pbody">
+    <span class="badge ${p.category}"><span class="dot" style="background:${KIND[p.category][1]}"></span>${KIND[p.category][0]}</span>
+    <h2 id="ptitle">${p.name}</h2>
+    <p class="ploc">${p.location} <span class="hint">· ${p.location_precision}</span></p>
+    <div class="tiles">
+      <div class="tile wide ${isOpen(p)?'go':''}"><div class="lab">Can I comment?</div><div class="val">${commentText(p)}</div></div>
+      <div class="tile"><div class="lab">Review stage</div><div class="val">${stage}</div></div>
+      <div class="tile"><div class="lab">Who decides</div><div class="val">${p.rgu||'Not listed'}${p.rgu_phone?`<br><a href="tel:${p.rgu_phone}">${p.rgu_phone}</a>`:''}<br><span class="hint">${term('RGU','what is this?')}</span></div></div>
+      <div class="tile"><div class="lab">Nearest reservation</div><div class="val">${p.on_reservation_or_trust?'<b>On '+p.on_reservation_or_trust+'</b>':`${p.nearest_reservation_mi} miles<br><span class="hint">${p.nearest_reservation}</span>`}</div></div>
+      <div class="tile"><div class="lab">Tribal consultation</div><div class="val">Not mentioned in the notices</div></div>
+    </div>
+    <div class="psec"><h4>Treaty land</h4><p>${treatyText(p)}</p></div>
+    ${(p.same_site_as.length||p.note)?`<div class="psec"><h4>Worth knowing</h4>${p.same_site_as.length?`<p><b>May be the same site as:</b> ${p.same_site_as.join('; ')}.</p>`:''}${p.note?`<p>${p.note}</p>`:''}</div>`:''}
+    <div class="psec"><h4>What you can do</h4><ul>${todo.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+    <div class="psec"><h4>Official notices, newest first</h4><ol class="timeline">${p.notices.map(x=>`<li><span class="d">${x.date}</span> · ${x.step}${x.deadline?', comments due '+x.deadline:''}<br><a href="${x.url}" target="_blank" rel="noopener">EQB Monitor ${x.volume}</a>${x.quote?`<q>${x.quote}</q>`:''}</li>`).join('')}</ol></div>
+    <p class="hint" style="margin-top:16px">Location is approximate. Treaty boundaries are approximate. Always check the official notice.</p>
+  </div>`;
 }
 function filterCat(ps,f){
   if(['confirmed','possible','related'].includes(f))return ps.filter(p=>p.category===f);
@@ -371,21 +412,29 @@ function summary(n,near,far){
    :`<b>${n}:</b> no data center projects found in the notices so far.`;
 }
 
-// ---------- selection ----------
-let hl=[];
-function clearHL(){hl.forEach(([l,s])=>l.setStyle(s));hl=[];Object.entries(markers).forEach(([id,m])=>m.setIcon(icon(PROJECTS.find(p=>p.id===id),false)))}
+// ---------- selection / panel ----------
+let hl=[], current=null;
+const panel=document.getElementById('panel');
+function clearHL(){hl.forEach(([l,st])=>l.setStyle(st));hl=[];Object.entries(markers).forEach(([id,m])=>m.setIcon(icon(PROJECTS.find(p=>p.id===id),false)))}
 function select(id,fly){
-  clearHL();
-  document.querySelectorAll('.card').forEach(c=>{c.classList.remove('sel');const b=c.querySelector('.morebtn');b.setAttribute('aria-expanded','false');b.textContent='Details and notices'});
-  const p=PROJECTS.find(q=>q.id===id); openTab('projects');
-  document.querySelectorAll('#c-'+id).forEach(c=>{c.classList.add('sel');const b=c.querySelector('.morebtn');b.setAttribute('aria-expanded','true');b.textContent='Showing details';if(!fly)c.scrollIntoView({behavior:'smooth',block:'start'})});
+  const p=PROJECTS.find(q=>q.id===id); if(!p) return;
+  clearHL(); current=id;
+  document.querySelectorAll('.card').forEach(c=>c.classList.toggle('sel',c.id==='c-'+id));
   p.cessions.forEach(c=>{const l=treatyLayers[c.label];if(l){hl.push([l,cedStyle(l.feature)]);l.setStyle({color:'#f2b705',weight:3.5,fillOpacity:.12})}});
   const r=resLayers[p.nearest_reservation];if(r){hl.push([r,{color:'#2f6b4f',weight:1.4,fillOpacity:.32}]);r.setStyle({color:'#f2b705',weight:3.5})}
   markers[id].setIcon(icon(p,true));
-  if(fly){map.flyTo(markers[id].getLatLng(),9,{duration:.6});markers[id].openTooltip()}
+  panel.innerHTML=panelHTML(p); panel.classList.add('show'); panel.setAttribute('aria-hidden','false'); panel.scrollTop=0;
+  panel.querySelector('.x').focus({preventScroll:true});
+  history.replaceState(null,'','?id='+id);
+  if(fly) zoomTo(id);
 }
+function zoomTo(id){const m=markers[id];const pt=map.project(m.getLatLng(),9);pt.x+=Math.min(220,map.getSize().x/4);map.flyTo(map.unproject(pt,9),9,{duration:.6})}
+function closePanel(){panel.classList.remove('show');panel.setAttribute('aria-hidden','true');clearHL();document.querySelectorAll('.card').forEach(c=>c.classList.remove('sel'));const c=current&&document.getElementById('c-'+current);current=null;history.replaceState(null,'',location.pathname);if(c)c.focus()}
+function share(id){const u=location.origin+location.pathname+'?id='+id;(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>{const b=document.getElementById('sharebtn');if(b){b.textContent='Link copied';setTimeout(()=>b.textContent='Share',1600)}}).catch(()=>prompt('Copy this link:',u))}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&current)closePanel()});
 sel.onchange=render;document.getElementById('flt').onchange=render;
 render();
+const qid=new URLSearchParams(location.search).get('id'); if(qid) setTimeout(()=>select(qid,true),300);
 </script>
 </body>
 </html>

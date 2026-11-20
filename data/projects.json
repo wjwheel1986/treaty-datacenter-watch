@@ -11,6 +11,7 @@
   "latest_step": "Petition exempt from review",
   "comment_deadline": null,
   "rgu": "City of Hermantown",
+  "rgu_phone": "218-729-3600",
   "consultation_noted": "unknown",
   "note": "May be the same site as the Harmony Group project and the Hermantown Industrial AUAR. City planning materials (Aug 2026) describe a Google data center campus in Hermantown. Unconfirmed link.",
   "notices": [
@@ -100,6 +101,7 @@
   "latest_step": "Petition exempt from review",
   "comment_deadline": null,
   "rgu": "City of Hermantown",
+  "rgu_phone": "218-729-3600",
   "consultation_noted": "unknown",
   "note": "Check: is this the same site as the 2025 Hermantown Data Center petition? Not stated in the notices.",
   "notices": [
@@ -189,6 +191,7 @@
   "latest_step": "Petition exempt from review",
   "comment_deadline": null,
   "rgu": "City of Inver Grove Heights",
+  "rgu_phone": "651-450-2511",
   "consultation_noted": "unknown",
   "note": null,
   "notices": [
@@ -273,6 +276,7 @@
   "latest_step": "Draft order for review",
   "comment_deadline": "2026-04-16",
   "rgu": "Nobles County",
+  "rgu_phone": "507-295-5200",
   "consultation_noted": "unknown",
   "note": null,
   "notices": [
@@ -348,6 +352,7 @@
   "latest_step": "EIS need decision",
   "comment_deadline": null,
   "rgu": "City of Faribault",
+  "rgu_phone": "507-333-0388",
   "consultation_noted": "unknown",
   "note": "In June 2026 the Minnesota Court of Appeals found the city's decision not to require an EIS was unsupported (<a href=\"https://www.fredlaw.com/alert-court-of-appeals-finds-citys-decision-to-decline-a-data-center-eis-was-erroneous\" target=\"_blank\">summary</a>).",
   "notices": [
@@ -423,6 +428,7 @@
   "latest_step": "AUAR adoption",
   "comment_deadline": "2026-07-16",
   "rgu": "City of Hermantown",
+  "rgu_phone": "218-729-3600",
   "consultation_noted": "unknown",
   "note": "Notice says 'light industrial' and never says data center. Flagged because it is in the same city and has a similar size to the data center proposals, and power lines are being routed to 'the customer's facility' in Hermantown. Needs confirmation.",
   "notices": [
@@ -575,6 +581,7 @@
   "latest_step": "AUAR adoption",
   "comment_deadline": "2025-08-05",
   "rgu": "City of Cannon Falls",
+  "rgu_phone": "507-263-9304",
   "consultation_noted": "unknown",
   "note": "Notice describes 'technology park' use by code-named LLCs (MNLCO). 'Technology park' is often used for data centers. Needs confirmation.",
   "notices": [
@@ -659,6 +666,7 @@
   "latest_step": "AUAR adoption",
   "comment_deadline": null,
   "rgu": "City of Rosemount",
+  "rgu_phone": "651-423-4411",
   "consultation_noted": "unknown",
   "note": "Same code-named developer family as Cannon Falls (MNLCO). One scenario is large non-residential buildings. Needs confirmation.",
   "notices": [
@@ -734,6 +742,7 @@
   "latest_step": "AUAR adoption",
   "comment_deadline": null,
   "rgu": "City of North Mankato",
+  "rgu_phone": "507-625-4141",
   "consultation_noted": "unknown",
   "note": "4 million sq ft of 'technology park' by a code-named LLC. Needs confirmation.",
   "notices": [
@@ -809,6 +818,7 @@
   "latest_step": "Petition exempt from review; petition on hold",
   "comment_deadline": null,
   "rgu": "City of Monticello",
+  "rgu_phone": "763-271-3275",
   "consultation_noted": "unknown",
   "note": "'Technology campus' language; petition notices only. Needs confirmation.",
   "notices": [
@@ -893,6 +903,7 @@
   "latest_step": "see notice",
   "comment_deadline": null,
   "rgu": "Minnesota Public Utilities Commission",
+  "rgu_phone": "651-539-1531",
   "consultation_noted": "unknown",
   "note": "Power line co-applied by Xcel Energy and Echo Zone LLC, a Google subsidiary, per the notice. Shown as related infrastructure, not a data center.",
   "notices": [
@@ -970,6 +981,7 @@
   "latest_step": "see notice",
   "comment_deadline": null,
   "rgu": "City of Hermantown",
+  "rgu_phone": "218-729-3618",
   "consultation_noted": "unknown",
   "note": "Lines to 'the customer's facility' in Hermantown. Shown as related infrastructure.",
   "notices": [
@@ -1050,6 +1062,7 @@
   "latest_step": "Petition exempt from EAW",
   "comment_deadline": "2025-09-16",
   "rgu": "City of Pine Island",
+  "rgu_phone": "507-356-4591",
   "consultation_noted": "unknown",
   "note": "Code-named 'Technology Center' on about 482 acres (Ryan Companies). A 345 kV line named 'North Rochester to Skyway' is co-applied by a Google subsidiary. Found by the agent during testing; it was missing from the hand-made answer key. Needs confirmation.",
   "notices": [

@@ -53,14 +53,15 @@ for cid,cat,name,rx,lat,lon,prec,loc,note in C:
             seen.add(key)
             ns.append({"date":e['date'] or "date not found","iso":iso(e['date']) or "2025-07-01","volume":"Vol. "+e['volume'].replace('-',', No. '),
               "url":e['url'],"process":field(t,"Process"),"step":field(t,"Step") or "see notice","deadline":field(t,"End of comment period"),
-              "rgu":(re.search(r'Responsible governmental unit and contact:\s*([^,]*)',t) or [None,None])[1],"quote":quote(t)})
+              "rgu":(re.search(r'Responsible governmental unit and contact:\s*([^,]*)',t) or [None,None])[1],
+              "phone":(re.search(r'Responsible governmental unit and contact:[^\n]*?(\(?\d{3}\)?[-. ]\d{3}-\d{4})',t) or [None,None])[1],"quote":quote(t)})
     ns.sort(key=lambda x:x['iso'],reverse=True)
     if not ns: print("NO NOTICES",cid);continue
     last=ns[0]
     dl=next((iso(n['deadline']) for n in ns if n['deadline'] and iso(n['deadline'])),None)
     P.append({"id":cid,"category":cat,"name":name,"location":loc,"location_precision":prec,"lat":lat,"lon":lon,
       "process":last['process'] or ns[-1]['process'] or "see notice","latest_step":last['step'],
-      "comment_deadline":dl,"rgu":next((n['rgu'] for n in ns if n['rgu']),None),
+      "comment_deadline":dl,"rgu":next((n['rgu'] for n in ns if n['rgu']),None),"rgu_phone":next((n['phone'] for n in ns if n.get('phone')),None),
       "consultation_noted":"unknown","note":note,
       "notices":[{"date":n['date'],"iso":n['iso'],"volume":n['volume'],"url":n['url'],"step":n['step'],"deadline":n['deadline'],"quote":n['quote']} for n in ns]})
 json.dump(P,open("repo/data/projects_input.json","w"),indent=1)

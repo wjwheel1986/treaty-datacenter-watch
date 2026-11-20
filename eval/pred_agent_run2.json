@@ -1,0 +1,1532 @@
+[
+ {
+  "key": "50-46|Edgewood Village",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-46|Rich Valley Golf Club",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-46|Summit Lake Project",
+  "category": "possible",
+  "reason": "Solar + BESS in Elk and Summit Lake Townships, Nobles County, same township as the Nobles County Data Center AUAR; notice does not tie it to the data center",
+  "location": "Summit Lake Township, Nobles",
+  "process": "Alternative review",
+  "step": "Order issuing site permits",
+  "deadline": null,
+  "quote": "in Elk and Summit Lake Townships in Nobles County"
+ },
+ {
+  "key": "50-45|Harmony Group Data Center Project",
+  "category": "confirmed",
+  "reason": "Title names a data center",
+  "location": "Hermantown, St. Louis County",
+  "process": "Petition",
+  "step": "Petition exempt from review",
+  "deadline": null,
+  "quote": "Harmony Group Data Center Project"
+ },
+ {
+  "key": "50-45|Hidden Acres Commercial Dog Boarding Facility",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-45|Centennial Office Building Demolition",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-45|Hoot Lake Battery Energy Storage System and Transmission Line Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-43|Hillview Business Park",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-43|Harmony Group Data Center",
+  "category": "confirmed",
+  "reason": "Title names a data center",
+  "location": "Hermantown, St. Louis County",
+  "process": "Petition",
+  "step": "Responsible governmental unit assigned",
+  "deadline": null,
+  "quote": "Harmony Group Data Center"
+ },
+ {
+  "key": "50-43|Hill Annex Historic Properties Removal and Scram Mining Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-43|Kasota Stone Fabricators, Inc Lime Township Pit Expansion",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-43|Brookdale Park Channel Design",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-43|Fountain Lake Channel Restoration Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-43|Hwy 252/I-94 Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-43|Brooklyn Park NW Growth Area Plan",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-43|Coneflower HVTL",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-42|Hidden Acres Commercial Dog Boarding Facility",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-42|Great Northern",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-42|Cedar Lake Manoomin Restoration EAW",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-42|Updated Hermantown Industrial AUAR",
+  "category": "possible",
+  "reason": "Hermantown Industrial AUAR: 1.8M sq ft light industrial with no tenant named, in Hermantown, the same city as the Hermantown/Harmony Group data centers",
+  "location": "Hermantown; Saint Louis",
+  "process": "Large AUAR",
+  "step": "AUAR adoption",
+  "deadline": null,
+  "quote": "multiple buildings totaling 1.8 million square feet of proposed light industrial development"
+ },
+ {
+  "key": "50-42|Burnsville Center Village Area AUAR Update",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-36|*This project notice was previously published in the August 11, 2026 EQB Monitor with the end of comment period listed as September 10. The comment period has been extended per the below.",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-36|Centennial Office Building Demolition",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-36|Crissy Lake Dam Modifications EAW",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-36|Silver Rapids Lodge",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-36|Hillview Business Park",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-36|Brooklyn Park NW Growth Area Plan",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-36|Southwest Study Area AUAR",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-36|North Rochester to Skyway High Voltage Transmission Line",
+  "category": "related",
+  "reason": "345 kV line and substations for Project Skyway, co-applicant Echo Zone LLC is a Google subsidiary",
+  "location": "Pine Island, Goodhue",
+  "process": "Alternative review",
+  "step": "Public hearings and draft permit",
+  "deadline": "September 25, 2026",
+  "quote": "Echo Zone LLC, a subsidiary of Google LLC"
+ },
+ {
+  "key": "50-36|St. Louis County 230 kV Transmission Line Project",
+  "category": "related",
+  "reason": "230 kV lines to 'the customer's facility' in Hermantown, the data center city",
+  "location": "Hermantown, Saint Louis",
+  "process": "Alternative review",
+  "step": "Environmental Assessment",
+  "deadline": "September 22, 2026",
+  "quote": "connect to Minnesota Power's existing Arrowhead 230 kV Substation and to the customer's facility within the municipal boundaries of the City of Hermantown"
+ },
+ {
+  "key": "50-31|*This project notice was previously published in the July 21, 2026, EQB Monitor, with the responsible governmental unit record of decision date of July 14, 2026. The document was revised in response to additional comments and presented again to the Aitkin County Board of Commissioners for a decision. The new decision date is listed below.",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-31|Inver Grove Heights Data Center",
+  "category": "confirmed",
+  "reason": "Title names a data center",
+  "location": "Inver Grove Heights, Dakota County",
+  "process": "Petition",
+  "step": "Petition exempt from review",
+  "deadline": null,
+  "quote": "Inver Grove Heights Data Center"
+ },
+ {
+  "key": "50-31|Dayton Transfer Station",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-31|165th Street Area AUAR",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-32|Nine Mile Creek Corridor Renewal Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-32|Nine Mile Creek Corridor Renewal Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-32|MCES L32A Lift Station",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-32|Pleasant Valley Farms EAW",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-32|Brooklyn Center Pond Maintenance Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-32|Updated Hermantown Industrial AUAR",
+  "category": "possible",
+  "reason": "Hermantown Industrial AUAR: 1.8M sq ft light industrial with no tenant named, in Hermantown, the same city as the Hermantown/Harmony Group data centers",
+  "location": "Hermantown; Saint Louis",
+  "process": "Large AUAR",
+  "step": "Revised AUAR",
+  "deadline": "August 25, 2026",
+  "quote": "multiple buildings totaling 1.8 million square feet of proposed light industrial development"
+ },
+ {
+  "key": "50-24|Crissy Lake Dam Modifications",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-24|I-494: Airport to 169",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-24|North Zumbro Sanitary Sewer District (NZSSD)",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-24|TI-OPP-29699",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-24|Hillview Business Park",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-24|Updated Hermantown Industrial AUAR",
+  "category": "possible",
+  "reason": "Hermantown Industrial AUAR: 1.8M sq ft light industrial with no tenant named, in Hermantown, the same city as the Hermantown/Harmony Group data centers; notice lists a Google community information open house",
+  "location": "Hermantown; St. Louis",
+  "process": "Large AUAR",
+  "step": "Draft AUAR",
+  "deadline": "July 16, 2026",
+  "quote": "Google Community Information Open House"
+ },
+ {
+  "key": "50-24|Fields of Andover AUAR",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-24|Mayhew Lake Energy Storage",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-21|Olson Mine",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-21|Kohnen Property",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-21|Mississippi River Learning Center",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-21|Rockwell RV and Adventure Park",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-21|Vermillion Reserve",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-21|Updated Hermantown Industrial AUAR",
+  "category": "possible",
+  "reason": "Hermantown Industrial AUAR: 1.8M sq ft light industrial with no tenant named, in Hermantown, the same city as the Hermantown/Harmony Group data centers",
+  "location": "Hermantown; St. Louis",
+  "process": "Large AUAR",
+  "step": "Final order for review",
+  "deadline": null,
+  "quote": "multiple buildings totaling 1.8 million square feet of proposed light industrial development"
+ },
+ {
+  "key": "50-21|Downtown Duluth Alternative Urban Areawide Review",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-21|Summerfield",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-21|Lake Wilhelm North",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-14|*MPCA is extending the comment period for this Environmental Assessment Worksheet (EAW) to May 7, 2026. MPCA will host a public informational meeting regarding the EAW and the proposed feedlot permit for the proposed West River Dairy Expansion. Meeting details will be provided when available.",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-14|Annandale-Maple Lake-Howard Lake-Montrose-Waverly Wastewater Treatment Facility",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-14|Milestone Materials - Highland Quarry",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-14|Summerfield",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-14|Lake Wilhelm North",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-14|Big Bend Wind 161 kV Transmission Line Project Public Hearings; Docket# IP-7013/TL-25-389",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-14|Benton Solar and Battery Energy Storage Project in Benton County",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-14|Castle Rock Solar Project in Dakota County, Minnesota",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-16|Bell Maple Farm Development",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-16|Monticello Technology Campus and Scannell Technology Park",
+  "category": "possible",
+  "reason": "'Technology Campus' and 'Technology Park' signals without the words data center",
+  "location": "Monticello Township, Wright County",
+  "process": "Petition",
+  "step": "Petition exempt from review; petition on hold",
+  "deadline": null,
+  "quote": "Monticello Technology Campus and Scannell Technology Park"
+ },
+ {
+  "key": "50-16|Bleck Property Development",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-16|TI-OPP-29699",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-16|U. S. Steel Keetac Tailings Storage Facility Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-16|Opus Study Area",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-13|Talon Nickel January 12, 2026 Exploratory Drilling Plan",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-13|Hadley Valley Subdivision",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-13|North Zumbro Sanitary Sewer District (NZSSD)",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-13|Willow Pond Maintenance",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-13|Rochester Regional Sports and Recreation Complex",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-13|Waterside Estates Development",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-13|Updated Hermantown Industrial AUAR",
+  "category": "possible",
+  "reason": "Hermantown Industrial AUAR: 1.8M sq ft light industrial with no tenant named, in Hermantown, the same city as the Hermantown/Harmony Group data centers",
+  "location": "Hermantown; St. Louis",
+  "process": "Large AUAR",
+  "step": "Draft order for review",
+  "deadline": "April 30, 2026",
+  "quote": "multiple buildings totaling 1.8 million square feet of proposed light industrial development"
+ },
+ {
+  "key": "50-13|Brooklyn Park NW Growth Area Plan",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-11|Monticello Technology Campus and Scannell Technology Park",
+  "category": "possible",
+  "reason": "'Technology Campus' and 'Technology Park' signals without the words data center",
+  "location": "Monticello Township, Wright County",
+  "process": "Petition",
+  "step": "Responsible governmental unit assigned",
+  "deadline": null,
+  "quote": "Monticello Technology Campus and Scannell Technology Park"
+ },
+ {
+  "key": "50-11|Bruening Pit",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-11|Kohnen Property",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-11|Nobles County Data Center AUAR",
+  "category": "confirmed",
+  "reason": "Entry says the study area will be developed to a data center",
+  "location": "Summit Lake Township; Nobles",
+  "process": "Large AUAR",
+  "step": "Draft order for review",
+  "deadline": "April 16, 2026",
+  "quote": "Geronimo Power is proposing to develop the majority of the study area from existing agricultural and rural residential uses to a data center"
+ },
+ {
+  "key": "50-11|Prior Lake Annexation Area",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-2|Pebble Creek Development",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-2|Jackson Township Development Area AUAR Update",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-49|* An earlier version of today's EQB Monitor inadvertently left out this petition decision notice. This amended version of the Monitor serves as the official Monitor publication for 12/9/2025.",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-49|Hermantown Data Center project",
+  "category": "confirmed",
+  "reason": "Title names a data center",
+  "location": "Hermantown, St. Louis County",
+  "process": "Petition",
+  "step": "Petition exempt from review",
+  "deadline": null,
+  "quote": "Hermantown Data Center project"
+ },
+ {
+  "key": "49-49|Prairie Island Nuclear Plant Fuel Storage Expansion",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-49|Southwest Study Area AUAR",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-42|Turtle, Connection, Cross Lakes Flood Damage Reduction Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-42|Southwest Study Area AUAR",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-42|Summerfield",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-42|Monticello Industrial",
+  "category": "possible",
+  "reason": "550-acre industrial AUAR, no tenant or use named, in Monticello Township, same township as Monticello Technology Campus/Scannell Technology Park",
+  "location": "Monticello Township; Wright",
+  "process": "Large AUAR",
+  "step": "Final order for review",
+  "deadline": null,
+  "quote": "approximately 550 acres on 16 parcels in Monticello Township, Wright County"
+ },
+ {
+  "key": "49-42|West End AUAR Update",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-43|Hermantown Data Center",
+  "category": "confirmed",
+  "reason": "Title names a data center",
+  "location": "Hermantown",
+  "process": "Petition",
+  "step": "Responsible governmental unit assigned",
+  "deadline": null,
+  "quote": "Hermantown Data Center"
+ },
+ {
+  "key": "49-43|Bailey Farm Business Park",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-43|Voyageur Heights Apartment Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-43|Elk River Landfill North Development Area",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-43|Cottage Grove East Ravine AUAR and Mitigation Plan Update",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-40|Reno Bottoms Floodplain Forest and Backwater Restoration EAW",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-40|East Central Solid Waste Commission Sanitary Landfill (SW-17) Expansion",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-40|Fields of Andover AUAR",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-40|Henry Area 2025 AUAR Update - Rogers, MN",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-37|Peterson Sisters Pit",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-37|Hermantown Industrial AUAR",
+  "category": "possible",
+  "reason": "Hermantown Industrial AUAR: 1.8M sq ft light industrial with no tenant named, in Hermantown, the same city as the Hermantown/Harmony Group data centers",
+  "location": "Hermantown; St. Louis",
+  "process": "Large AUAR",
+  "step": "Revised AUAR",
+  "deadline": "September 30, 2025",
+  "quote": "multiple buildings totaling 1.8 million square feet of proposed light industrial development"
+ },
+ {
+  "key": "49-37|Cannon Falls Industrial AUAR",
+  "category": "possible",
+  "reason": "County-named LLC (MNLCO Dakota County Two/Three, LLC) proposing 1.75M sq ft 'technology park'",
+  "location": "Cannon Falls; Dakota, Goodhue",
+  "process": "Large AUAR",
+  "step": "AUAR adoption",
+  "deadline": null,
+  "quote": "1,750,000 square feet of technology park"
+ },
+ {
+  "key": "50-4|Waterside Estates Development EAW",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-4|LEAR000946 Lease Expansion \u2013 Soring Pit Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-4|Larson Quarry Expansion",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-4|Downtown Duluth Alternative Urban Areawide Review",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-4|City of Empire - Northwest Alternative Urban Areawide Review",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-31|3M Oakdale Surface Water Diversion Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-31|CSAH 6 Grade Raise Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-31|Highway 5 Improvements Project: EAW and EA",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-31|Monticello Industrial",
+  "category": "possible",
+  "reason": "546-acre industrial AUAR, no tenant or use named, in Monticello Township, same township as Monticello Technology Campus/Scannell Technology Park",
+  "location": "Monticello Township; Wright",
+  "process": "Large AUAR",
+  "step": "Draft order for review",
+  "deadline": "September 4, 2025",
+  "quote": "approximately 546 acres on 15 parcels in Monticello Township, Wright County"
+ },
+ {
+  "key": "49-31|Hermantown Industrial AUAR",
+  "category": "possible",
+  "reason": "Hermantown Industrial AUAR: 1.8M sq ft light industrial with no tenant named, in Hermantown, the same city as the Hermantown/Harmony Group data centers",
+  "location": "Hermantown; St. Louis",
+  "process": "Large AUAR",
+  "step": "Draft AUAR",
+  "deadline": "September 4, 2025",
+  "quote": "multiple buildings totaling 1.8 million square feet of proposed light industrial development"
+ },
+ {
+  "key": "49-31|I-35E Corridor AUAR Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-31|Interstate S. Logistics Park AUAR Update",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-31|Northwest Expansion Area AUAR Update",
+  "category": "possible",
+  "reason": "AUAR update in Inver Grove Heights, same city as the Inver Grove Heights Data Center; no data center named",
+  "location": "Inver Grove Heights; Dakota",
+  "process": "AUAR update",
+  "step": "Revised AUAR",
+  "deadline": "August 19, 2025",
+  "quote": "The AUAR study area is a 3,089-acre area in the northwest portion of the city of Inver Grove Heights"
+ },
+ {
+  "key": "50-27|Inver Grove Heights Data Center",
+  "category": "confirmed",
+  "reason": "Title names a data center",
+  "location": "Inver Grove Heights, Dakota County",
+  "process": "Petition",
+  "step": "Responsible governmental unit assigned",
+  "deadline": null,
+  "quote": "Inver Grove Heights Data Center"
+ },
+ {
+  "key": "50-27|County State Aid Highway 54 Reconstruction and Mississippi River Greenway Extension",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-27|Silver Rapids Lodge",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-27|Marlow Ridge Development (Vierling Property)",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-27|Dem-Con Landfill SW-290 MSW Allocation/Airspace Conversion",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-27|Big Stone South to Alexandria 345 kV Transmission Line Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-27|Cottage Grove Battery Energy Storage System",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-27|Plum Creek BESS (IP-6997/ESS-26157)",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "50-27|Sherco South and West Battery Energy Storage Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-29|Quarterdeck Expansion",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-29|Greco Redevelopment Project - 150 Thompson Ave E. West St. Paul",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-29|City of Empire - Northwest Alternative Urban Areawide Review",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-29|Cannon Falls Industrial AUAR",
+  "category": "possible",
+  "reason": "County-named LLC (MNLCO Dakota County Two/Three, LLC) proposing 1.75M sq ft 'technology park'",
+  "location": "Cannon Falls; Dakota, Goodhue",
+  "process": "Large AUAR",
+  "step": "Revised AUAR",
+  "deadline": "August 5, 2025",
+  "quote": "1,750,000 square feet of technology park"
+ },
+ {
+  "key": "49-29|Dakota East Area AUAR",
+  "category": "possible",
+  "reason": "County-named LLC (MNLCO Dakota County, LLC) proposing 2.3-2.5M sq ft 'mixed business campus', no tenant named",
+  "location": "Rosemount; Dakota",
+  "process": "Large AUAR",
+  "step": "AUAR adoption",
+  "deadline": null,
+  "quote": "MNLCO Dakota County, LLC is proposing to develop the study area"
+ },
+ {
+  "key": "49-29|Lino Lakes Main Street AUAR",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-28|Mud Lake Habitat Restoration",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-28|Hermantown Industrial AUAR",
+  "category": "possible",
+  "reason": "Hermantown Industrial AUAR: 1.8M sq ft light industrial with no tenant named, in Hermantown, the same city as the Hermantown/Harmony Group data centers",
+  "location": "Hermantown; St. Louis",
+  "process": "Large AUAR",
+  "step": "Final order for review",
+  "deadline": null,
+  "quote": "multiple buildings totaling 1.8 million square feet of proposed light industrial development"
+ },
+ {
+  "key": "49-28|North Mankato Industrial AUAR",
+  "category": "possible",
+  "reason": "Code-named 'Project Deacon, LLC' proposing 4M sq ft technology park",
+  "location": "North Mankato; Nicollet",
+  "process": "Large AUAR",
+  "step": "AUAR adoption",
+  "deadline": null,
+  "quote": "Project Deacon, LLC is proposing to develop the study area from existing farmland to technology park or office/warehouse use"
+ },
+ {
+  "key": "49-28|Olam Lakeville Industrial",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-28|Big Sky Estates Alternative Urban Areawide Review (AUAR) Update",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-35|Nine Mile Creek Corridor Renewal Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-35|U. S. Steel Keetac Tailings Storage Facility Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-35|Archer Datacenters Faribault Campus",
+  "category": "confirmed",
+  "reason": "Entry says data center buildings (Archer Datacenters)",
+  "location": "Faribault; Rice",
+  "process": "EAW",
+  "step": "EIS need decision",
+  "deadline": null,
+  "quote": "up to 500,000 square feet of data center buildings"
+ },
+ {
+  "key": "49-35|Century Ponds EAW",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-35|Project Skyway",
+  "category": "possible",
+  "reason": "Code-named 'Project Skyway' with Technology Center scenarios, no tenant named",
+  "location": "Pine Island; Goodhue",
+  "process": "Large AUAR",
+  "step": "Revised AUAR",
+  "deadline": "September 16, 2025",
+  "quote": "Mixed Technology Center/ Light Industrial Scenario (Scenario A) and Technology Center Scenario (Scenario B)"
+ },
+ {
+  "key": "49-35|Northwest Expansion Area AUAR Update",
+  "category": "possible",
+  "reason": "AUAR update in Inver Grove Heights, same city as the Inver Grove Heights Data Center; no data center named",
+  "location": "Inver Grove Heights; Dakota",
+  "process": "AUAR update",
+  "step": "AUAR update adoption",
+  "deadline": null,
+  "quote": "The AUAR study area is a 3,089-acre area in the northwest portion of the city of Inver Grove Heights"
+ },
+ {
+  "key": "49-35|Big Stone South to Alexandria 345 kV Transmission Line Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-41|Central Range Transportation Building",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-41|Mississippi River Learning Center",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-41|The Enclave at Carver Creek",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-41|Juneberry Area Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-41|Nelson Mine Backwaters Project",
+  "category": "not",
+  "reason": null,
+  "location": null,
+  "process": null,
+  "step": null,
+  "deadline": null,
+  "quote": null
+ },
+ {
+  "key": "49-41|Hermantown Industrial AUAR",
+  "category": "possible",
+  "reason": "Hermantown Industrial AUAR: 1.8M sq ft light industrial with no tenant named, in Hermantown, the same city as the Hermantown/Harmony Group data centers",
+  "location": "Hermantown; St. Louis",
+  "process": "Large AUAR",
+  "step": "AUAR adoption",
+  "deadline": null,
+  "quote": "multiple buildings totaling 1.8 million square feet of proposed light industrial development"
+ }
+]

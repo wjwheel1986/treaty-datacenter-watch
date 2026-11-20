@@ -1,0 +1,484 @@
+[
+ {
+  "id": "hermantown-dc",
+  "category": "confirmed",
+  "name": "Hermantown Data Center",
+  "location": "Hermantown, St. Louis County",
+  "location_precision": "city center (approx.)",
+  "lat": 46.8069,
+  "lon": -92.2382,
+  "process": "Petition",
+  "latest_step": "Petition exempt from review",
+  "comment_deadline": null,
+  "rgu": "City of Hermantown",
+  "consultation_noted": "unknown",
+  "note": "May be the same site as the Harmony Group project and the Hermantown Industrial AUAR. City planning materials (Aug 2026) describe a Google data center campus in Hermantown. Unconfirmed link.",
+  "notices": [
+   {
+    "date": "December 9, 2025",
+    "iso": "2025-12-09",
+    "volume": "Vol. 49, No. 49",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/3ff1159",
+    "step": "Petition exempt from review",
+    "deadline": null,
+    "quote": "On Dec. 3, 2025, EQB received notice from the City of Hermantown (the designated responsible governmental unit) that environmental review has already been completed for the above-named project and therefore the petition will not be considered (Minn R."
+   },
+   {
+    "date": "October 28, 2025",
+    "iso": "2025-10-28",
+    "volume": "Vol. 49, No. 43",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/3f836ba",
+    "step": "see notice",
+    "deadline": null,
+    "quote": null
+   }
+  ]
+ },
+ {
+  "id": "harmony-group",
+  "category": "confirmed",
+  "name": "Harmony Group Data Center",
+  "location": "Hermantown, St. Louis County",
+  "location_precision": "city center (approx.)",
+  "lat": 46.8069,
+  "lon": -92.2382,
+  "process": "Petition",
+  "latest_step": "Petition exempt from review",
+  "comment_deadline": null,
+  "rgu": "City of Hermantown",
+  "consultation_noted": "unknown",
+  "note": "Check: is this the same site as the 2025 Hermantown Data Center petition? Not stated in the notices.",
+  "notices": [
+   {
+    "date": "November 10, 2026",
+    "iso": "2026-11-10",
+    "volume": "Vol. 50, No. 45",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/431a5a5",
+    "step": "Petition exempt from review",
+    "deadline": null,
+    "quote": "On November 4, 2026, EQB received notice from the City of Hermantown (the designated responsible governmental unit) that environmental review has already been completed for the above-named project and therefore the petition will not be considered (Minn R."
+   },
+   {
+    "date": "October 27, 2026",
+    "iso": "2026-10-27",
+    "volume": "Vol. 50, No. 43",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/43014fc",
+    "step": "see notice",
+    "deadline": null,
+    "quote": null
+   }
+  ]
+ },
+ {
+  "id": "igh-dc",
+  "category": "confirmed",
+  "name": "Inver Grove Heights Data Center",
+  "location": "Inver Grove Heights, Dakota County",
+  "location_precision": "city center (approx.)",
+  "lat": 44.848,
+  "lon": -93.0427,
+  "process": "Petition",
+  "latest_step": "Petition exempt from review",
+  "comment_deadline": null,
+  "rgu": "City of Inver Grove Heights",
+  "consultation_noted": "unknown",
+  "note": null,
+  "notices": [
+   {
+    "date": "August 4, 2026",
+    "iso": "2026-08-04",
+    "volume": "Vol. 50, No. 31",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/422a7bd",
+    "step": "Petition exempt from review",
+    "deadline": null,
+    "quote": "On July 28, 2026 EQB received notice from the City of Inver Grove Heights (the designated responsible government unit) that environmental review has already been completed for the above-name project and therefore the petition will not be considered (Minn R."
+   },
+   {
+    "date": "July 7, 2026",
+    "iso": "2026-07-07",
+    "volume": "Vol. 50, No. 27",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/41e893b",
+    "step": "see notice",
+    "deadline": null,
+    "quote": null
+   }
+  ]
+ },
+ {
+  "id": "nobles-dc",
+  "category": "confirmed",
+  "name": "Nobles County Data Center AUAR",
+  "location": "Summit Lake & Elk Townships, Nobles County",
+  "location_precision": "county center (approx.); site is in Summit Lake and Elk Townships",
+  "lat": 43.674,
+  "lon": -95.754,
+  "process": "Large AUAR",
+  "latest_step": "Draft order for review",
+  "comment_deadline": "2026-04-16",
+  "rgu": "Nobles County",
+  "consultation_noted": "unknown",
+  "note": null,
+  "notices": [
+   {
+    "date": "March 17, 2026",
+    "iso": "2026-03-17",
+    "volume": "Vol. 50, No. 11",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/40dbafb",
+    "step": "Draft order for review",
+    "deadline": "April 16, 2026",
+    "quote": "The AUAR study area encompasses an area of approximately 959 acres on 13 parcels in Summit Lake Township and Elk Township, Nobles County, Minnesota."
+   }
+  ]
+ },
+ {
+  "id": "archer-faribault",
+  "category": "confirmed",
+  "name": "Archer Datacenters Faribault Campus",
+  "location": "Faribault, Rice County",
+  "location_precision": "city center (approx.)",
+  "lat": 44.295,
+  "lon": -93.2688,
+  "process": "EAW",
+  "latest_step": "EIS need decision",
+  "comment_deadline": null,
+  "rgu": "City of Faribault",
+  "consultation_noted": "unknown",
+  "note": "In June 2026 the Minnesota Court of Appeals found the city's decision not to require an EIS was unsupported (<a href=\"https://www.fredlaw.com/alert-court-of-appeals-finds-citys-decision-to-decline-a-data-center-eis-was-erroneous\" target=\"_blank\">summary</a>).",
+  "notices": [
+   {
+    "date": "September 2, 2025",
+    "iso": "2025-09-02",
+    "volume": "Vol. 49, No. 35",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/3efc446",
+    "step": "EIS need decision",
+    "deadline": null,
+    "quote": "The Archer Datacenters Faribault Campus project is south of 150th Street West and east of Acorn Trail in Faribault, Rice County, MN."
+   }
+  ]
+ },
+ {
+  "id": "hermantown-auar",
+  "category": "possible",
+  "name": "Hermantown Industrial AUAR (possible data center site)",
+  "location": "Hermantown, St. Louis County",
+  "location_precision": "city center (approx.)",
+  "lat": 46.8069,
+  "lon": -92.2382,
+  "process": "Large AUAR",
+  "latest_step": "AUAR adoption",
+  "comment_deadline": "2026-07-16",
+  "rgu": "City of Hermantown",
+  "consultation_noted": "unknown",
+  "note": "Notice says 'light industrial' and never says data center. Flagged because it is in the same city and has a similar size to the data center proposals, and power lines are being routed to 'the customer's facility' in Hermantown. Needs confirmation.",
+  "notices": [
+   {
+    "date": "October 20, 2026",
+    "iso": "2026-10-20",
+    "volume": "Vol. 50, No. 42",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/42f1b02",
+    "step": "AUAR adoption",
+    "deadline": null,
+    "quote": "This AUAR study area encompasses an area totaling approximately 278 acres on 26 parcels in the City of Hermantown, St."
+   },
+   {
+    "date": "August 11, 2026",
+    "iso": "2026-08-11",
+    "volume": "Vol. 50, No. 32",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/423be86",
+    "step": "Revised AUAREnd of objection period (for state agencies and Met Council only): August 25, 2026",
+    "deadline": null,
+    "quote": "This AUAR study area encompasses an area totaling approximately 278 acres on 26 parcels in the City of Hermantown, St."
+   },
+   {
+    "date": "June 16, 2026",
+    "iso": "2026-06-16",
+    "volume": "Vol. 50, No. 24",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/41b6987",
+    "step": "Draft AUAR",
+    "deadline": "July 16, 2026",
+    "quote": "This AUAR study area encompasses an area totaling approximately 278 acres on 26 parcels in the City of Hermantown, St."
+   },
+   {
+    "date": "May 26, 2026",
+    "iso": "2026-05-26",
+    "volume": "Vol. 50, No. 21",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/4182c5b",
+    "step": "Final order for review",
+    "deadline": null,
+    "quote": "This AUAR study area encompasses an area totaling approximately 278 acres on 26 parcels in the City of Hermantown, St."
+   },
+   {
+    "date": "March 31, 2026",
+    "iso": "2026-03-31",
+    "volume": "Vol. 50, No. 13",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/40feba0",
+    "step": "Draft order for review",
+    "deadline": "April 30, 2026",
+    "quote": "This AUAR study area encompasses an area totaling approximately 278 acres on 26 parcels in the City of Hermantown, St."
+   },
+   {
+    "date": "October 14, 2025",
+    "iso": "2025-10-14",
+    "volume": "Vol. 49, No. 41",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/3f63d0b",
+    "step": "AUAR adoption",
+    "deadline": null,
+    "quote": "This AUAR study area encompasses an area totaling approximately 403 acres on 28 parcels in the City of Hermantown, St."
+   },
+   {
+    "date": "September 16, 2025",
+    "iso": "2025-09-16",
+    "volume": "Vol. 49, No. 37",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/3f201fe",
+    "step": "Revised AUAR",
+    "deadline": "September 30, 2025",
+    "quote": "This AUAR study area encompasses an area totaling approximately 403 acres on 28 parcels in the City of Hermantown, St."
+   },
+   {
+    "date": "August 5, 2025",
+    "iso": "2025-08-05",
+    "volume": "Vol. 49, No. 31",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/3ebba65",
+    "step": "Draft AUAR",
+    "deadline": "September 4, 2025",
+    "quote": "This AUAR study area encompasses an area totaling approximately 403 acres on 28 parcels in the City of Hermantown, St."
+   },
+   {
+    "date": "date not found",
+    "iso": "2025-07-01",
+    "volume": "Vol. 49, No. 28",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/3e8c9f7",
+    "step": "Final order for review",
+    "deadline": null,
+    "quote": "This AUAR study area encompasses an area totaling approximately 403 acres on 28 parcels in the City of Hermantown, St."
+   }
+  ]
+ },
+ {
+  "id": "cannon-falls",
+  "category": "possible",
+  "name": "Cannon Falls Industrial AUAR (possible data center)",
+  "location": "Cannon Falls & Randolph Twp, Goodhue/Dakota",
+  "location_precision": "city center (approx.)",
+  "lat": 44.5069,
+  "lon": -92.9049,
+  "process": "Large AUAR",
+  "latest_step": "AUAR adoption",
+  "comment_deadline": "2025-08-05",
+  "rgu": "City of Cannon Falls",
+  "consultation_noted": "unknown",
+  "note": "Notice describes 'technology park' use by code-named LLCs (MNLCO). 'Technology park' is often used for data centers. Needs confirmation.",
+  "notices": [
+   {
+    "date": "September 16, 2025",
+    "iso": "2025-09-16",
+    "volume": "Vol. 49, No. 37",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/3f201fe",
+    "step": "AUAR adoption",
+    "deadline": null,
+    "quote": "The AUAR study area encompasses an area totaling approximately 251 acres on 5 parcels in the City of Cannon Falls and Randolph Township, Goodhue and Dakota Counties, Minnesota."
+   },
+   {
+    "date": "July 22, 2025",
+    "iso": "2025-07-22",
+    "volume": "Vol. 49, No. 29",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/3e9beeb",
+    "step": "Revised AUAR",
+    "deadline": "August 5, 2025",
+    "quote": "The AUAR study area encompasses an area totaling approximately 251 acres on 5 parcels in the City of Cannon Falls and Randolph Township, Goodhue and Dakota Counties, Minnesota."
+   }
+  ]
+ },
+ {
+  "id": "rosemount-dakota-east",
+  "category": "possible",
+  "name": "Dakota East Area AUAR (possible data center)",
+  "location": "Rosemount, Dakota County",
+  "location_precision": "city center (approx.)",
+  "lat": 44.7394,
+  "lon": -93.1258,
+  "process": "Large AUAR",
+  "latest_step": "AUAR adoption",
+  "comment_deadline": null,
+  "rgu": "City of Rosemount",
+  "consultation_noted": "unknown",
+  "note": "Same code-named developer family as Cannon Falls (MNLCO). One scenario is large non-residential buildings. Needs confirmation.",
+  "notices": [
+   {
+    "date": "July 22, 2025",
+    "iso": "2025-07-22",
+    "volume": "Vol. 49, No. 29",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/3e9beeb",
+    "step": "AUAR adoption",
+    "deadline": null,
+    "quote": "The AUAR study area encompasses an area totaling approximately 447 acres on 8 parcels in Rosemount, Dakota County, Minnesota."
+   }
+  ]
+ },
+ {
+  "id": "north-mankato",
+  "category": "possible",
+  "name": "North Mankato Industrial AUAR, 'Project Deacon' (possible data center)",
+  "location": "North Mankato, Nicollet County",
+  "location_precision": "city center (approx.)",
+  "lat": 44.1733,
+  "lon": -94.0338,
+  "process": "Large AUAR",
+  "latest_step": "AUAR adoption",
+  "comment_deadline": null,
+  "rgu": "City of North Mankato",
+  "consultation_noted": "unknown",
+  "note": "4 million sq ft of 'technology park' by a code-named LLC. Needs confirmation.",
+  "notices": [
+   {
+    "date": "date not found",
+    "iso": "2025-07-01",
+    "volume": "Vol. 49, No. 28",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/3e8c9f7",
+    "step": "AUAR adoption",
+    "deadline": null,
+    "quote": "The North Mankato Industrial AUAR study area encompasses an area of approximately 678 acres on 16 parcels within Nicollet County, Minnesota."
+   }
+  ]
+ },
+ {
+  "id": "monticello-tech",
+  "category": "possible",
+  "name": "Monticello Technology Campus / Scannell Technology Park (possible data center)",
+  "location": "Monticello Township, Wright County",
+  "location_precision": "city center (approx.)",
+  "lat": 45.3055,
+  "lon": -93.7941,
+  "process": "Petition",
+  "latest_step": "Petition exempt from review; petition on hold",
+  "comment_deadline": null,
+  "rgu": "City of Monticello",
+  "consultation_noted": "unknown",
+  "note": "'Technology campus' language; petition notices only. Needs confirmation.",
+  "notices": [
+   {
+    "date": "April 21, 2026",
+    "iso": "2026-04-21",
+    "volume": "Vol. 50, No. 16",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/4133630",
+    "step": "Petition exempt from review; petition on hold",
+    "deadline": null,
+    "quote": "On April 14, 2026 , EQB received notice from the City of Monticello (the designated responsible governmental unit) that environmental review has already been completed for the Monticello Technology Campus project and therefore the petition will not be consider"
+   },
+   {
+    "date": "March 17, 2026",
+    "iso": "2026-03-17",
+    "volume": "Vol. 50, No. 11",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/40dbafb",
+    "step": "see notice",
+    "deadline": null,
+    "quote": null
+   }
+  ]
+ },
+ {
+  "id": "skyway-345",
+  "category": "related",
+  "name": "North Rochester to Skyway 345 kV Transmission Line (for Google)",
+  "location": "Pine Island area, Goodhue County",
+  "location_precision": "city center (approx.)",
+  "lat": 44.2013,
+  "lon": -92.6463,
+  "process": "Alternative review",
+  "latest_step": "see notice",
+  "comment_deadline": null,
+  "rgu": "Minnesota Public Utilities Commission",
+  "consultation_noted": "unknown",
+  "note": "Power line co-applied by Xcel Energy and Echo Zone LLC, a Google subsidiary, per the notice. Shown as related infrastructure, not a data center.",
+  "notices": [
+   {
+    "date": "September 8, 2026",
+    "iso": "2026-09-08",
+    "volume": "Vol. 50, No. 36",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/428102b",
+    "step": "see notice",
+    "deadline": "September 25, 2026 Notice title: NOTICE OF PUBLIC HEARINGS AND AVAILABILITY OF DRAFT PERMIT",
+    "quote": "PLEASE TAKE NOTICE that the Minnesota Public Utilities Commission will hold public hearings on the route permit application of Northern States Power Company, doing business as Xcel Energy, and Echo Zone LLC, a subsidiary of Google LLC for the North Rochester t"
+   }
+  ]
+ },
+ {
+  "id": "stlouis-230",
+  "category": "related",
+  "name": "St. Louis County 230 kV Transmission Line (to a facility in Hermantown)",
+  "location": "Hermantown, St. Louis County",
+  "location_precision": "city center (approx.)",
+  "lat": 46.8069,
+  "lon": -92.2382,
+  "process": "Alternative review",
+  "latest_step": "see notice",
+  "comment_deadline": null,
+  "rgu": "City of Hermantown",
+  "consultation_noted": "unknown",
+  "note": "Lines to 'the customer's facility' in Hermantown. Shown as related infrastructure.",
+  "notices": [
+   {
+    "date": "September 8, 2026",
+    "iso": "2026-09-08",
+    "volume": "Vol. 50, No. 36",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/428102b",
+    "step": "see notice",
+    "deadline": "September 22, 2026 Notice title: Environmental Assessment",
+    "quote": "City of Hermantown is the local governmental unit responsible for approval of the proposed 230 kilovolt (kV) transmission lines (Project) that will connect to Minnesota Power's existing Arrowhead 230 kV Substation and to the customer's facility within the muni"
+   }
+  ]
+ },
+ {
+  "id": "project-skyway",
+  "category": "possible",
+  "name": "Project Skyway, Pine Island (possible data center)",
+  "location": "Pine Island & Pine Island Twp, Goodhue County",
+  "location_precision": "city center (approx.)",
+  "lat": 44.2013,
+  "lon": -92.6463,
+  "process": "Petition",
+  "latest_step": "Petition exempt from EAW",
+  "comment_deadline": "2025-09-16",
+  "rgu": "City of Pine Island",
+  "consultation_noted": "unknown",
+  "note": "Code-named 'Technology Center' on about 482 acres (Ryan Companies). A 345 kV line named 'North Rochester to Skyway' is co-applied by a Google subsidiary. Found by the agent during testing; it was missing from the hand-made answer key. Needs confirmation.",
+  "notices": [
+   {
+    "date": "December 23, 2025",
+    "iso": "2025-12-23",
+    "volume": "Vol. 49, No. 51",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/4007e2c",
+    "step": "Petition exempt from EAW",
+    "deadline": null,
+    "quote": "On Dec. 18, 2025, EQB received notice from the City of Pine Island (the designated responsible governmental unit) that environmental review has already been completed for the above-named project and therefore the petition will not be considered (Minn R."
+   },
+   {
+    "date": "December 2, 2025",
+    "iso": "2025-12-02",
+    "volume": "Vol. 49, No. 48",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/3fd2b16",
+    "step": "see notice",
+    "deadline": null,
+    "quote": null
+   },
+   {
+    "date": "September 30, 2025",
+    "iso": "2025-09-30",
+    "volume": "Vol. 49, No. 39",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/3f425ae",
+    "step": "AUAR adoption",
+    "deadline": null,
+    "quote": "Ryan Companies US, Inc. is preparing an AUAR for an approximate 482-acre area in the City of Pine Island and Pine Island Township, Goodhue County, Minnesota."
+   },
+   {
+    "date": "September 2, 2025",
+    "iso": "2025-09-02",
+    "volume": "Vol. 49, No. 35",
+    "url": "https://content.govdelivery.com/accounts/MNEQB/bulletins/3efc446",
+    "step": "Revised AUAR",
+    "deadline": "September 16, 2025",
+    "quote": "Ryan Companies US, Inc. is preparing an AUAR for an approximate 482-acre area in the City of Pine Island and Pine Island Township, Goodhue County, Minnesota."
+   }
+  ]
+ }
+]

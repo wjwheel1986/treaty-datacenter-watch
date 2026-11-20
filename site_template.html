@@ -3,453 +3,588 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Treaty-Territory Data Center Watch · Minnesota</title>
-<meta name="description" content="Data center proposals on treaty land in Minnesota, from official state notices, with comment deadlines.">
+<title>Data Center Watch for Tribal Nations · Minnesota</title>
+<meta name="description" content="Minnesota data center proposals near reservations and in treaty cession areas, from official state notices, with review stage and comment deadlines.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
-  :root{
-    --surface:#fcfcfb; --panel:#ffffff; --sunk:#f3f2ee; --line:#e2e0da;
-    --ink:#0b0b0b; --ink2:#52514e; --ink3:#77756f;
-    --conf:#2a78d6; --poss:#eb6834; --rel:#1baf7a;
-    --land:#2f6b4f; --cess:#8a5a2b; --alert:#b3261e; --focus:#1f5fa8; --hl:#f2b705;
-    --r:10px;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0}
-  body{font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--surface)}
-  a{color:var(--focus)}
-  :focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-  .skip{position:absolute;left:-999px}.skip:focus{left:12px;top:8px;background:#fff;padding:6px 10px;z-index:9999}
+/* ===== Tokens ===== */
+:root{
+  --forest-900:#1b2a22; --forest-700:#2c4a3a; --forest-500:#3f6b55; --forest-100:#e6efe9;
+  --earth-700:#6b4a2b; --earth-500:#8a6640; --earth-100:#f3ece2;
+  --paper:#f8f6f1; --card:#ffffff; --line:#e3ded3; --line-2:#d3ccbe;
+  --ink:#16191a; --ink-2:#4b4f4c; --ink-3:#7a7d78;
+  --conf:#2a78d6; --poss:#eb6834; --rel:#1baf7a;
+  --open:#b3261e; --open-bg:#fcebe9; --hl:#e8a400;
+  --r-sm:6px; --r:10px; --r-lg:14px;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
+  --shadow:0 1px 2px rgba(20,24,22,.06),0 4px 14px rgba(20,24,22,.06);
+  --head-h:auto;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{overflow-x:hidden;font:15px/1.5 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--paper);display:flex;flex-direction:column;min-height:100vh}
+a{color:var(--forest-500)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #2f7de1;outline-offset:2px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:8px;background:#fff;padding:6px 10px;z-index:9999}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
-  .hero{position:relative;color:#fff;background:#1d2a33 url('img/hero.jpg') center 62%/cover no-repeat;padding:34px 24px 22px}
-  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,18,26,.55),rgba(10,18,26,.72))}
-  .hero > *{position:relative}
-  .hero{padding-left:max(24px,calc((100% - 1100px)/2 + 24px)) !important;padding-right:max(24px,calc((100% - 1100px)/2 + 24px)) !important}
-  .eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin:0}
-  .hero h1{font-size:clamp(28px,4vw,44px);line-height:1.1;margin:6px 0 10px;letter-spacing:-.01em}
-  .hero .promise{font-size:clamp(17px,2vw,21px);margin:0 0 4px;max-width:900px}
-  .credit{font-size:11px;opacity:.7;margin-top:10px;max-width:1100px}
-  .credit a{color:#fff}
+/* ===== Header ===== */
+.top{background:var(--forest-900) url('img/hero.jpg') center 60%/cover no-repeat;position:relative;color:#fff}
+.top::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,30,24,.94) 0%,rgba(18,30,24,.86) 45%,rgba(18,30,24,.65) 100%)}
+.top>*{position:relative}
+.bar{display:flex;align-items:center;gap:var(--s5);padding:12px 24px;border-bottom:1px solid rgba(255,255,255,.12)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+.brand svg{flex:none}
+.brand b{font-size:18px;letter-spacing:-.01em;white-space:nowrap}
+nav.main button{white-space:nowrap}
+.brand span{display:block;font-size:12px;opacity:.75;font-weight:400}
+nav.main{margin-left:auto;display:flex;gap:4px}
+nav.main button{background:none;border:0;color:#fff;opacity:.85;padding:8px 12px;border-radius:var(--r-sm);cursor:pointer;font-size:14px}
+nav.main button:hover,nav.main button[aria-current=true]{opacity:1;background:rgba(255,255,255,.12)}
+.lede{padding:14px 24px 0;max-width:900px;font-size:14.5px;opacity:.9;margin:0}
+.lede a{color:#fff}
+.ticker{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;margin:14px 24px 18px;background:rgba(255,255,255,.14);border-radius:var(--r);overflow:hidden}
+.metric{background:rgba(18,30,24,.55);border:0;text-align:left;padding:10px 14px;cursor:pointer;color:#fff;backdrop-filter:blur(2px)}
+.metric:hover{background:rgba(18,30,24,.35)}
+.metric[aria-pressed=true]{background:rgba(255,255,255,.16);box-shadow:inset 0 -3px 0 #fff}
+.metric .n{font-size:26px;font-weight:700;line-height:1.1;letter-spacing:-.02em;display:flex;align-items:baseline;gap:6px}
+.metric .n small{font-size:12px;font-weight:500;opacity:.75;letter-spacing:0}
+.metric .l{font-size:12.5px;opacity:.85;display:flex;align-items:center;gap:6px}
+.metric .sw{width:9px;height:9px;border-radius:50%;flex:none}
 
-  .intro{max-width:1100px;margin:0 auto;padding:22px 24px 6px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  .box{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
-  .box h2{font-size:18px;margin:0 0 8px}
-  .box ul{margin:0;padding-left:20px}
-  .box li{margin-bottom:8px;color:var(--ink2)}
-  .box li b{color:var(--ink)}
-  .who{grid-column:1/-1;margin:0;color:var(--ink2);font-size:15px}
-  .summary{max-width:1100px;margin:10px auto 16px;padding:12px 16px;background:var(--sunk);border-radius:var(--r);font-size:15.5px}
-  .summary-wrap{padding:0 24px}
+/* ===== App layout ===== */
+.app>*{min-width:0}
+.app{flex:1;display:grid;grid-template-columns:380px 1fr;min-height:620px;height:calc(100vh - 0px);max-height:900px;border-top:1px solid var(--line)}
+.explorer{display:flex;flex-direction:column;background:var(--card);border-right:1px solid var(--line);min-height:0}
+.ex-head{padding:14px 16px 10px;border-bottom:1px solid var(--line)}
+.search{position:relative}
+.search input{width:100%;padding:9px 12px 9px 34px;border:1px solid var(--line-2);border-radius:var(--r-sm);font:inherit;background:#fff}
+.search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);opacity:.5}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{border:1px solid var(--line-2);background:#fff;border-radius:999px;padding:4px 10px;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;color:var(--ink-2)}
+.chip[aria-pressed=true]{background:var(--forest-700);border-color:var(--forest-700);color:#fff}
+.chip .dot{width:8px;height:8px;border-radius:50%}
+.row2{display:flex;gap:8px;margin-top:10px;align-items:center}
+.row2 select{flex:1;padding:7px 8px;border:1px solid var(--line-2);border-radius:var(--r-sm);font:inherit;font-size:14px;background:#fff;min-width:0}
+.reset{border:0;background:none;color:var(--forest-500);cursor:pointer;font-size:13px;white-space:nowrap;text-decoration:underline}
+.ex-meta{display:flex;justify-content:space-between;align-items:center;padding:8px 16px;font-size:12.5px;color:var(--ink-3);border-bottom:1px solid var(--line);background:#fcfbf8}
+.list{overflow-y:auto;padding:8px 12px 20px;flex:1}
+.grp{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin:14px 4px 4px}
+.empty{color:var(--ink-3);padding:20px 8px;text-align:center}
 
-  .glance{max-width:1100px;margin:0 auto;padding:14px 24px 16px}
-  .glance .row{display:grid;grid-template-columns:170px 1fr;gap:16px;padding:10px 0;border-bottom:1px solid var(--line)}
-  .glance .row:last-child{border-bottom:0}
-  .glance .lab{font-weight:700;font-size:15px}
-  .glance .txt{color:var(--ink2);font-size:15.5px}
-  .glance .txt b{color:var(--ink)}
-  .glance ul{margin:4px 0 0;padding-left:18px}
-  @media (max-width:700px){.glance .row{grid-template-columns:1fr;gap:2px}}
-  main{display:grid;grid-template-columns:minmax(340px,420px) 1fr;height:min(820px,calc(100vh - 40px));border-top:1px solid var(--line)}
-  aside{display:flex;flex-direction:column;border-right:1px solid var(--line);background:var(--panel);min-height:0}
-  .tabs{display:flex;border-bottom:1px solid var(--line)}
-  .tabs button{flex:1;border:0;background:none;padding:12px 6px;font:inherit;font-weight:600;font-size:15px;color:var(--ink2);cursor:pointer;border-bottom:3px solid transparent}
-  .tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--ink)}
-  .pane{overflow-y:auto;padding:16px;flex:1}
-  .pane[hidden]{display:none}
-  #map{height:100%}
+/* project card */
+.pc{position:relative;display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px 12px 16px;margin:8px 0;cursor:pointer;transition:border-color .12s,box-shadow .12s}
+.pc::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:4px;border-radius:0 3px 3px 0;background:var(--conf)}
+.pc[data-cat=possible]::before{background:var(--poss)}
+.pc[data-cat=related]::before{background:var(--rel)}
+.pc:hover{border-color:var(--line-2);box-shadow:var(--shadow)}
+.pc[aria-current=true]{border-color:var(--forest-500);box-shadow:0 0 0 2px var(--forest-500)}
+.pc .tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.tag{font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;background:#eef3fb;color:#1d4f8f;white-space:nowrap}
+.tag.possible{background:#fdeee6;color:#9a3d14}.tag.related{background:#e5f6ef;color:#0d6b49}
+.tag.open{background:var(--open-bg);color:var(--open)}
+.tag.closed{background:#f0eee9;color:var(--ink-3)}
+.pc h3{font-size:15.5px;line-height:1.3;margin:0 0 2px}
+.pc .loc{font-size:13px;color:var(--ink-2)}
+.pc .rel{font-size:13px;color:var(--ink-2);margin-top:6px;display:flex;gap:6px;align-items:flex-start}
+.pc .rel svg{flex:none;margin-top:3px}
+.pc .stage{font-size:12.5px;color:var(--ink-3);margin-top:4px}
 
-  .ctl{margin-bottom:12px}
-  .ctl label{display:block;font-weight:600;font-size:14px;margin-bottom:4px}
-  .hint{font-size:12.5px;color:var(--ink3);margin:3px 0 0}
-  select{width:100%;padding:9px 10px;border:1px solid #c9c6bd;border-radius:8px;font-size:15px;background:#fff;color:var(--ink)}
-  .count{font-size:14px;color:var(--ink2);margin:6px 0 4px}
-  .group-h{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink3);margin:16px 0 0;border-top:1px solid var(--line);padding-top:10px}
+/* ===== Map ===== */
+.mapwrap{position:relative;min-height:0;background:#e9e6df}
+#map{position:absolute;inset:0}
+.leaflet-tile-pane{filter:grayscale(.7) sepia(.08) brightness(1.05) contrast(.9)}
+.leaflet-container{font:inherit}
+.mapctl{position:absolute;top:12px;left:56px;z-index:500;display:flex;gap:6px}
+.mbtn{background:#fff;border:1px solid var(--line-2);border-radius:var(--r-sm);padding:6px 10px;font-size:13px;cursor:pointer;box-shadow:var(--shadow);display:inline-flex;align-items:center;gap:6px}
+.mbtn:hover{background:#f6f4ef}
+.legend{position:absolute;left:12px;bottom:24px;z-index:500;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);font-size:12.5px;width:236px}
+.legend summary{list-style:none;cursor:pointer;padding:8px 12px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.legend summary::-webkit-details-marker{display:none}
+.legend[open] summary{border-bottom:1px solid var(--line)}
+.legend .lg{padding:8px 12px 10px}
+.legend h5{margin:6px 0 4px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.legend .it{display:flex;align-items:center;gap:8px;margin:3px 0}
+.legend .it svg{flex:none}
+.legend .more{display:block;margin-top:6px;font-size:12px}
+.layers{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;padding-top:6px;border-top:1px solid var(--line)}
+.layers label{display:flex;gap:4px;align-items:center;cursor:pointer}
+.tlabel{background:none;border:0;box-shadow:none;color:#4e3317;font:600 11.5px/1.25 Inter,system-ui,sans-serif;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 4px #fff;white-space:nowrap;text-align:center}
+.rlabel{background:none;border:0;box-shadow:none;color:#1f4a36;font:600 11px/1.2 Inter,system-ui,sans-serif;text-shadow:0 0 3px #fff,0 0 3px #fff}
+.leaflet-tooltip.tlabel::before,.leaflet-tooltip.rlabel::before{display:none}
+.mk-tip{font-size:12.5px}
 
-  .card{display:flex;flex-direction:column;border:1px solid var(--line);border-left:5px solid var(--conf);border-radius:var(--r);padding:12px 14px;margin:10px 0;background:#fff;cursor:pointer}
-  .card[data-cat=possible]{border-left-color:var(--poss)}
-  .card[data-cat=related]{border-left-color:var(--rel)}
-  .card:hover{box-shadow:0 2px 8px rgba(0,0,0,.08)}
-  .card.sel{box-shadow:0 0 0 2px var(--ink2)}
-  .kind{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--ink2);display:flex;align-items:center;gap:6px}
-  .dot{width:11px;height:11px;border-radius:50%;display:inline-block;flex:none}
-  .card h3{font-size:16.5px;line-height:1.3;margin:4px 0 4px}
-  .line1{font-size:14px;color:var(--ink2)}
-  .open{color:var(--alert);font-weight:700}
-  .details{display:none;margin-top:10px}
-  .card.sel .details{display:block}
-  dl.facts{display:grid;grid-template-columns:112px 1fr;gap:5px 10px;margin:0;font-size:14.5px}
-  dl.facts dt{color:var(--ink3)}
-  dl.facts dd{margin:0}
-  .term{border:0;background:none;padding:0;font:inherit;color:inherit;text-decoration:underline dotted;text-underline-offset:3px;cursor:help}
-  .note{background:var(--sunk);border-radius:8px;padding:8px 10px;margin-top:10px;font-size:14px}
-  .notices{font-size:14px;margin-top:10px}
-  .notices ul{padding-left:18px;margin:6px 0}
-  .notices li{margin-bottom:8px}
-  .notices q{color:var(--ink2);font-style:italic}
-  .morebtn{align-self:flex-start;margin-top:8px;border:1px solid #c9c6bd;background:var(--sunk);border-radius:8px;padding:5px 10px;font:inherit;font-size:13.5px;cursor:pointer;color:var(--ink)}
+/* ===== Detail panel ===== */
+#panel{position:absolute;top:0;right:0;bottom:0;width:min(460px,100%);background:var(--paper);z-index:1100;box-shadow:-8px 0 24px rgba(20,24,22,.16);overflow-y:auto;transform:translateX(105%);transition:transform .22s ease;border-left:1px solid var(--line)}
+#panel.show{transform:none}
+.p-bar{position:sticky;top:0;z-index:2;display:flex;gap:6px;align-items:center;padding:10px 14px;background:rgba(248,246,241,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(4px)}
+.p-bar .x{margin-left:auto;font-size:20px;line-height:1;padding:4px 10px}
+.p-body{padding:18px 22px 32px}
+.p-body h2{font-size:22px;line-height:1.25;margin:10px 0 2px;letter-spacing:-.01em}
+.p-loc{color:var(--ink-2);margin:0}
+.p-loc small{color:var(--ink-3)}
+.callout{border-radius:var(--r);padding:12px 14px;margin:16px 0 0;border:1px solid var(--line);background:#fff}
+.callout.open{background:var(--open-bg);border-color:#f1c2bd}
+.callout .k{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.callout.open .k{color:var(--open)}
+.callout .v{font-size:16px;font-weight:600;margin-top:2px}
+.callout .v2{font-size:14px;color:var(--ink-2);margin-top:2px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.fact{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
+.fact .k{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.fact .v{font-size:14.5px;margin-top:3px}
+.fact .v small{display:block;color:var(--ink-2);font-size:13px;margin-top:2px}
+.sec{margin-top:22px}
+.sec h4{font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.sec p,.sec li{font-size:14.5px;margin:6px 0}
+.sec ul{padding-left:18px;margin:0}
+.flag{background:#fff8f3;border:1px solid #f4d3bf;border-radius:var(--r);padding:10px 12px}
+.flag b{color:#9a3d14}
+.tl{list-style:none;margin:0;padding:0 0 0 14px;border-left:2px solid var(--line-2)}
+.tl li{position:relative;padding:0 0 14px 6px}
+.tl li::before{content:"";position:absolute;left:-21px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--forest-500)}
+.tl .d{font-weight:600;font-size:13.5px}
+.tl .s{font-size:14px}
+.tl q{display:block;color:var(--ink-2);font-style:italic;font-size:13.5px;margin-top:3px}
+.caveat{font-size:12.5px;color:var(--ink-3);margin-top:22px;border-top:1px solid var(--line);padding-top:10px}
 
-  .key h3{font-size:16px;margin:0 0 4px}
-  .key .intro-p{color:var(--ink2);font-size:14.5px;margin:0 0 12px}
-  .keyrow{display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:start;padding:10px 0;border-top:1px solid var(--line)}
-  .keyrow b{display:block}
-  .keyrow p{margin:2px 0 0;font-size:14.5px;color:var(--ink2)}
-  .glossary dt{font-weight:700;margin-top:10px}
-  .glossary dd{margin:2px 0 0;color:var(--ink2);font-size:14.5px}
-  .glossary dt.flash{background:#fff3c4}
+/* glossary terms + popover */
+.term{border:0;background:none;padding:0;font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;text-decoration:underline dotted 1.5px;text-underline-offset:3px;cursor:help}
+#pop{position:fixed;z-index:3000;max-width:300px;background:var(--forest-900);color:#fff;border-radius:var(--r);padding:10px 12px;font-size:13.5px;box-shadow:0 8px 24px rgba(0,0,0,.25);display:none}
+#pop b{display:block;margin-bottom:2px}
+#pop.show{display:block}
 
-  .legend{background:#fff;padding:10px 12px;border-radius:8px;font-size:13px;line-height:1.75;box-shadow:0 1px 5px rgba(0,0,0,.18);color:var(--ink)}
-  .legend .sym{display:inline-block;width:16px;height:14px;margin-right:6px;vertical-align:-2px}
-  .legend a{font-size:12px}
-  .tlabel{background:none;border:0;box-shadow:none;color:#5a3a19;font:600 12px/1.2 system-ui,sans-serif;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff;white-space:nowrap}
-  .tlabel.rights{color:#3f2710}
-  .rlabel{background:none;border:0;box-shadow:none;color:#1f4a36;font:600 11.5px/1.2 system-ui,sans-serif;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff}
-  .leaflet-tooltip-left.tlabel::before,.leaflet-tooltip-right.tlabel::before,.leaflet-tooltip-left.rlabel::before,.leaflet-tooltip-right.rlabel::before{display:none}
-  .mapwrap{position:relative;min-height:0}
-  .leaflet-tile-pane{filter:grayscale(.65) brightness(1.06) contrast(.92)}
-  #panel{position:absolute;top:0;right:0;bottom:0;width:min(440px,100%);background:#fbfaf7;z-index:1000;box-shadow:-6px 0 18px rgba(0,0,0,.15);overflow-y:auto;transform:translateX(105%);transition:transform .25s ease;border-left:1px solid var(--line)}
+/* ===== Dialogs ===== */
+dialog{border:0;border-radius:var(--r-lg);padding:0;max-width:760px;width:calc(100% - 32px);max-height:86vh;box-shadow:0 20px 60px rgba(0,0,0,.3);background:var(--paper);color:var(--ink)}
+dialog::backdrop{background:rgba(18,30,24,.5)}
+.dl-head{display:flex;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--paper)}
+.dl-head h2{margin:0;font-size:19px}
+.dl-head button{margin-left:auto}
+.dl-body{padding:6px 22px 24px;overflow:auto}
+.dl-body h3{font-size:15px;margin:20px 0 6px}
+.dl-body p,.dl-body li{font-size:14.5px;color:var(--ink-2)}
+.dl-body table{border-collapse:collapse;width:100%;font-size:14px;margin-top:6px}
+.dl-body td,.dl-body th{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left}
+.dl-body dt{font-weight:700;margin-top:10px}
+.dl-body dd{margin:2px 0 0;color:var(--ink-2);font-size:14.5px}
+.keyrow{display:grid;grid-template-columns:40px 1fr;gap:12px;padding:8px 0;border-top:1px solid var(--line)}
+.keyrow p{margin:2px 0 0}
+
+footer{font-size:12.5px;color:var(--ink-3);padding:10px 24px;background:var(--card);border-top:1px solid var(--line)}
+footer a{color:var(--ink-2)}
+
+/* fullscreen map */
+.app.full{position:fixed;inset:0;z-index:2000;max-height:none;height:100vh;grid-template-columns:0 1fr}
+.app.full .explorer{display:none}
+
+/* ===== Mobile ===== */
+.mtabs{display:none}
+@media (max-width:900px){
+  .ticker{grid-template-columns:repeat(3,minmax(0,1fr));margin:12px 16px 14px}
+  .metric .n{font-size:22px}
+  .bar{padding:10px 16px}.lede{padding:10px 16px 0}
+  .app{display:flex;flex-direction:column;height:auto;max-height:none;min-height:0;flex:none}
+  .explorer{min-height:0;flex:none}
+  .list{overflow:visible;flex:none}
+  .mapwrap{height:78vh;flex:none}
+  .mtabs{display:flex;position:sticky;top:0;z-index:900;background:var(--card);border-bottom:1px solid var(--line)}
+  .mtabs button{flex:1;border:0;background:none;padding:12px;font-weight:600;color:var(--ink-3);border-bottom:3px solid transparent;cursor:pointer}
+  .mtabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--forest-700)}
+  .app[data-view=list] .mapwrap{display:none}
+  .app[data-view=map] .explorer{display:none}
+  #panel{position:fixed;top:auto;height:82vh;width:100%;border-radius:var(--r-lg) var(--r-lg) 0 0;transform:translateY(105%);z-index:2500}
   #panel.show{transform:none}
-  .pbar{position:sticky;top:0;display:flex;gap:8px;align-items:center;justify-content:flex-end;padding:10px 14px;background:#fbfaf7;border-bottom:1px solid var(--line);z-index:2}
-  .pbar button{border:1px solid #c9c6bd;background:#fff;border-radius:8px;padding:5px 10px;font:inherit;font-size:13.5px;cursor:pointer}
-  .pbar .x{font-size:20px;line-height:1;padding:3px 10px}
-  .pbody{padding:16px 20px 28px}
-  .badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:4px 10px;border-radius:999px;background:#eef3fb;color:#1d4f8f}
-  .badge.possible{background:#fdeee6;color:#9a3d14}.badge.related{background:#e5f6ef;color:#0d6b49}
-  .pbody h2{font-size:22px;line-height:1.25;margin:10px 0 4px}
-  .ploc{color:var(--ink2);margin:0 0 14px}
-  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-  .tile{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
-  .tile.wide{grid-column:1/-1}
-  .tile .lab{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink3);font-weight:700}
-  .tile .val{font-size:15px;margin-top:3px}
-  .tile.go{border-color:#e7b4ae;background:#fff6f5}
-  .psec{margin:18px 0 0}
-  .psec h4{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);margin:0 0 8px}
-  .psec p,.psec li{font-size:15px}
-  .psec ul{margin:0;padding-left:20px}
-  .psec li{margin-bottom:6px}
-  .timeline{list-style:none;padding:0;margin:0;border-left:2px solid var(--line)}
-  .timeline li{position:relative;padding:0 0 14px 16px;font-size:14.5px}
-  .timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--ink2)}
-  .timeline .d{font-weight:700}
-  .timeline q{display:block;color:var(--ink2);font-style:italic;margin-top:3px}
-  .chev{margin-left:auto;color:var(--ink3);font-size:20px;line-height:1}
-  @media (max-width:860px){#panel{position:fixed;top:auto;height:78vh;width:100%;border-radius:14px 14px 0 0;transform:translateY(105%)}#panel.show{transform:none}}
-  footer{font-size:13px;color:var(--ink2);padding:12px 24px;background:var(--panel);border-top:1px solid var(--line)}
-  @media (max-width:860px){.intro{grid-template-columns:1fr}main{grid-template-columns:1fr;height:auto}.mapwrap{order:-1}#map{height:440px}aside{border-right:0}}
+  .legend{width:200px;bottom:14px}
+  .mapctl{left:52px}
+}
+@media (max-width:560px){
+  .ticker{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ticker .metric:first-child{grid-column:1/-1}
+  .metric{padding:8px 12px}
+  .brand span{display:none}
+  .brand svg{display:none}
+  .brand b{font-size:15px;white-space:normal;line-height:1.2}
+  .bar{gap:8px}
+  nav.main{gap:0}
+  nav.main button{padding:6px 7px;font-size:13px}
+  nav.main button:first-child{display:none}
+  .lede{font-size:13.5px}
+  .legend{width:180px}
+  .facts{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
-<a class="skip" href="#p-projects">Skip to the project list</a>
+<a class="skip" href="#list">Skip to the project list</a>
 
-<header class="hero">
-  <p class="eyebrow">Minnesota pilot · public data only</p>
-  <h1>Treaty-Territory Data Center Watch</h1>
-  <p class="promise">Know what's being proposed on treaty land, and when you can still speak up.</p>
-  <p class="credit">Photo: Lake Superior, in the 1854 treaty area. Courtney Celley, U.S. Fish and Wildlife Service (public domain).</p>
+<header class="top">
+  <div class="bar">
+    <a class="brand" href="./" aria-label="Data Center Watch for Tribal Nations home">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="#fff" stroke-opacity=".6"/><path d="M5 19c4-5 7-7 10-7s6 2 10 7" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="15" cy="10" r="2.6" fill="#fff"/></svg>
+      <div><b>Data Center Watch for Tribal Nations</b><span>Minnesota proposals near reservations and in treaty cession areas</span></div>
+    </a>
+    <nav class="main" aria-label="Main">
+      <button type="button" aria-current="true" onclick="document.getElementById('list').focus()">Projects</button>
+      <button type="button" onclick="openDlg('how')">How it works</button>
+      <button type="button" onclick="openDlg('about')">About</button>
+    </nav>
+  </div>
+  <p class="lede">An AI reads Minnesota's weekly environmental review notices and flags data center projects, including ones filed under other names, then maps them against reservations and treaty cession areas. For tribal environmental and natural resource staff, and anyone following these projects. An early warning, not an authority. <a href="#" onclick="openDlg('how');return false">Limits and method</a></p>
+  <div class="ticker" id="ticker" role="group" aria-label="Summary and quick filters"></div>
 </header>
 
-<section class="glance" aria-label="About this site">
-  <div class="row"><div class="lab">The issue</div><div class="txt">Data centers are being proposed across Minnesota, many on land tribal nations ceded by treaty. Cities and counties usually run the environmental review and don't have to consult tribes. The notices are easy to miss: many never say "data center," and comment windows are often just 30 days.</div></div>
-  <div class="row"><div class="lab">What this site does</div><div class="txt">An AI reads Minnesota's weekly environmental notices, finds the data center projects (including ones hiding behind names like "technology park"), and puts each one on the map next to reservations and treaty land, with its stage and whether you can still comment. Built for tribal environmental and natural resource staff, open to anyone. It's an early warning, not an authority: boundaries are approximate, and tribal nations define their own territories and rights. <a href="__REPO__" target="_blank" rel="noopener">How it works</a></div></div>
-  <div class="row"><div class="lab">What's on the map</div><div class="txt" id="summary" aria-live="polite"></div></div>
-</section>
-<main>
-<aside aria-label="Projects, map key and glossary">
-  <div class="tabs" role="tablist">
-    <button role="tab" id="t-projects" aria-controls="p-projects" aria-selected="true">Projects</button>
-    <button role="tab" id="t-key" aria-controls="p-key" aria-selected="false">Map key</button>
-    <button role="tab" id="t-gloss" aria-controls="p-gloss" aria-selected="false">Glossary</button>
+<div class="app" id="app" data-view="list">
+  <div class="mtabs" role="tablist" aria-label="View">
+    <button role="tab" id="mt-list" aria-selected="true" onclick="setView('list')">List</button>
+    <button role="tab" id="mt-map" aria-selected="false" onclick="setView('map')">Map</button>
   </div>
 
-  <div class="pane" id="p-projects" role="tabpanel" aria-labelledby="t-projects">
-    <div class="ctl">
-      <label for="nation">Tribal nation</label>
-      <select id="nation"><option value="">All of Minnesota</option></select>
-      <p class="hint">Pick a reservation to see projects near it, and projects elsewhere in the same treaty area.</p>
+  <section class="explorer" aria-label="Project explorer">
+    <div class="ex-head">
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="#000" stroke-width="1.6"/><path d="M11 11l4 4" stroke="#000" stroke-width="1.6"/></svg>
+        <label class="sr" for="q">Search projects</label>
+        <input id="q" type="search" placeholder="Search by name, city, county or agency">
+      </div>
+      <div class="chips" id="chips" aria-label="Quick filters"></div>
+      <div class="row2">
+        <label class="sr" for="nation">Tribal nation</label>
+        <select id="nation"><option value="">Near any reservation (all)</option></select>
+        <button class="reset" type="button" onclick="resetAll()">Clear filters</button>
+      </div>
     </div>
-    <div class="ctl">
-      <label for="flt">Show</label>
-      <select id="flt">
-        <option value="all">Everything</option>
-        <option value="confirmed">Confirmed data centers</option>
-        <option value="possible">Possible data centers (need checking)</option>
-        <option value="related">Power lines built for data centers</option>
-        <option value="rights">In a treaty area where rights were kept</option>
-        <option value="open">Open for public comment now</option>
-      </select>
+    <div class="ex-meta"><span id="count" aria-live="polite"></span><span>Newest notices first</span></div>
+    <div class="list" id="list" tabindex="-1" aria-label="Projects"></div>
+  </section>
+
+  <section class="mapwrap" aria-label="Map">
+    <div id="map"></div>
+    <div class="mapctl">
+      <button class="mbtn" type="button" onclick="resetView()" title="Show all of Minnesota"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7a5 5 0 1 0 1.5-3.5M2 1v3h3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Reset view</button>
+      <button class="mbtn" type="button" onclick="toggleFull()" id="fullbtn" title="Full-screen map"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 5V1h4M9 1h4v4M13 9v4H9M5 13H1V9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg><span>Full screen</span></button>
     </div>
-    <p class="count" id="count" aria-live="polite"></p>
-    <div id="list"></div>
-  </div>
+    <details class="legend" open id="legend">
+      <summary>Legend <span aria-hidden="true">▾</span></summary>
+      <div class="lg">
+        <h5>Projects</h5>
+        <div class="it"><svg width="16" height="16"><circle cx="8" cy="8" r="6" fill="#2a78d6" stroke="#fff" stroke-width="2"/></svg>Confirmed data center</div>
+        <div class="it"><svg width="16" height="16"><circle cx="8" cy="8" r="5" fill="#fff" stroke="#eb6834" stroke-width="3"/></svg>Possible data center</div>
+        <div class="it"><svg width="16" height="16"><rect x="4" y="4" width="8" height="8" transform="rotate(45 8 8)" fill="#1baf7a" stroke="#fff"/></svg>Power line for a data center</div>
+        <h5>Land</h5>
+        <div class="it"><svg width="16" height="12"><rect x="1" y="1" width="14" height="10" rx="2" fill="rgba(44,74,58,.4)" stroke="#2c4a3a"/></svg>Reservation / trust land</div>
+        <div class="it"><svg width="16" height="12"><rect x="1" y="1" width="14" height="10" rx="2" fill="rgba(138,102,64,.18)" stroke="#6b4a2b" stroke-width="2"/></svg>Cession area, rights reserved</div>
+        <div class="it"><svg width="16" height="12"><rect x="1" y="1" width="14" height="10" rx="2" fill="none" stroke="#8a6640" stroke-dasharray="3 2"/></svg>Other treaty cession area</div>
+        <div class="layers"><label><input type="checkbox" id="lyr-res" checked> Reservations</label><label><input type="checkbox" id="lyr-ced" checked> Treaty areas</label></div>
+        <a href="#" class="more" onclick="openDlg('how','land');return false">What do these mean?</a>
+      </div>
+    </details>
+    <aside id="panel" role="dialog" aria-modal="false" aria-labelledby="ptitle" aria-hidden="true"></aside>
+  </section>
+</div>
 
-  <div class="pane key" id="p-key" role="tabpanel" aria-labelledby="t-key" hidden>
-    <h3>What the colors and shapes mean</h3>
-    <p class="intro-p">People use "tribal land" to mean different things. The map shows three kinds of boundary, plus the projects.</p>
-    <div class="keyrow"><svg width="36" height="26"><rect x="2" y="3" width="32" height="20" rx="3" fill="rgba(47,107,79,.35)" stroke="#2f6b4f" stroke-width="1.5"/></svg>
-      <div><b>Reservation</b><p>Land set aside for a tribal nation by treaty or federal law. The tribe governs it. Shown solid green, with the name when you zoom in.</p></div></div>
-    <div class="keyrow"><svg width="36" height="26"><rect x="2" y="3" width="32" height="20" rx="3" fill="rgba(47,107,79,.18)" stroke="#2f6b4f" stroke-width="1.2"/></svg>
-      <div><b>Off-reservation trust land</b><p>Land outside a reservation that the U.S. holds in trust for a tribe or tribal members. Shown lighter green.</p></div></div>
-    <div class="keyrow"><svg width="36" height="26"><rect x="2" y="3" width="32" height="20" rx="3" fill="rgba(138,90,43,.16)" stroke="#5a3a19" stroke-width="2.4"/></svg>
-      <div><b>Treaty area where rights were kept</b><p>Land Ojibwe bands ceded in the 1837, 1842 and 1854 treaties while keeping rights to hunt, fish and, under some of these treaties, gather. Courts and agreements with the state have recognized those rights. The tribe doesn't own this land, but the rights still apply. Brown, solid outline.</p></div></div>
-    <div class="keyrow"><svg width="36" height="26"><rect x="2" y="3" width="32" height="20" rx="3" fill="rgba(138,90,43,.05)" stroke="#8a5a2b" stroke-width="1.2" stroke-dasharray="4 3"/></svg>
-      <div><b>Other treaty cession area</b><p>Land a tribal nation ceded to the U.S. by treaty, like the 1851 Dakota treaties. What rights, if any, were kept varies by treaty. Light brown, dashed outline.</p></div></div>
-    <div class="keyrow"><svg width="36" height="26"><rect x="2" y="3" width="32" height="20" rx="3" fill="#fff" stroke="#c9c6bd"/></svg>
-      <div><b>No shading</b><p>No tribal boundary on this map. That doesn't mean no tribal interest. Many nations have ties to places outside these lines.</p></div></div>
-    <h3 style="margin-top:16px">Projects</h3>
-    <div class="keyrow"><svg width="36" height="26"><circle cx="18" cy="13" r="9" fill="#2a78d6" stroke="#fff" stroke-width="2.5"/></svg><div><b>Confirmed data center</b><p>The notice says it's a data center.</p></div></div>
-    <div class="keyrow"><svg width="36" height="26"><circle cx="18" cy="13" r="7.5" fill="#fff" stroke="#eb6834" stroke-width="4"/></svg><div><b>Possible data center</b><p>No "data center" in the notice, but strong signs: "technology park," a code-named company, a huge building with no named user. A person needs to check.</p></div></div>
-    <div class="keyrow"><svg width="36" height="26"><rect x="12" y="7" width="12" height="12" transform="rotate(45 18 13)" fill="#1baf7a" stroke="#fff" stroke-width="2"/></svg><div><b>Power line for a data center</b><p>Transmission lines the notice ties to a data center or "the customer's facility."</p></div></div>
-    <div class="keyrow"><svg width="36" height="26"><rect x="2" y="3" width="32" height="20" rx="3" fill="none" stroke="#f2b705" stroke-width="3.5"/></svg><div><b>Yellow highlight</b><p>When you click a project, its treaty area and the nearest reservation light up.</p></div></div>
-    <p class="hint" style="margin-top:12px">Dots sit at the city, township or county center, not the exact site. Treaty lines come from 1890s maps (Royce) digitized by the U.S. Forest Service. They're approximate.</p>
-  </div>
+<footer>
+  Sources: <a href="https://www.eqb.state.mn.us/eqb-monitor" target="_blank" rel="noopener">Minnesota EQB Monitor</a> (notices June 2025 to Nov 17, 2026) ·
+  <a href="https://tigerweb.geo.census.gov/" target="_blank" rel="noopener">U.S. Census TIGERweb</a> ·
+  <a href="https://data-usfs.hub.arcgis.com/datasets/usfs::tribal-lands-ceded-to-the-united-states-feature-layer" target="_blank" rel="noopener">USDA Forest Service cession data</a> (CC BY 4.0) ·
+  Photo: <a href="https://www.usgs.gov/media/images/lakesuperiorjpg" target="_blank" rel="noopener">Lake Superior, C. Celley, USFWS</a> (public domain) · Map © OpenStreetMap contributors ·
+  <a href="__REPO__" target="_blank" rel="noopener">Code and test results</a> · Built <span id="upd"></span>
+</footer>
 
-  <div class="pane glossary" id="p-gloss" role="tabpanel" aria-labelledby="t-gloss" hidden>
+<div id="pop" role="tooltip"></div>
+
+<dialog id="dlg-how" aria-labelledby="h-how">
+  <div class="dl-head"><h2 id="h-how">How it works</h2><button class="mbtn" type="button" onclick="this.closest('dialog').close()">Close</button></div>
+  <div class="dl-body">
+    <h3>Where the projects come from</h3>
+    <p>Every environmental review in Minnesota has to be announced in the state's weekly <a href="https://www.eqb.state.mn.us/eqb-monitor" target="_blank" rel="noopener">EQB Monitor</a>. This site covers the 72 issues published June 2025 to November 17, 2026. Each issue is split into one entry per project. An AI reads every entry and sorts it:</p>
+    <ul>
+      <li><b>Confirmed:</b> the notice says data center.</li>
+      <li><b>Possible:</b> it doesn't, but there are strong signs: "technology park," a code-named company, a huge building with no named user, or the same city as a known data center. A person needs to check these.</li>
+      <li><b>Power line:</b> transmission tied to a data center or to "the customer's facility."</li>
+    </ul>
+    <p>Plain code (not AI) then places each project at its city, township or county center and checks it against reservation, trust land and treaty cession boundaries.</p>
+    <h3>How well it works</h3>
+    <p>On 26 past issues (152 entries), checked against a hand-made answer key:</p>
+    <table><tr><th></th><th>Keyword search</th><th>AI agent</th></tr>
+      <tr><td>Relevant notices found</td><td>8 of 26</td><td>26 of 26</td></tr>
+      <tr><td>False alarms</td><td>0</td><td>4 to 5</td></tr></table>
+    <p>The agent also found a project the answer key had missed (Project Skyway, Pine Island). Its false alarms all came from the "same city" rule. The rules were written after seeing these notices, so new weekly issues are the real test. <a href="__REPO__/blob/main/eval/RESULTS.md" target="_blank" rel="noopener">Full results</a>.</p>
+    <h3 id="land">Reading the map</h3>
+    <div class="keyrow"><svg width="36" height="24"><rect x="2" y="2" width="32" height="20" rx="3" fill="rgba(44,74,58,.4)" stroke="#2c4a3a" stroke-width="1.5"/></svg><div><b>Reservation</b><p>Land set aside for a tribal nation by treaty or federal law, governed by the tribe.</p></div></div>
+    <div class="keyrow"><svg width="36" height="24"><rect x="2" y="2" width="32" height="20" rx="3" fill="rgba(44,74,58,.2)" stroke="#2c4a3a"/></svg><div><b>Off-reservation trust land</b><p>Land outside a reservation held in trust by the U.S. for a tribe or tribal members.</p></div></div>
+    <div class="keyrow"><svg width="36" height="24"><rect x="2" y="2" width="32" height="20" rx="3" fill="rgba(138,102,64,.18)" stroke="#6b4a2b" stroke-width="2.4"/></svg><div><b>Cession area where rights were reserved</b><p>Land Ojibwe bands ceded in the 1837, 1842 and 1854 treaties while reserving rights to hunt, fish and, under some of these treaties, gather. Courts and agreements with the state have recognized those rights.</p></div></div>
+    <div class="keyrow"><svg width="36" height="24"><rect x="2" y="2" width="32" height="20" rx="3" fill="none" stroke="#8a6640" stroke-dasharray="4 3"/></svg><div><b>Other treaty cession area</b><p>Land ceded to the U.S. by treaty, such as the 1851 Dakota treaties. What rights were kept varies by treaty.</p></div></div>
+    <h3>Limits</h3>
+    <ul>
+      <li>Cession boundaries come from 1890s maps (Royce) digitized by the U.S. Forest Service. They're approximate, and they are not a determination of anyone's rights or interests.</li>
+      <li>Treaty rights and tribal interests are not limited to the lines shown. Being inside or near a boundary doesn't establish legal impact, and a proposal on treaty land doesn't by itself violate treaty rights.</li>
+      <li>Project locations are city, township or county centers, not parcels. Distances are approximate.</li>
+      <li>None of the projects tracked so far sits on reservation or trust land. Almost all of Minnesota lies inside some treaty cession area, so the more telling measures are distance to a reservation and whether a project is in an area with reserved off-reservation rights.</li>
+      <li>"Possible" projects are unverified. Some notices likely describe the same site, so 13 projects is about 9 places.</li>
+      <li>Public data only. No cultural, sacred or harvest sites, and no tribal data.</li>
+    </ul>
+    <h3>Glossary</h3>
     <dl id="glossary"></dl>
   </div>
-</aside>
-<div class="mapwrap"><div id="map" role="region" aria-label="Map of projects, reservations and treaty areas"></div>
-  <section id="panel" role="dialog" aria-modal="false" aria-labelledby="ptitle" aria-hidden="true"></section></div>
-</main>
-<footer>
-  Sources: <a href="https://www.eqb.state.mn.us/eqb-monitor" target="_blank" rel="noopener">Minnesota EQB Monitor</a> (public notices, June 2025 to Nov 17, 2026) ·
-  <a href="https://tigerweb.geo.census.gov/" target="_blank" rel="noopener">U.S. Census Bureau TIGERweb</a> (reservations, trust land) ·
-  <a href="https://data-usfs.hub.arcgis.com/datasets/usfs::tribal-lands-ceded-to-the-united-states-feature-layer" target="_blank" rel="noopener">USDA Forest Service, Tribal Lands Ceded to the United States</a> (CC BY 4.0) ·
-  Photo: <a href="https://www.usgs.gov/media/images/lakesuperiorjpg" target="_blank" rel="noopener">U.S. Fish and Wildlife Service</a> ·
-  Map © OpenStreetMap contributors · Built <span id="upd"></span> ·
-  <a href="__REPO__" target="_blank" rel="noopener">Code, method and test results</a>
-</footer>
+</dialog>
+
+<dialog id="dlg-about" aria-labelledby="h-about">
+  <div class="dl-head"><h2 id="h-about">About</h2><button class="mbtn" type="button" onclick="this.closest('dialog').close()">Close</button></div>
+  <div class="dl-body">
+    <h3>Why this exists</h3>
+    <p>Data centers are being proposed across Minnesota, some within a few miles of reservations and inside areas where tribes reserved treaty rights. Cities and counties usually run the environmental review and aren't required to consult tribes. State agencies that must consult often come in later. The notices are public but easy to miss: many never say "data center," and comment windows are often 30 days.</p>
+    <p>Data Center Watch for Tribal Nations tries to close that gap with public information, so tribal staff don't have to wait for a developer or a local government to tell them a project is coming.</p>
+    <h3>Who it's for</h3>
+    <p>Tribal environmental and natural resource staff first. Community members, advocates and reporters too.</p>
+    <h3>Data and credits</h3>
+    <ul>
+      <li>Minnesota Environmental Quality Board, EQB Monitor (public notices)</li>
+      <li>U.S. Census Bureau, TIGERweb (reservations, off-reservation trust land)</li>
+      <li>USDA Forest Service, Tribal Lands Ceded to the United States (Royce cessions), CC BY 4.0</li>
+      <li>Photo: Lake Superior, Courtney Celley, U.S. Fish and Wildlife Service (public domain)</li>
+      <li>Map tiles © OpenStreetMap contributors; mapping library Leaflet</li>
+    </ul>
+    <h3>Status</h3>
+    <p>A Minnesota pilot built by Jake Wheeler with Claude (Anthropic) for DPI-681M at the Harvard Kennedy School, Fall 2026. Corrections welcome through the <a href="__REPO__" target="_blank" rel="noopener">project page</a>.</p>
+  </div>
+</dialog>
+
 <script>
 const PROJECTS = __PROJECTS__;
 const BOUNDS = __BOUNDARIES__;
 document.getElementById('upd').textContent = "__UPDATED__";
 
-// ---------- glossary ----------
+/* ---------- glossary ---------- */
 const GLOSS = {
-  "EAW": ["Environmental Assessment Worksheet (EAW)", "A short study of a project's likely environmental effects. Anyone can comment for 30 days. Then the reviewing government decides if a full EIS is needed."],
-  "EIS": ["Environmental Impact Statement (EIS)", "The detailed study, required when a project could have significant effects on the environment."],
-  "AUAR": ["Alternative Urban Areawide Review (AUAR)", "A review of planned development for a whole area, often done before anyone names the tenant. Projects that later fit inside it may not get their own review, so the AUAR comment period can be the main chance to weigh in."],
-  "Petition": ["Petition", "At least 100 people can ask for an environmental review. The state assigns a government to decide. \"Petition exempt from review\" means that government says review already happened, so the petition goes nowhere."],
-  "RGU": ["Reviewing government (RGU)", "The responsible governmental unit: the city, county or state agency that runs the review and decides. Usually a city or county, with no duty to consult tribes."],
-  "Cession": ["Treaty cession area (ceded territory)", "Land a tribal nation gave up to the U.S. by treaty. In the 1837, 1842 and 1854 treaties, Ojibwe bands kept rights to hunt, fish and, under some of them, gather on that land. Boundaries here are approximate."],
-  "Reservation": ["Reservation", "Land set aside for a tribal nation by treaty or federal law, governed by the tribe."],
-  "Trust": ["Off-reservation trust land", "Land outside a reservation held in trust by the U.S. for a tribe or tribal members."],
-  "Comment": ["Comment period", "The window when anyone can send written comments to the reviewing government. Late comments may be ignored."],
-  "Alternative review": ["Alternative review", "A separate review track for some energy projects, like power lines. Often run by the Public Utilities Commission or a local government."]
+  "EAW":["Environmental Assessment Worksheet (EAW)","A short study of a project's likely environmental effects. Anyone can comment for 30 days, then the reviewing government decides whether a full EIS is needed."],
+  "EIS":["Environmental Impact Statement (EIS)","The detailed study, required when a project could have significant environmental effects."],
+  "AUAR":["Alternative Urban Areawide Review (AUAR)","A review of planned development for a whole area, often before anyone names the tenant. Projects that later fit inside it may not get their own review, so its comment period can be the main chance to weigh in."],
+  "Petition":["Petition","At least 100 people can ask for an environmental review. The state assigns a local government to decide. \"Exempt\" means that government says review already happened."],
+  "RGU":["Reviewing government (RGU)","The responsible governmental unit: the city, county or state agency that runs the review and decides. Usually a city or county, with no duty to consult tribes."],
+  "Cession":["Treaty cession area","Land a tribal nation ceded to the U.S. by treaty. In the 1837, 1842 and 1854 treaties, Ojibwe bands reserved rights to hunt, fish and, under some, gather. Boundaries shown are approximate."],
+  "Comment":["Comment period","The window when anyone can send written comments to the reviewing government. Late comments may not be considered."],
+  "Alternative review":["Alternative review","A separate review track for some energy projects, like power lines. Often run by the Public Utilities Commission or a local government."]
 };
-const termKey = s => !s ? null : /AUAR/i.test(s) ? "AUAR" : /EIS/i.test(s) ? "EIS" : /EAW/i.test(s) ? "EAW" : /Petition/i.test(s) ? "Petition" : /Alternative review/i.test(s) ? "Alternative review" : null;
-const gid = k => 'g-'+k.replace(/\s/g,'');
-const term = (k,label) => `<button type="button" class="term" title="${GLOSS[k][1].replace(/"/g,'&quot;')}" onclick="event.stopPropagation();showTerm('${k}')">${label}</button>`;
-document.getElementById('glossary').innerHTML = Object.entries(GLOSS).map(([k,[t,d]])=>`<dt id="${gid(k)}">${t}</dt><dd>${d}</dd>`).join('');
-function showTerm(k){openTab('gloss');const el=document.getElementById(gid(k));el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),1800)}
+const gid=k=>'g-'+k.replace(/\s/g,'');
+document.getElementById('glossary').innerHTML=Object.entries(GLOSS).map(([k,[t,d]])=>`<dt id="${gid(k)}">${t}</dt><dd>${d}</dd>`).join('');
+const termKey=s=>!s?null:/AUAR/i.test(s)?"AUAR":/EIS/i.test(s)?"EIS":/EAW/i.test(s)?"EAW":/Petition/i.test(s)?"Petition":/Alternative review/i.test(s)?"Alternative review":null;
+const term=(k,label)=>`<button type="button" class="term" data-term="${k}">${label}</button>`;
+const pop=document.getElementById('pop');
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.term');
+  if(t){e.stopPropagation();e.preventDefault();const [h,d]=GLOSS[t.dataset.term];pop.innerHTML=`<b>${h}</b>${d}`;const r=t.getBoundingClientRect();
+    pop.classList.add('show');const w=pop.offsetWidth;pop.style.left=Math.max(8,Math.min(innerWidth-w-8,r.left))+'px';pop.style.top=(r.bottom+8+pop.offsetHeight>innerHeight? r.top-pop.offsetHeight-8 : r.bottom+8)+'px';return}
+  pop.classList.remove('show');
+},true);
+document.addEventListener('scroll',()=>pop.classList.remove('show'),true);
 
-// ---------- tabs ----------
-function openTab(name){
-  ['projects','key','gloss'].forEach(n=>{document.getElementById('t-'+n).setAttribute('aria-selected',n===name);document.getElementById('p-'+n).hidden=n!==name});
-}
-['projects','key','gloss'].forEach(n=>document.getElementById('t-'+n).onclick=()=>openTab(n));
+/* ---------- dialogs ---------- */
+function openDlg(n,anchor){const d=document.getElementById('dlg-'+n);d.showModal();if(anchor){const a=document.getElementById(anchor);if(a)a.scrollIntoView()}else d.querySelector('.dl-body').scrollTop=0}
 
-// ---------- helpers ----------
+/* ---------- helpers ---------- */
 const today=new Date();
 const daysLeft=d=>d?Math.floor((new Date(d+'T23:59:00')-today)/86400000):null;
 const isOpen=p=>!!p.comment_deadline&&daysLeft(p.comment_deadline)>=0;
-const fmt=iso=>new Date(iso+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
-const KIND={confirmed:["Confirmed data center","#2a78d6"],possible:["Possible data center · needs checking","#eb6834"],related:["Power line for a data center","#1baf7a"]};
-const rightsKept=p=>p.cessions.some(c=>c.rights_kept);
+const fmt=iso=>new Date(iso+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+const KIND={confirmed:["Confirmed data center","#2a78d6"],possible:["Possible data center","#eb6834"],related:["Power line for a data center","#1baf7a"]};
+const rightsArea=p=>p.cessions.some(c=>c.rights_kept);
+const shortRes=n=>n.replace(/ Reservation$/,'').replace(/ Indian Community$/,'');
 function plainStep(st){
-  const m=[[/Petition exempt from review; petition on hold/i,"Residents asked for a review. For one part, the city says review already happened; the other part's request is on hold."],
+  const m=[[/petition on hold/i,"Residents asked for a review. For one part, the city says review already happened; the other request is on hold."],
     [/Petition exempt/i,"Residents asked for a review. The local government says review already happened, so no new review."],
-    [/Responsible governmental unit assigned/i,"Residents asked for a review. The state put a local government in charge of deciding."],
-    [/AUAR adoption/i,"The area-wide review is finished and adopted."],
-    [/Revised AUAR/i,"A revised area-wide review was released for comment."],
-    [/Draft order for review/i,"A draft plan for the area-wide review was released for comment."],
-    [/EIS need decision/i,"The local government decided whether a full impact study is needed."],
-    [/EAW available/i,"The environmental study is out and open for comment."],
-    [/Draft EIS/i,"A draft full impact study is out for comment."]];
-  for(const [r,t] of m) if(r.test(st||'')) return t;
-  return st||'See the official notice';
+    [/Responsible governmental unit assigned/i,"Residents asked for a review. A local government was put in charge of deciding."],
+    [/AUAR adoption/i,"Area-wide review finished and adopted."],[/Revised AUAR/i,"Revised area-wide review released for comment."],
+    [/Draft order for review/i,"Draft plan for an area-wide review released for comment."],[/EIS need decision/i,"Decided whether a full impact study is needed."],
+    [/EAW available/i,"Environmental study released for comment."],[/Draft EIS/i,"Draft full impact study released for comment."]];
+  for(const [r,t] of m) if(r.test(st||'')) return t; return st||'See the official notice';
 }
-function whoDecides(p){
-  const r=p.rgu||'Not listed';
-  const kind=/Commission|Department|Agency|State/i.test(r)?'This state agency':/County/i.test(r)?'This county government':'This city government';
-  return `${r}<div class="hint">${kind} runs the review and makes the call.</div>`;
+const agencyKind=r=>/Commission|Department|Agency|State/i.test(r||'')?'state agency':/County/i.test(r||'')?'county government':'city government';
+const commentTag=p=>isOpen(p)?`<span class="tag open">Comments open · due ${fmt(p.comment_deadline)}</span>`:p.comment_deadline?`<span class="tag closed">Comment period closed</span>`:`<span class="tag closed">No open comment period</span>`;
+function relLine(p){
+  const t=p.cessions[0]; const parts=[];
+  parts.push(p.on_reservation_or_trust?`On ${p.on_reservation_or_trust}`:`${p.nearest_reservation_mi} mi from ${shortRes(p.nearest_reservation)}`);
+  if(t) parts.push(`${t.year} cession area${t.rights_kept?' (rights reserved)':''}`);
+  return parts.join(' · ');
 }
 
-// ---------- map ----------
-const map=L.map('map',{scrollWheelZoom:true}).setView([46.0,-93.9],6);
+/* ---------- state ---------- */
+const S={q:'',cat:null,open:false,rights:false,nation:''};
+
+/* ---------- map ---------- */
+const MN=[[43.4,-97.3],[49.4,-89.4]];
+const map=L.map('map',{zoomControl:true,scrollWheelZoom:true}).setView([46.35,-94.2],6);
+const mapVisible=()=>document.getElementById('map').offsetWidth>0;
+let pendingFit=null;
+function fit(b,o){if(mapVisible())map.flyToBounds(b,o);else pendingFit=[b,o]}
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'© OpenStreetMap contributors'}).addTo(map);
-const cedStyle=f=>f.properties.rights_kept
-  ?{color:'#5a3a19',weight:2.4,fillColor:'#8a5a2b',fillOpacity:0.14}
-  :{color:'#8a5a2b',weight:1.1,dashArray:'5 4',fillColor:'#8a5a2b',fillOpacity:0.04};
-const treatyLayers={}, resLayers={};
-const cedLayer=L.geoJSON(BOUNDS,{filter:f=>f.properties.layer==='ceded',style:cedStyle,
-  onEachFeature:(f,l)=>{const p=f.properties;treatyLayers[p.label]=l;
-    l.bindPopup(()=>{const inside=PROJECTS.filter(q=>q.cessions.some(c=>c.label===p.label));
-      return `<div style="max-width:260px"><b>${p.year||''} treaty · ${p.nation}</b><br>Land ceded to the United States by treaty.${p.rights_kept?' <b>Ojibwe bands kept the right to hunt and fish here</b>, and under some treaties to gather. Those rights still apply.':' What rights, if any, were kept depends on the treaty.'}<br><br><b>${inside.length} project${inside.length===1?'':'s'} on this map ${inside.length===1?'is':'are'} inside it.</b>${inside.length?'<br>'+inside.slice(0,6).map(q=>`<a href="#" onclick="select('${q.id}',true);return false">${q.name}</a>`).join('<br>'):''}<br><br>${p.treaty_link?`<a href="${p.treaty_link}" target="_blank" rel="noopener">Read the treaty text</a> · `:''}<i>Approximate boundary.</i></div>`},{maxWidth:280});}}).addTo(map);
-const resLayer=L.geoJSON(BOUNDS,{filter:f=>f.properties.layer!=='ceded',
-  style:f=>({color:'#2f6b4f',weight:1.4,fillColor:'#2f6b4f',fillOpacity:f.properties.layer==='reservation'?0.32:0.18}),
-  onEachFeature:(f,l)=>{const n=f.properties.name;if(f.properties.layer==='reservation')resLayers[n]=l;
-    l.bindPopup(`<b>${n}</b><br>${f.properties.layer==='reservation'?'Reservation':'Off-reservation trust land'}`)}}).addTo(map);
-L.control.layers(null,{'Reservations & trust land':resLayer,'Treaty areas (approximate)':cedLayer},{collapsed:false,position:'topright'}).addTo(map);
+const cedStyle=f=>f.properties.rights_kept?{color:'#6b4a2b',weight:2.2,fillColor:'#8a6640',fillOpacity:0.13}:{color:'#8a6640',weight:1,dashArray:'5 4',fillColor:'#8a6640',fillOpacity:0.03};
+const resStyle=f=>({color:'#2c4a3a',weight:1.3,fillColor:'#2c4a3a',fillOpacity:f.properties.layer==='reservation'?0.38:0.2});
+const treatyLayers={},resLayers={};
+const cedLayer=L.geoJSON(BOUNDS,{filter:f=>f.properties.layer==='ceded',style:cedStyle,onEachFeature:(f,l)=>{const p=f.properties;treatyLayers[p.label]=l;
+  l.bindPopup(()=>{const inside=PROJECTS.filter(q=>q.cessions.some(c=>c.label===p.label));
+    return `<div style="max-width:260px"><b>${p.year||''} treaty · ${p.nation}</b><br>Land ceded to the United States by treaty.${p.rights_kept?' Ojibwe bands reserved rights to hunt, fish and, under some treaties, gather here.':' Rights kept, if any, depend on the treaty.'}<br><br><b>${inside.length} project${inside.length===1?'':'s'} on this map inside it</b>${inside.length?'<br>'+inside.map(q=>`<a href="#" onclick="select('${q.id}',true);return false">${q.name}</a>`).join('<br>'):''}<br><br>${p.treaty_link?`<a href="${p.treaty_link}" target="_blank" rel="noopener">Treaty text</a> · `:''}<i>Approximate boundary. Rights aren't limited to these lines.</i></div>`},{maxWidth:280});}}).addTo(map);
+const resLayer=L.geoJSON(BOUNDS,{filter:f=>f.properties.layer!=='ceded',style:resStyle,onEachFeature:(f,l)=>{const n=f.properties.name;if(f.properties.layer==='reservation')resLayers[n]=l;
+  l.bindPopup(()=>{const near=PROJECTS.filter(q=>q.near_nations.includes(n));return `<b>${n}</b><br>${f.properties.layer==='reservation'?'Reservation':'Off-reservation trust land'}${f.properties.layer==='reservation'?`<br>${near.length} project${near.length===1?'':'s'} within 50 miles. <a href="#" onclick="setNation('${n.replace(/'/g,"\\'")}');return false">Show them</a>`:''}`})}}).addTo(map);
+document.getElementById('lyr-res').onchange=e=>e.target.checked?resLayer.addTo(map):resLayer.remove();
+document.getElementById('lyr-ced').onchange=e=>{if(e.target.checked){cedLayer.addTo(map);cedLayer.bringToBack()}else cedLayer.remove()};
 
-// treaty labels: only the larger areas inside the view, so the map stays readable
-const labelGroup=L.layerGroup().addTo(map), resLabels=L.layerGroup();
-const area=b=>Math.abs((b.getEast()-b.getWest())*(b.getNorth()-b.getSouth()));
 const withProjects=new Set(PROJECTS.flatMap(p=>p.cessions.map(c=>c.label)));
-Object.entries(treatyLayers).forEach(([lab,l])=>{
-  const b=l.getBounds(); const p0=l.feature.properties;
-  if(!(withProjects.has(lab)||p0.rights_kept)) return;
-  const c=b.getCenter(), inMN=c.lat>43.4&&c.lat<49.4&&c.lng>-97.3&&c.lng<-89.4; if(!inMN) return;
-  const p=l.feature.properties;
-  L.tooltip({permanent:true,direction:'center',className:'tlabel'+(p.rights_kept?' rights':'')}).setLatLng(c).setContent(`${p.year} treaty<br>${p.nation.split(' (')[0]}${p.rights_kept?' · rights kept':''}`).addTo(labelGroup);
-});
-Object.entries(resLayers).forEach(([n,l])=>L.tooltip({permanent:true,direction:'center',className:'rlabel'}).setLatLng(l.getBounds().getCenter()).setContent(n.replace(/ Reservation$/,'').replace(/ Indian Community$/,'')).addTo(resLabels));
-function labelsByZoom(){const z=map.getZoom();(z>=5&&z<=8)?labelGroup.addTo(map):labelGroup.remove();z>=8?resLabels.addTo(map):resLabels.remove()}
-map.on('zoomend',labelsByZoom); labelsByZoom();
+const tLabels=L.layerGroup(),rLabels=L.layerGroup();
+Object.entries(treatyLayers).forEach(([lab,l])=>{const p=l.feature.properties;if(!(withProjects.has(lab)||p.rights_kept))return;
+  const c=l.getBounds().getCenter();if(!(c.lat>43.4&&c.lat<49.4&&c.lng>-97.3&&c.lng<-89.4))return;
+  L.tooltip({permanent:true,direction:'center',className:'tlabel'}).setLatLng(c).setContent(`${p.year} cession<br>${p.nation.split(' (')[0]}${p.rights_kept?' · rights reserved':''}`).addTo(tLabels)});
+Object.entries(resLayers).forEach(([n,l])=>L.tooltip({permanent:true,direction:'center',className:'rlabel'}).setLatLng(l.getBounds().getCenter()).setContent(shortRes(n)).addTo(rLabels));
+function labels(){const z=map.getZoom();(z>=5&&z<=8)?tLabels.addTo(map):tLabels.remove();z>=8?rLabels.addTo(map):rLabels.remove()}
+map.on('zoomend',labels);labels();
 
-const legend=L.control({position:'bottomright'});
-legend.onAdd=()=>{const d=L.DomUtil.create('div','legend');d.innerHTML=
- '<svg class="sym" viewBox="0 0 16 14"><circle cx="8" cy="7" r="6" fill="#2a78d6" stroke="#fff" stroke-width="1.5"/></svg>Confirmed data center<br>'+
- '<svg class="sym" viewBox="0 0 16 14"><circle cx="8" cy="7" r="5" fill="#fff" stroke="#eb6834" stroke-width="3"/></svg>Possible data center<br>'+
- '<svg class="sym" viewBox="0 0 16 14"><rect x="4" y="3" width="8" height="8" transform="rotate(45 8 7)" fill="#1baf7a" stroke="#fff"/></svg>Power line for a data center<br>'+
- '<svg class="sym" viewBox="0 0 16 14"><rect x="1" y="1" width="14" height="12" rx="2" fill="rgba(47,107,79,.35)" stroke="#2f6b4f"/></svg>Reservation / trust land<br>'+
- '<svg class="sym" viewBox="0 0 16 14"><rect x="1" y="1" width="14" height="12" rx="2" fill="rgba(138,90,43,.16)" stroke="#5a3a19" stroke-width="2"/></svg>Treaty area, rights kept<br>'+
- '<svg class="sym" viewBox="0 0 16 14"><rect x="1" y="1" width="14" height="12" rx="2" fill="none" stroke="#8a5a2b" stroke-dasharray="3 2"/></svg>Other treaty area<br>'+
- '<a href="#" onclick="openTab(\'key\');return false">What do these mean?</a>';
- L.DomEvent.disableClickPropagation(d);return d};legend.addTo(map);
-
-function icon(p,big){
-  const c=KIND[p.category][1], s=big?1.35:1, w=Math.round(22*s);
-  const svg=p.category==='related'
-    ?`<svg width="${w}" height="${w}" viewBox="0 0 22 22"><rect x="6" y="6" width="10" height="10" transform="rotate(45 11 11)" fill="${c}" stroke="#fff" stroke-width="2"/></svg>`
-    :p.category==='possible'
-    ?`<svg width="${w}" height="${w}" viewBox="0 0 22 22"><circle cx="11" cy="11" r="7.5" fill="#fff" stroke="${c}" stroke-width="4"/></svg>`
-    :`<svg width="${w}" height="${w}" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9" fill="${c}" stroke="#fff" stroke-width="2.5"/></svg>`;
-  return L.divIcon({html:svg,className:'',iconSize:[w,w],iconAnchor:[w/2,w/2]});
-}
+function icon(p,big){const c=KIND[p.category][1],s=big?1.4:1,w=Math.round(22*s);
+  const svg=p.category==='related'?`<svg width="${w}" height="${w}" viewBox="0 0 22 22"><rect x="6" y="6" width="10" height="10" transform="rotate(45 11 11)" fill="${c}" stroke="#fff" stroke-width="2"/></svg>`
+   :p.category==='possible'?`<svg width="${w}" height="${w}" viewBox="0 0 22 22"><circle cx="11" cy="11" r="7.5" fill="#fff" stroke="${c}" stroke-width="4"/></svg>`
+   :`<svg width="${w}" height="${w}" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9" fill="${c}" stroke="#fff" stroke-width="2.5"/></svg>`;
+  return L.divIcon({html:svg,className:'',iconSize:[w,w],iconAnchor:[w/2,w/2]})}
 const markers={},seen={};
-PROJECTS.forEach(p=>{
-  const k=p.lat+','+p.lon,n=(seen[k]=(seen[k]||0)+1)-1,ang=n*1.9,off=n?0.035:0;
+PROJECTS.forEach(p=>{const k=p.lat+','+p.lon,n=(seen[k]=(seen[k]||0)+1)-1,ang=n*1.9,off=n?0.035:0;
   const m=L.marker([p.lat+off*Math.sin(ang),p.lon+off*Math.cos(ang)],{icon:icon(p),title:p.name,keyboard:true,riseOnHover:true}).addTo(map);
-  m.bindTooltip(`<b>${p.name}</b><br>${KIND[p.category][0]}<br>${p.location}`,{direction:'top',offset:[0,-8]});
-  m.on('click',()=>select(p.id,false));
-  markers[p.id]=m;
-});
+  m.bindTooltip(`<div class="mk-tip"><b>${p.name}</b><br>${KIND[p.category][0]}</div>`,{direction:'top',offset:[0,-8]});
+  m.on('click',()=>select(p.id,false));markers[p.id]=m});
+function resetView(){fit(MN,{duration:.5})}
+function toggleFull(){const a=document.getElementById('app');a.classList.toggle('full');document.querySelector('#fullbtn span').textContent=a.classList.contains('full')?'Exit full screen':'Full screen';setTimeout(()=>map.invalidateSize(),50)}
 
-// ---------- list ----------
-const sel=document.getElementById('nation');
-Object.keys(resLayers).sort().forEach(n=>{const o=document.createElement('option');o.value=n;o.textContent=n;sel.appendChild(o)});
-
-function commentText(p){
-  if(isOpen(p))return `<span class="open">Yes, until ${fmt(p.comment_deadline)} (${daysLeft(p.comment_deadline)} days left)</span>`;
-  if(p.comment_deadline)return `Not now. The last ${term('Comment','comment period')} closed ${fmt(p.comment_deadline)}.`;
-  return `No open ${term('Comment','comment period')} listed. Later permits (air, water, power lines) may have their own.`;
+/* ---------- ticker + chips ---------- */
+const sitesOf=ps=>new Set(ps.map(p=>p.site||p.id)).size;
+function ticker(){
+  const all=PROJECTS,c=k=>all.filter(p=>p.category===k).length,open=all.filter(isOpen).length,r=all.filter(rightsArea).length;
+  const onRes=all.filter(p=>p.on_reservation_or_trust).length;
+  const M=[["all",all.length,`about ${sitesOf(all)} sites`,`Projects tracked · ${onRes?onRes+" on":"none on"} reservation land`,null],
+    ["confirmed",c('confirmed'),"","Confirmed data centers","#2a78d6"],
+    ["possible",c('possible'),"","Possible, need checking","#eb6834"],
+    ["rights",r,"","In the 1854 rights area","#8a6640"],
+    ["open",open,open?"":"none right now","Open for comment","#b3261e"]];
+  document.getElementById('ticker').innerHTML=M.map(([k,n,sub,l,col])=>`<button type="button" class="metric" data-k="${k}" aria-pressed="${isActive(k)}"><div class="n">${n}${sub?`<small>${sub}</small>`:''}</div><div class="l">${col?`<span class="sw" style="background:${col}"></span>`:''}${l}</div></button>`).join('');
+  document.querySelectorAll('.metric').forEach(b=>b.onclick=()=>quick(b.dataset.k));
 }
-function treatyText(p){
-  if(!p.cessions.length)return 'Not inside a mapped treaty area';
-  return p.cessions.map(c=>`${c.year} treaty, ${c.nation}${c.rights_kept?'. <b>Treaty hunting and fishing rights apply here.</b>':''}`).join('<br>')+` <span class="hint">(${term('Cession','approximate')})</span>`;
+const isActive=k=>k==='all'?(!S.cat&&!S.open&&!S.rights&&!S.q&&!S.nation):k==='open'?S.open:k==='rights'?S.rights:S.cat===k;
+function quick(k){
+  if(k==='all'){resetAll();return}
+  if(k==='open')S.open=!S.open;else if(k==='rights')S.rights=!S.rights;else S.cat=S.cat===k?null:k;
+  render();if(innerWidth<=900)setView('list');
+}
+function chips(){
+  const C=[["open","Comments open",'#b3261e'],["confirmed","Confirmed",'#2a78d6'],["possible","Possible",'#eb6834'],["related","Power lines",'#1baf7a'],["rights","1854 rights area",'#8a6640']];
+  document.getElementById('chips').innerHTML=C.map(([k,l,c])=>`<button type="button" class="chip" data-k="${k}" aria-pressed="${isActive(k)}"><span class="dot" style="background:${c}"></span>${l}</button>`).join('');
+  document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>quick(b.dataset.k));
+}
+function resetAll(){S.q='';S.cat=null;S.open=false;S.rights=false;S.nation='';document.getElementById('q').value='';document.getElementById('nation').value='';render();resetView()}
+function setNation(n){S.nation=n;document.getElementById('nation').value=n;render();map.closePopup()}
+
+/* ---------- list ---------- */
+const sel=document.getElementById('nation');
+Object.keys(resLayers).sort().forEach(n=>{const o=document.createElement('option');o.value=n;o.textContent='Near '+n;sel.appendChild(o)});
+sel.onchange=()=>{S.nation=sel.value;render()};
+document.getElementById('q').oninput=e=>{S.q=e.target.value.trim().toLowerCase();render()};
+
+function matches(p){
+  if(S.cat&&p.category!==S.cat)return false;
+  if(S.open&&!isOpen(p))return false;
+  if(S.rights&&!rightsArea(p))return false;
+  if(S.q){const h=[p.name,p.location,p.rgu,p.process,p.latest_step,p.nearest_reservation].join(' ').toLowerCase();if(!h.includes(S.q))return false}
+  return true;
 }
 function card(p){
-  const line1=`${p.location} · ${p.on_reservation_or_trust?'<b>on '+p.on_reservation_or_trust+'</b>':p.nearest_reservation_mi+' mi from '+p.nearest_reservation.replace(/ Reservation$/,'')}${isOpen(p)?' · <span class="open">comments open</span>':''}`;
-  return `<article class="card" data-cat="${p.category}" id="c-${p.id}" tabindex="0" role="button" aria-label="${p.name}: open details" onclick="select('${p.id}',true)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();select('${p.id}',true)}">
-    <span class="kind"><span class="dot" style="background:${KIND[p.category][1]}"></span>${KIND[p.category][0]}<span class="chev" aria-hidden="true">›</span></span>
+  return `<button type="button" class="pc" data-cat="${p.category}" id="c-${p.id}" aria-current="false" onclick="select('${p.id}',true)">
+    <div class="tags"><span class="tag ${p.category}">${KIND[p.category][0]}</span>${commentTag(p)}</div>
     <h3>${p.name}</h3>
-    <div class="line1">${line1}</div>
-  </article>`;
-}
-function panelHTML(p){
-  const k=termKey(p.process), stage=(k?term(k,p.process):p.process)+'<div class="hint" style="color:var(--ink2)">'+plainStep(p.latest_step)+'</div>';
-  const latest=p.notices[0];
-  const todo=[];
-  if(isOpen(p)) todo.push(`<b>Send a comment by ${fmt(p.comment_deadline)}</b> to ${p.rgu||'the reviewing government'}${p.rgu_phone?' ('+p.rgu_phone+')':''}. The official notice says how.`);
-  else todo.push(`Ask ${p.rgu||'the reviewing government'}${p.rgu_phone?' ('+p.rgu_phone+')':''} what decisions and permits are still ahead, and whether tribes were notified.`);
-  todo.push(`Read the latest official notice: <a href="${latest.url}" target="_blank" rel="noopener">EQB Monitor ${latest.volume}</a>.`);
-  if(p.category!=='confirmed') todo.push('Confirm what the project actually is. This one is flagged from wording signals, not a statement that it is a data center.');
-  todo.push(`Share this project with others: <button type="button" class="term" onclick="share('${p.id}')">copy a link</button>.`);
-  return `<div class="pbar"><button type="button" onclick="zoomTo('${p.id}')">Zoom to it</button><button type="button" onclick="share('${p.id}')" id="sharebtn">Share</button><button type="button" class="x" onclick="closePanel()" aria-label="Close details">×</button></div>
-  <div class="pbody">
-    <span class="badge ${p.category}"><span class="dot" style="background:${KIND[p.category][1]}"></span>${KIND[p.category][0]}</span>
-    <h2 id="ptitle">${p.name}</h2>
-    <p class="ploc">${p.location} <span class="hint">· ${p.location_precision}</span></p>
-    <div class="tiles">
-      <div class="tile wide ${isOpen(p)?'go':''}"><div class="lab">Can I comment?</div><div class="val">${commentText(p)}</div></div>
-      <div class="tile"><div class="lab">Review stage</div><div class="val">${stage}</div></div>
-      <div class="tile"><div class="lab">Who decides</div><div class="val">${whoDecides(p)}${p.rgu_phone?`<a href="tel:${p.rgu_phone}">${p.rgu_phone}</a>`:''}</div></div>
-      <div class="tile"><div class="lab">Nearest reservation</div><div class="val">${p.on_reservation_or_trust?'<b>On '+p.on_reservation_or_trust+'</b>':`${p.nearest_reservation_mi} miles<br><span class="hint">${p.nearest_reservation}</span>`}</div></div>
-      <div class="tile"><div class="lab">Tribal consultation</div><div class="val">Not mentioned in the notices</div></div>
-    </div>
-    <div class="psec"><h4>Treaty land</h4><p>${treatyText(p)}</p></div>
-    ${(p.same_site_as.length||p.note)?`<div class="psec"><h4>Worth knowing</h4>${p.same_site_as.length?`<p><b>May be the same site as:</b> ${p.same_site_as.join('; ')}.</p>`:''}${p.note?`<p>${p.note}</p>`:''}</div>`:''}
-    <div class="psec"><h4>What you can do</h4><ul>${todo.map(t=>`<li>${t}</li>`).join('')}</ul></div>
-    <div class="psec"><h4>Official notices, newest first</h4><ol class="timeline">${p.notices.map(x=>`<li><span class="d">${x.date}</span> · ${x.step}${x.deadline?', comments due '+x.deadline:''}<br><a href="${x.url}" target="_blank" rel="noopener">EQB Monitor ${x.volume}</a>${x.quote?`<q>${x.quote}</q>`:''}</li>`).join('')}</ol></div>
-    <p class="hint" style="margin-top:16px">Location is approximate. Treaty boundaries are approximate. Always check the official notice.</p>
-  </div>`;
-}
-function filterCat(ps,f){
-  if(['confirmed','possible','related'].includes(f))return ps.filter(p=>p.category===f);
-  if(f==='rights')return ps.filter(rightsKept);
-  if(f==='open')return ps.filter(isOpen);
-  return ps;
+    <div class="loc">${p.location}</div>
+    <div class="rel"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 11s4-3.6 4-6.5A4 4 0 0 0 2 4.5C2 7.4 6 11 6 11z" fill="none" stroke="#6b4a2b" stroke-width="1.3"/></svg><span>${relLine(p)}</span></div>
+    <div class="stage">${p.process} · ${p.latest_step}</div>
+  </button>`;
 }
 const order={confirmed:0,possible:1,related:2};
-const sortP=ps=>ps.sort((a,b)=>(isOpen(b)-isOpen(a))||(order[a.category]-order[b.category])||(b.last_notice||'').localeCompare(a.last_notice||''));
-const sites=ps=>new Set(ps.map(p=>p.site||p.id)).size;
-
+const sortP=ps=>ps.sort((a,b)=>(isOpen(b)-isOpen(a))||(b.last_notice||'').localeCompare(a.last_notice||'')||(order[a.category]-order[b.category]));
 function render(){
-  const n=sel.value,f=document.getElementById('flt').value;
-  let near=[],far=[];
-  if(n){near=PROJECTS.filter(p=>p.near_nations.includes(n));far=PROJECTS.filter(p=>p.treaty_nations.includes(n));}
-  else near=PROJECTS.slice();
-  near=sortP(filterCat(near,f)); far=sortP(filterCat(far,f));
+  let near=PROJECTS.filter(matches),far=[];
+  if(S.nation){far=near.filter(p=>p.treaty_nations.includes(S.nation));near=near.filter(p=>p.near_nations.includes(S.nation))}
+  sortP(near);sortP(far);
   const shown=near.concat(far);
   Object.entries(markers).forEach(([id,m])=>shown.find(p=>p.id===id)?m.addTo(map):m.remove());
-  document.getElementById('count').textContent=`${shown.length} project${shown.length===1?'':'s'} shown`;
   let html='';
-  if(n){
-    html+=`<p class="group-h">Within 50 miles of ${n} (${near.length})</p>`+(near.map(card).join('')||'<p class="hint">None.</p>');
-    html+=`<p class="group-h">Farther away, inside a treaty area that also covers this reservation (${far.length})</p>`+(far.map(card).join('')||'<p class="hint">None.</p>');
-  } else html=shown.map(card).join('')||'<p>No projects match. Try "Everything".</p>';
+  if(S.nation){
+    html+=`<div class="grp">Within 50 miles of ${shortRes(S.nation)} · ${near.length}</div>`+(near.map(card).join('')||'<p class="empty">None</p>');
+    html+=`<div class="grp">Farther away, same treaty area · ${far.length}</div>`+(far.map(card).join('')||'<p class="empty">None</p>');
+  } else html=shown.map(card).join('')||`<p class="empty">No projects match these filters.<br><button class="reset" onclick="resetAll()">Clear filters</button></p>`;
   document.getElementById('list').innerHTML=html;
-  summary(n,near,far);
-  if(shown.length&&(n||f!=='all'))map.fitBounds(L.latLngBounds(shown.map(p=>markers[p.id].getLatLng())).pad(0.5),{maxZoom:9});
+  document.getElementById('count').textContent=`${shown.length} of ${PROJECTS.length} projects`;
+  ticker();chips();
+  if(current&&document.getElementById('c-'+current))document.getElementById('c-'+current).setAttribute('aria-current','true');
+  const filtered=S.cat||S.open||S.rights||S.q||S.nation;
+  if(filtered&&shown.length&&!current)fit(L.latLngBounds(shown.map(p=>markers[p.id].getLatLng())).pad(0.6),{maxZoom:9,duration:.5});
 }
-function summary(n,near,far){
-  const all=n?near.concat(far):PROJECTS, c=k=>all.filter(p=>p.category===k).length, pl=(k,w)=>k+' '+w+(k===1?'':'s');
-  const open=all.filter(isOpen).length, ns=sites(all);
-  const t54=all.filter(p=>p.cessions.some(t=>t.year===1854)).length, t51=all.filter(p=>p.cessions.some(t=>t.year===1851)).length;
-  const scope=n?`<b>${n}:</b> ${near.length} within 50 miles of the reservation, ${far.length} farther away in the same treaty area.<br>`:'';
-  document.getElementById('summary').innerHTML=all.length?`${scope}<b>${pl(all.length,'project')}</b> from notices published <b>June 2025 to November 17, 2026</b>:
-  <ul>
-   <li><b>${c('confirmed')}</b> the notice calls a data center</li>
-   <li><b>${c('possible')}</b> that look like data centers but don't say so (they need checking)</li>
-   <li><b>${c('related')}</b> power line${c('related')===1?'':'s'} built to serve one</li>
-  </ul>
-  ${ns<all.length?`Some notices describe the same place, so that's about <b>${pl(ns,'site')}</b>. `:''}${t54?`<b>${t54}</b> ${t54===1?'is':'are'} in the <b>1854 treaty</b> area, where Ojibwe bands kept hunting and fishing rights. `:''}${t51?`<b>${t51}</b> ${t51===1?'is':'are'} on land Dakota nations ceded in the <b>1851 treaties</b>. `:''}${open?`<b class="open">${open} open for comment now.</b>`:'None are open for public comment right now.'}`
-  :`<b>${n}:</b> no data center projects found in the notices so far.`;
-}
-// ---------- selection / panel ----------
-let hl=[], current=null;
+
+/* ---------- detail panel ---------- */
+let current=null,hl=[];
 const panel=document.getElementById('panel');
 function clearHL(){hl.forEach(([l,st])=>l.setStyle(st));hl=[];Object.entries(markers).forEach(([id,m])=>m.setIcon(icon(PROJECTS.find(p=>p.id===id),false)))}
-function select(id,fly){
-  const p=PROJECTS.find(q=>q.id===id); if(!p) return;
-  clearHL(); current=id;
-  document.querySelectorAll('.card').forEach(c=>c.classList.toggle('sel',c.id==='c-'+id));
-  p.cessions.forEach(c=>{const l=treatyLayers[c.label];if(l){hl.push([l,cedStyle(l.feature)]);l.setStyle({color:'#f2b705',weight:3.5,fillOpacity:.12})}});
-  const r=resLayers[p.nearest_reservation];if(r){hl.push([r,{color:'#2f6b4f',weight:1.4,fillOpacity:.32}]);r.setStyle({color:'#f2b705',weight:3.5})}
-  markers[id].setIcon(icon(p,true));
-  panel.innerHTML=panelHTML(p); panel.classList.add('show'); panel.setAttribute('aria-hidden','false'); panel.scrollTop=0;
-  panel.querySelector('.x').focus({preventScroll:true});
-  history.replaceState(null,'','?id='+id);
-  if(fly) zoomTo(id);
+function panelHTML(p){
+  const k=termKey(p.process),latest=p.notices[0],t=p.cessions;
+  const open=isOpen(p);
+  const callout=open
+    ?`<div class="callout open"><div class="k">Public comment open</div><div class="v">Comments due ${fmt(p.comment_deadline)}</div><div class="v2">${daysLeft(p.comment_deadline)} days left. Send to ${p.rgu}${p.rgu_phone?' ('+p.rgu_phone+')':''}. The official notice explains how.</div></div>`
+    :`<div class="callout"><div class="k">Public comment</div><div class="v">${p.comment_deadline?'Closed '+fmt(p.comment_deadline):'No open comment period listed'}</div><div class="v2">Later permits (air, water, power lines) may have their own ${term('Comment','comment periods')}.</div></div>`;
+  const treaty=t.length?t.map(c=>`Inside the approximate <b>${c.year} ${c.nation.split(' (')[0]} cession area</b>${c.rights_kept?', where Ojibwe bands reserved rights to hunt and fish':''}.`).join(' '):'Not inside a mapped treaty cession area.';
+  const flag=p.category!=='confirmed'?`<div class="sec"><h4>Why it's flagged and what's unverified</h4><div class="flag"><b>${p.category==='possible'?'Not confirmed as a data center.':'Infrastructure, not a data center.'}</b> ${p.note||''}</div></div>`:(p.note?`<div class="sec"><h4>Worth knowing</h4><p>${p.note}</p></div>`:'');
+  const same=p.same_site_as.length?`<p><b>May be the same site as:</b> ${p.same_site_as.join('; ')}.</p>`:'';
+  const todo=[];
+  if(open)todo.push(`<b>Comment by ${fmt(p.comment_deadline)}</b> to ${p.rgu}${p.rgu_phone?' at '+p.rgu_phone:''}.`);
+  else todo.push(`Ask ${p.rgu||'the reviewing government'}${p.rgu_phone?' ('+p.rgu_phone+')':''} what decisions and permits are still ahead, and whether tribes were notified.`);
+  if(p.category!=='confirmed')todo.push('Confirm what the project is before acting on it.');
+  todo.push(`Read the latest notice: <a href="${latest.url}" target="_blank" rel="noopener">EQB Monitor ${latest.volume}</a>.`);
+  return `<div class="p-bar"><button class="mbtn" type="button" onclick="zoomTo('${p.id}')">Zoom to project</button><button class="mbtn" type="button" id="sharebtn" onclick="share('${p.id}')">Copy link</button><button class="mbtn x" type="button" onclick="closePanel()" aria-label="Close">×</button></div>
+  <div class="p-body">
+    <div class="tags"><span class="tag ${p.category}">${KIND[p.category][0]}</span>${commentTag(p)}</div>
+    <h2 id="ptitle">${p.name}</h2>
+    <p class="p-loc">${p.location} <small>· ${p.location_precision}</small></p>
+    ${callout}
+    <div class="facts">
+      <div class="fact"><div class="k">Review stage</div><div class="v">${k?term(k,p.process):p.process}<small>${plainStep(p.latest_step)}</small></div></div>
+      <div class="fact"><div class="k">${term('RGU','Reviewing agency')}</div><div class="v">${p.rgu||'Not listed'}<small>The ${agencyKind(p.rgu)} running the review and making the call.${p.rgu_phone?`<br><a href="tel:${p.rgu_phone}">${p.rgu_phone}</a>`:''}</small></div></div>
+      <div class="fact"><div class="k">Nearest reservation</div><div class="v">${p.on_reservation_or_trust?'On '+p.on_reservation_or_trust:p.nearest_reservation_mi+' miles'}<small>${p.nearest_reservation}</small></div></div>
+      <div class="fact"><div class="k">Tribal consultation</div><div class="v">Not mentioned<small>The public notices don't say whether tribes were consulted.</small></div></div>
+    </div>
+    <div class="sec"><h4>Treaty land</h4><p>${treaty} <span class="term" data-term="Cession" role="button" tabindex="0">What's a cession area?</span></p><p style="color:var(--ink-3);font-size:13px">Approximate boundary. Location alone doesn't determine legal impact, and rights aren't limited to the lines shown.</p></div>
+    ${flag}
+    ${same?`<div class="sec"><h4>Possibly the same place</h4>${same}</div>`:''}
+    <div class="sec"><h4>What you can do</h4><ul>${todo.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+    <div class="sec"><h4>Official notices · ${p.notices.length}</h4><ol class="tl">${p.notices.map(x=>`<li><div class="d">${x.date}</div><div class="s">${x.step}${x.deadline?' · comments due '+x.deadline:''} · <a href="${x.url}" target="_blank" rel="noopener">EQB Monitor ${x.volume}</a></div>${x.quote?`<q>${x.quote}</q>`:''}</li>`).join('')}</ol></div>
+    <p class="caveat">Early warning, not an authority. Locations are ${p.location_precision.split(';')[0].replace(' (approx.)','')} points and treaty lines are approximate. Check the official notice before acting.</p>
+  </div>`;
 }
-function zoomTo(id){const m=markers[id];const pt=map.project(m.getLatLng(),9);pt.x+=Math.min(220,map.getSize().x/4);map.flyTo(map.unproject(pt,9),9,{duration:.6})}
-function closePanel(){panel.classList.remove('show');panel.setAttribute('aria-hidden','true');clearHL();document.querySelectorAll('.card').forEach(c=>c.classList.remove('sel'));const c=current&&document.getElementById('c-'+current);current=null;history.replaceState(null,'',location.pathname);if(c)c.focus()}
-function share(id){const u=location.origin+location.pathname+'?id='+id;(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>{const b=document.getElementById('sharebtn');if(b){b.textContent='Link copied';setTimeout(()=>b.textContent='Share',1600)}}).catch(()=>prompt('Copy this link:',u))}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&current)closePanel()});
-sel.onchange=render;document.getElementById('flt').onchange=render;
+function select(id,fly){
+  const p=PROJECTS.find(q=>q.id===id);if(!p)return;
+  clearHL();current=id;map.closePopup();
+  document.querySelectorAll('.pc').forEach(c=>c.setAttribute('aria-current',c.id==='c-'+id?'true':'false'));
+  const c=document.getElementById('c-'+id);if(c)c.scrollIntoView({block:'nearest',behavior:'smooth'});
+  p.cessions.forEach(t=>{const l=treatyLayers[t.label];if(l){hl.push([l,cedStyle(l.feature)]);l.setStyle({color:'#e8a400',weight:3.2,fillOpacity:.1})}});
+  const r=resLayers[p.nearest_reservation];if(r){hl.push([r,resStyle(r.feature)]);r.setStyle({color:'#e8a400',weight:3.2})}
+  markers[id].setIcon(icon(p,true));markers[id].setZIndexOffset(1000);
+  panel.innerHTML=panelHTML(p);panel.classList.add('show');panel.setAttribute('aria-hidden','false');panel.scrollTop=0;
+  history.replaceState(null,'','?id='+id);
+  if(innerWidth<=900&&fly)setView('map');
+  if(fly)zoomTo(id);
+  setTimeout(()=>panel.querySelector('.x').focus({preventScroll:true}),50);
+}
+function zoomTo(id){if(!mapVisible()){pendingFit=[L.latLngBounds([markers[id].getLatLng()]).pad(0.3),{maxZoom:9}];return}const m=markers[id],z=9,pt=map.project(m.getLatLng(),z);if(innerWidth>900)pt.x+=Math.min(230,map.getSize().x/4);map.flyTo(map.unproject(pt,z),z,{duration:.6})}
+function closePanel(){panel.classList.remove('show');panel.setAttribute('aria-hidden','true');clearHL();if(current&&markers[current])markers[current].setZIndexOffset(0);document.querySelectorAll('.pc').forEach(c=>c.setAttribute('aria-current','false'));const c=current&&document.getElementById('c-'+current);current=null;history.replaceState(null,'',location.pathname);if(c)c.focus()}
+function share(id){const u=location.origin+location.pathname+'?id='+id;(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>{const b=document.getElementById('sharebtn');if(b){b.textContent='Link copied';setTimeout(()=>b.textContent='Copy link',1600)}}).catch(()=>prompt('Copy this link:',u))}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(pop.classList.contains('show'))pop.classList.remove('show');else if(current)closePanel()}});
+
+/* ---------- mobile view ---------- */
+function setView(v){const a=document.getElementById('app');a.dataset.view=v;document.getElementById('mt-list').setAttribute('aria-selected',v==='list');document.getElementById('mt-map').setAttribute('aria-selected',v==='map');if(v==='map')setTimeout(()=>{map.invalidateSize();if(pendingFit){const [b,o]=pendingFit;pendingFit=null;map.fitBounds(b,Object.assign({},o,{animate:false}))}},60)}
+
+if(innerWidth<=900)document.getElementById('legend').removeAttribute('open');
 render();
-const qid=new URLSearchParams(location.search).get('id'); if(qid) setTimeout(()=>select(qid,true),300);
+const qid=new URLSearchParams(location.search).get('id');if(qid)setTimeout(()=>select(qid,true),300);
 </script>
 </body>
 </html>

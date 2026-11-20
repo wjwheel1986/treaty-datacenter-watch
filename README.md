@@ -1,4 +1,6 @@
-# Treaty-Territory Data Center Watch (Minnesota pilot)
+# Data Center Watch for Tribal Nations (Minnesota pilot)
+
+*Minnesota data center proposals near reservations and in treaty cession areas.*
 
 **Live map:** https://wjwheel1986.github.io/treaty-datacenter-watch/
 
@@ -24,7 +26,8 @@ Built for tribal environmental and natural resource staff, and useful to local a
 ## What's in this repo
 | Path | What it is |
 |---|---|
-| `index.html` | The public map (one self-contained page). |
+| `index.html` | The public site (one self-contained page). |
+| `classic.html` | The earlier version of the site, kept as a backup. |
 | `data/projects.json` | One record per project, with boundary results and notice history. |
 | `data/boundaries.geojson` | Reservations and off-reservation trust land (U.S. Census TIGERweb), plus treaty cession areas (USDA Forest Service, Royce cessions), clipped to Minnesota and nearby areas. |
 | `data/boundaries_by_treaty.geojson` | Same boundaries, with cession pieces merged into one area per treaty (year and nation), flagged where Ojibwe bands kept treaty rights (1837, 1842, 1854). The map uses this file. |
@@ -55,6 +58,8 @@ See [`eval/RESULTS.md`](eval/RESULTS.md). Short version: a keyword search for "d
 
 ## Limits (please read)
 - **Early warning, not an authority.** Treaty cession areas come from 1890s maps (Royce) digitized by the U.S. Forest Service and are approximate. Tribal nations, not this map, define their territories and treaty rights. What rights were kept differs by treaty.
+- None of the projects tracked so far sits on reservation or trust land. Almost all of Minnesota lies inside some treaty cession area, so distance to a reservation and reserved-rights areas are the more telling measures.
+- Treaty rights and tribal interests are not limited to the lines shown. Being inside or near a boundary doesn't establish legal impact.
 - Project locations are city, township or county centers, not parcels.
 - "Possible" projects are flagged from wording signals and need a human to confirm.
 - "Tribal consultation noted: unknown" means the public notice doesn't say. That gap is itself worth asking about.

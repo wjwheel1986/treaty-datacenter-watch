@@ -3,150 +3,255 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Treaty-Territory Data Center Watch (Minnesota pilot)</title>
+<title>Treaty-Territory Data Center Watch · Minnesota</title>
+<meta name="description" content="Early-warning map of Minnesota data center proposals, checked against reservations and treaty cession areas, from official state notices.">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
-  :root{--ink:#1d2433;--muted:#5b6475;--line:#d9dde5;--bg:#f6f7f9;--res:#2f6b4f;--ced:#b5651d;--hi:#b3261e;--mid:#c77700;--lo:#4a6fa5}
+  :root{
+    --surface:#fcfcfb; --panel:#ffffff; --sunk:#f3f2ee; --line:#e2e0da;
+    --ink:#0b0b0b; --ink2:#52514e; --ink3:#77756f;
+    --conf:#2a78d6; --poss:#eb6834; --rel:#1baf7a;
+    --land:#2f6b4f; --cess:#9a5b1e; --alert:#b3261e; --focus:#1f5fa8;
+    --r:10px;
+  }
   *{box-sizing:border-box}
-  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
-  header{padding:14px 20px;background:#fff;border-bottom:1px solid var(--line)}
-  header h1{margin:0;font-size:20px}
-  header p{margin:4px 0 0;color:var(--muted);font-size:14px;max-width:980px}
-  .warn{background:#fff6e5;border:1px solid #f0d9a8;border-radius:6px;padding:8px 12px;margin-top:8px;font-size:13px}
-  main{display:grid;grid-template-columns:400px 1fr;height:calc(100vh - 150px);min-height:520px}
-  aside{overflow-y:auto;background:#fff;border-right:1px solid var(--line);padding:12px}
+  html,body{margin:0}
+  body{font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--surface)}
+  a{color:var(--focus)}
+  :focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+  .skip{position:absolute;left:-999px}.skip:focus{left:12px;top:8px;background:#fff;padding:6px 10px;z-index:9999}
+  header{background:var(--panel);border-bottom:1px solid var(--line);padding:18px 24px 14px}
+  .eyebrow{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin:0}
+  h1{font-size:26px;line-height:1.2;margin:2px 0 6px}
+  .lede{margin:0;color:var(--ink2);max-width:880px}
+  .summary{margin:12px 0 0;padding:10px 14px;background:var(--sunk);border-radius:var(--r);font-size:15px}
+  .summary b{color:var(--ink)}
+  .steps{display:flex;gap:10px;margin:12px 0 0;padding:0;list-style:none;flex-wrap:wrap}
+  .steps li{flex:1 1 200px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:8px 12px;font-size:14px;color:var(--ink2)}
+  .steps b{display:inline-block;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;text-align:center;font-size:13px;line-height:22px;margin-right:6px}
+  details.about{margin-top:10px;font-size:14px;color:var(--ink2)}
+  details.about summary{cursor:pointer;font-weight:600;color:var(--ink)}
+  main{display:grid;grid-template-columns:minmax(340px,420px) 1fr;height:calc(100vh - 230px);min-height:560px}
+  aside{overflow-y:auto;border-right:1px solid var(--line);background:var(--panel);padding:16px}
   #map{height:100%}
-  label{font-size:12px;color:var(--muted);display:block;margin:8px 0 3px}
-  select{width:100%;padding:6px;border:1px solid var(--line);border-radius:6px;font-size:14px}
-  .stats{display:flex;gap:8px;margin:10px 0}
-  .stat{flex:1;background:var(--bg);border-radius:6px;padding:8px;text-align:center}
-  .stat b{display:block;font-size:20px}
-  .stat span{font-size:11px;color:var(--muted)}
-  .card{border:1px solid var(--line);border-radius:8px;padding:10px;margin:8px 0;cursor:pointer;background:#fff}
-  .card:hover,.card.sel{border-color:#7a8599;box-shadow:0 1px 4px rgba(0,0,0,.08)}
-  .card h3{margin:0 0 4px;font-size:15px}
-  .meta{font-size:13px;color:var(--muted);line-height:1.45}
-  .badge{display:inline-block;font-size:11px;padding:2px 7px;border-radius:10px;margin:4px 4px 0 0;color:#fff}
-  .b-hi{background:var(--hi)}.b-mid{background:var(--mid)}.b-lo{background:var(--lo)}.b-grey{background:#8a93a3}
-  .dl-open{color:var(--hi);font-weight:600}
-  .notices{margin-top:6px;font-size:12px;display:none}
-  .card.sel .notices{display:block}
-  .notices li{margin-bottom:5px}
-  .legend{background:#fff;padding:8px 10px;border-radius:6px;font-size:12px;line-height:1.6;box-shadow:0 1px 4px rgba(0,0,0,.2)}
-  .sw{display:inline-block;width:12px;height:12px;margin-right:5px;vertical-align:-2px;border-radius:2px}
-  footer{font-size:12px;color:var(--muted);padding:8px 20px;background:#fff;border-top:1px solid var(--line)}
-  a{color:#1f5fa8}
-  @media(max-width:800px){main{grid-template-columns:1fr;height:auto}#map{height:420px}}
+  .ctl{margin-bottom:12px}
+  .ctl label{display:block;font-weight:600;font-size:14px;margin-bottom:4px}
+  .ctl .hint{font-size:12.5px;color:var(--ink3);margin:2px 0 0}
+  select{width:100%;padding:9px 10px;border:1px solid #c9c6bd;border-radius:8px;font-size:15px;background:#fff;color:var(--ink)}
+  .count{font-size:14px;color:var(--ink2);margin:6px 0 4px}
+  .morebtn{margin-top:10px;border:1px solid #c9c6bd;background:var(--sunk);border-radius:8px;padding:6px 10px;font:inherit;font-size:14px;cursor:pointer;color:var(--ink)}
+  .card{display:flex;flex-direction:column;width:100%;text-align:left;border:1px solid var(--line);border-left:5px solid var(--conf);border-radius:var(--r);padding:12px 14px;margin:10px 0;background:#fff;cursor:pointer;font:inherit;color:inherit}
+  .card[data-cat=possible]{border-left-color:var(--poss)}
+  .card[data-cat=related]{border-left-color:var(--rel)}
+  .card:hover{box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .card.sel{box-shadow:0 0 0 2px var(--ink2)}
+  .kind{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--ink2);display:flex;align-items:center;gap:6px}
+  .dot{width:11px;height:11px;border-radius:50%;display:inline-block;flex:none}
+  .card h2{font-size:17px;line-height:1.3;margin:4px 0 8px}
+  dl.facts{display:grid;grid-template-columns:118px 1fr;gap:4px 10px;margin:0;font-size:14.5px}
+  dl.facts dt{color:var(--ink3)}
+  dl.facts dd{margin:0}
+  .open{color:var(--alert);font-weight:700}
+  .term{border:0;background:none;padding:0;font:inherit;color:inherit;text-decoration:underline dotted;text-underline-offset:3px;cursor:help}
+  .more{display:none;margin-top:10px;border-top:1px dashed var(--line);padding-top:8px;font-size:14px}
+  .card.sel .more{display:block}
+  .more ul{padding-left:18px;margin:6px 0}
+  .more li{margin-bottom:8px}
+  .more q{color:var(--ink2);font-style:italic}
+  .note{background:var(--sunk);border-radius:8px;padding:8px 10px;margin-top:8px}
+  .tip{font-size:12.5px;color:var(--ink3);margin-top:6px}
+  .glossary{margin-top:18px;border-top:1px solid var(--line);padding-top:10px;font-size:14px}
+  .glossary h3{font-size:15px;margin:0 0 6px}
+  .glossary dt{font-weight:700;margin-top:8px}
+  .glossary dd{margin:2px 0 0;color:var(--ink2)}
+  .glossary dt.flash{background:#fff3c4}
+  .legend{background:#fff;padding:10px 12px;border-radius:8px;font-size:13px;line-height:1.7;box-shadow:0 1px 5px rgba(0,0,0,.18);color:var(--ink)}
+  .legend .sym{display:inline-block;width:14px;height:14px;margin-right:6px;vertical-align:-2px}
+  footer{font-size:13px;color:var(--ink2);padding:10px 24px;background:var(--panel);border-top:1px solid var(--line)}
+  .leaflet-tooltip{font:13px/1.4 system-ui,sans-serif}
+  @media (max-width:860px){main{grid-template-columns:1fr;height:auto}#map{height:440px;order:-1}aside{border-right:0}}
 </style>
 </head>
 <body>
+<a class="skip" href="#list">Skip to the project list</a>
 <header>
-  <h1>Treaty-Territory Data Center Watch <span style="font-weight:400;color:var(--muted)">· Minnesota pilot</span></h1>
-  <p>Data center proposals published in Minnesota's weekly <a href="https://www.eqb.state.mn.us/eqb-monitor" target="_blank">EQB Monitor</a>, checked against reservation, trust land and treaty cession boundaries, with review stage and comment deadlines. Built so tribal staff and community members don't have to wait for a developer or a local government to tell them.</p>
-  <div class="warn"><b>Early warning, not an authority.</b> Treaty cession areas come from 1890s maps (Royce) digitized by the U.S. Forest Service and are <b>approximate</b>. Project locations are city or township centers unless noted. Tribal nations, not this map, define their territories and rights. Public data only. Always confirm with the official notice.</div>
+  <p class="eyebrow">Minnesota pilot · public data</p>
+  <h1>Treaty-Territory Data Center Watch</h1>
+  <p class="lede">Data center proposals announced in Minnesota's official weekly environmental notices (the <a href="https://www.eqb.state.mn.us/eqb-monitor" target="_blank" rel="noopener">EQB Monitor</a>), shown next to reservations and land ceded by treaty, so tribal staff and community members can see what's coming and when they can weigh in.</p>
+  <p class="summary" id="summary" aria-live="polite"></p>
+  <ol class="steps" aria-label="How to use this map">
+    <li><b>1</b>Choose a tribal nation, or leave it on "All of Minnesota."</li>
+    <li><b>2</b>Each dot on the map is a project. Blue = confirmed data center, orange = possible, green diamond = power line for one.</li>
+    <li><b>3</b>Click a project to see what it is, where it is, whether you can still comment, and the official notices.</li>
+  </ol>
+  <details class="about">
+    <summary>Read first: what this map can and can't tell you</summary>
+    <p><b>An early warning, not an authority.</b> Treaty cession areas come from 1890s maps (Royce) digitized by the U.S. Forest Service and are <b>approximate</b>. Tribal nations, not this map, define their territories and rights, and the rights kept differ by treaty. Project dots sit at city, township or county centers, not exact sites. "Possible" projects are flagged from wording signals and need a person to confirm. Public data only: the map never shows cultural, sacred or harvest sites. Always check the official notice. <a href="__REPO__" target="_blank" rel="noopener">How it was built and tested</a>.</p>
+  </details>
 </header>
 <main>
-<aside>
-  <label for="nation">Show projects that may concern a tribal nation <span title="Within 50 miles of the reservation, or inside a treaty cession area that also covers part of the reservation">ⓘ</span></label>
-  <select id="nation"><option value="">All of Minnesota</option></select>
-  <label for="flt">Filter</label>
-  <select id="flt">
-    <option value="all">All data center projects</option>
-    <option value="open">Comment period open now</option>
-    <option value="hi">In a treaty cession area or on reservation/trust land</option>
-    <option value="confirmed">Confirmed data centers only</option>
-    <option value="possible">Possible data centers (need checking)</option>
-    <option value="related">Related power lines</option>
-  </select>
-  <div class="stats">
-    <div class="stat"><b id="sTot">0</b><span>projects</span></div>
-    <div class="stat"><b id="sCed">0</b><span>in treaty cession area</span></div>
-    <div class="stat"><b id="sOpen">0</b><span>open for comment</span></div>
+<aside aria-label="Filters and project list">
+  <div class="ctl">
+    <label for="nation">Tribal nation</label>
+    <select id="nation"><option value="">All of Minnesota</option></select>
+    <p class="hint">Shows projects within 50 miles of the reservation, or inside a treaty cession area that also covers part of it.</p>
   </div>
+  <div class="ctl">
+    <label for="flt">Show</label>
+    <select id="flt">
+      <option value="all">Everything</option>
+      <option value="confirmed">Confirmed data centers</option>
+      <option value="possible">Possible data centers (need checking)</option>
+      <option value="related">Power lines built for data centers</option>
+      <option value="near">Within 25 miles of a reservation</option>
+      <option value="open">Open for public comment now</option>
+    </select>
+  </div>
+  <p class="count" id="count" aria-live="polite"></p>
   <div id="list"></div>
+  <section class="glossary" aria-labelledby="gl">
+    <h3 id="gl">Plain-language glossary</h3>
+    <dl id="glossary"></dl>
+  </section>
 </aside>
-<div id="map"></div>
+<div id="map" role="region" aria-label="Map of projects, reservations and treaty cession areas"></div>
 </main>
 <footer>
-  Data: <a href="https://www.eqb.state.mn.us/eqb-monitor" target="_blank">Minnesota EQB Monitor</a> (public notices) ·
-  <a href="https://tigerweb.geo.census.gov/" target="_blank">U.S. Census Bureau TIGERweb</a> (reservations, trust lands) ·
-  <a href="https://data-usfs.hub.arcgis.com/datasets/usfs::tribal-lands-ceded-to-the-united-states-feature-layer" target="_blank">USDA Forest Service, Tribal Lands Ceded to the United States</a> (CC BY 4.0) ·
-  Basemap © OpenStreetMap contributors · Data through EQB Monitor of Nov 17, 2026 · Built <span id="upd"></span> ·
-  <a href="__REPO__" target="_blank">Code and method (GitHub)</a>
+  Sources: <a href="https://www.eqb.state.mn.us/eqb-monitor" target="_blank" rel="noopener">Minnesota EQB Monitor</a> (public notices, Jun 2025 to Nov 17, 2026) ·
+  <a href="https://tigerweb.geo.census.gov/" target="_blank" rel="noopener">U.S. Census Bureau TIGERweb</a> (reservations, trust land) ·
+  <a href="https://data-usfs.hub.arcgis.com/datasets/usfs::tribal-lands-ceded-to-the-united-states-feature-layer" target="_blank" rel="noopener">USDA Forest Service, Tribal Lands Ceded to the United States</a> (CC BY 4.0) ·
+  Map © OpenStreetMap contributors · Built <span id="upd"></span> ·
+  <a href="__REPO__" target="_blank" rel="noopener">Code, method and test results</a>
 </footer>
 <script>
 const PROJECTS = __PROJECTS__;
 const BOUNDS = __BOUNDARIES__;
-const UPDATED = "__UPDATED__";
-document.getElementById('upd').textContent = UPDATED;
+document.getElementById('upd').textContent = "__UPDATED__";
 
-const map = L.map('map').setView([46.2,-93.8],6);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:17,attribution:'© OpenStreetMap contributors'}).addTo(map);
-
-const cedLayer = L.geoJSON(BOUNDS,{filter:f=>f.properties.layer==='ceded',
-  style:{color:'#b5651d',weight:1,dashArray:'4 4',fillOpacity:0.04},
-  onEachFeature:(f,l)=>{const p=f.properties;l.bindPopup(`<b>Land ceded ${p.year?'in '+p.year:''}</b> (Royce cession ${p.cession})<br>Historical signatories: ${p.historical_tribe||'n/a'}<br>Present-day tribes listed: ${p.present_day_tribes||'n/a'}<br>${p.treaty_link?`<a href="${p.treaty_link}" target="_blank">Treaty text</a>`:''}<br><i>Approximate boundary.</i>`)}}).addTo(map);
-const resLayer = L.geoJSON(BOUNDS,{filter:f=>f.properties.layer!=='ceded',
-  style:f=>({color:'#2f6b4f',weight:1.5,fillColor:'#2f6b4f',fillOpacity:f.properties.layer==='reservation'?0.35:0.2}),
-  onEachFeature:(f,l)=>l.bindPopup(`<b>${f.properties.name}</b><br>${f.properties.layer==='reservation'?'Reservation':'Off-reservation trust land'}<br><small>${f.properties.source}</small>`)}).addTo(map);
-L.control.layers(null,{'Reservations & trust land':resLayer,'Treaty cession areas (approx.)':cedLayer},{collapsed:false}).addTo(map);
-const lg=L.control({position:'bottomright'});
-lg.onAdd=()=>{const d=L.DomUtil.create('div','legend');d.innerHTML='<span class="sw" style="background:#b3261e"></span>On reservation/trust land or within 10 mi<br><span class="sw" style="background:#c77700"></span>Inside a treaty cession area<br><span class="sw" style="background:#4a6fa5"></span>Other<br><span class="sw" style="background:#2f6b4f"></span>Reservation / trust land<br><span class="sw" style="border:1px dashed #b5651d"></span>Cession area (approx.)';return d};lg.addTo(map);
+const GLOSS = {
+  "EAW": ["Environmental Assessment Worksheet (EAW)", "A short study of a project's likely environmental effects. The public gets 30 days to comment, then the reviewing government decides whether a full EIS is needed."],
+  "EIS": ["Environmental Impact Statement (EIS)", "A detailed study, required when a project could have significant environmental effects."],
+  "AUAR": ["Alternative Urban Areawide Review (AUAR)", "A review of planned development for a whole area, often done before a specific tenant is named. Projects that later fit inside it may not get their own separate review, so the AUAR comment period can be the main chance to weigh in."],
+  "Petition": ["Petition", "Residents (at least 100 people) can ask for an environmental review. The state assigns a government to decide. \"Petition exempt from review\" means that government says review was already done, so the petition won't be considered."],
+  "RGU": ["Reviewing government (RGU)", "The responsible governmental unit: the city, county or state agency that runs the review and makes the decision. Often a city or county, which has no requirement to consult tribes."],
+  "Cession": ["Treaty cession area", "Land a tribal nation ceded to the United States by treaty. Under some treaties (for example 1837 and 1854) tribes kept rights to hunt, fish and gather on that land. Boundaries here are approximate."],
+  "Trust": ["Reservation and trust land", "Land within a reservation, or land held in trust by the U.S. for a tribe or tribal members outside a reservation."],
+  "Comment": ["Comment period", "The window when anyone can send written comments to the reviewing government. Comments sent after the deadline may not be considered."],
+  "Alternative review": ["Alternative review", "A separate review process used for some energy projects, such as power lines, often run by the Public Utilities Commission or a local government."]
+};
+const termKey = s => !s ? null : /AUAR/i.test(s) ? "AUAR" : /EIS/i.test(s) ? "EIS" : /EAW/i.test(s) ? "EAW" : /Petition/i.test(s) ? "Petition" : /Alternative review/i.test(s) ? "Alternative review" : null;
+const term = (k, label) => `<button type="button" class="term" title="${GLOSS[k][1].replace(/"/g,'&quot;')}" onclick="event.stopPropagation();showTerm('${k}')">${label}</button>`;
+document.getElementById('glossary').innerHTML = Object.entries(GLOSS).map(([k,[t,d]])=>`<dt id="g-${k.replace(/\s/g,'')}">${t}</dt><dd>${d}</dd>`).join('');
+function showTerm(k){const el=document.getElementById('g-'+k.replace(/\s/g,''));el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),1600)}
 
 const today = new Date();
 const daysLeft = d => d ? Math.floor((new Date(d+'T23:59:00') - today)/86400000) : null;
 const isOpen = p => !!p.comment_deadline && daysLeft(p.comment_deadline) >= 0;
-const level = p => (p.on_reservation_or_trust || (p.nearest_reservation_mi!==null && p.nearest_reservation_mi<=10)) ? 'hi' : (p.cessions.length ? 'mid' : 'lo');
-const color = {hi:'#b3261e',mid:'#c77700',lo:'#4a6fa5'};
+const fmt = iso => new Date(iso+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+const KIND = {confirmed:["Confirmed data center","var(--conf)"],possible:["Possible data center · needs checking","var(--poss)"],related:["Power line for a data center","var(--rel)"]};
+const shortRes = n => n.replace(/ Reservation$/,'').replace(/ Indian Community$| Community$/,' Community');
 
-const nations = [...new Set(BOUNDS.features.filter(f=>f.properties.layer==='reservation').map(f=>f.properties.name))].sort();
-const sel = document.getElementById('nation');
-nations.forEach(n=>{const o=document.createElement('option');o.value=n;o.textContent=n;sel.appendChild(o)});
+// ---- map ----
+const map = L.map('map',{scrollWheelZoom:true}).setView([46.0,-93.9],6);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:18,attribution:'© OpenStreetMap contributors © CARTO'}).addTo(map);
+const cedLayer = L.geoJSON(BOUNDS,{filter:f=>f.properties.layer==='ceded',
+  style:{color:'#9a5b1e',weight:1.2,dashArray:'5 5',fillColor:'#9a5b1e',fillOpacity:0.04},
+  onEachFeature:(f,l)=>{const p=f.properties;l.bindPopup(`<b>Land ceded by treaty${p.year?' in '+p.year:''}</b><br>Signatories listed: ${p.historical_tribe||'n/a'}<br>${p.treaty_link?`<a href="${p.treaty_link}" target="_blank" rel="noopener">Read the treaty text</a><br>`:''}<i>Approximate boundary (Royce cession ${p.cession}).</i>`)}}).addTo(map);
+const resLayer = L.geoJSON(BOUNDS,{filter:f=>f.properties.layer!=='ceded',
+  style:f=>({color:'#2f6b4f',weight:1.4,fillColor:'#2f6b4f',fillOpacity:f.properties.layer==='reservation'?0.30:0.18}),
+  onEachFeature:(f,l)=>{l.bindTooltip(f.properties.name,{sticky:true});l.bindPopup(`<b>${f.properties.name}</b><br>${f.properties.layer==='reservation'?'Reservation':'Off-reservation trust land'}`)}}).addTo(map);
+L.control.layers(null,{'Reservations & trust land':resLayer,'Treaty cession areas (approximate)':cedLayer},{collapsed:false,position:'topright'}).addTo(map);
+const lg=L.control({position:'bottomright'});
+lg.onAdd=()=>{const d=L.DomUtil.create('div','legend');d.innerHTML=
+ '<svg class="sym" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="#2a78d6" stroke="#fff" stroke-width="1.5"/></svg>Confirmed data center<br>'+
+ '<svg class="sym" viewBox="0 0 14 14"><circle cx="7" cy="7" r="5" fill="#fff" stroke="#eb6834" stroke-width="3"/></svg>Possible data center<br>'+
+ '<svg class="sym" viewBox="0 0 14 14"><rect x="3" y="3" width="8" height="8" transform="rotate(45 7 7)" fill="#1baf7a" stroke="#fff"/></svg>Power line for a data center<br>'+
+ '<span class="sym" style="background:rgba(47,107,79,.35);border:1px solid #2f6b4f"></span>Reservation / trust land<br>'+
+ '<span class="sym" style="border:1.5px dashed #9a5b1e"></span>Treaty cession area (approx.)';return d};lg.addTo(map);
 
-const markers = {}; const seenPt={};
+function icon(p){
+  const c={confirmed:'#2a78d6',possible:'#eb6834',related:'#1baf7a'}[p.category];
+  const svg = p.category==='related'
+    ? `<svg width="20" height="20" viewBox="0 0 20 20"><rect x="5" y="5" width="10" height="10" transform="rotate(45 10 10)" fill="${c}" stroke="#fff" stroke-width="2"/></svg>`
+    : p.category==='possible'
+    ? `<svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="7.5" fill="#fff" stroke="${c}" stroke-width="4"/></svg>`
+    : `<svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9" fill="${c}" stroke="#fff" stroke-width="2.5"/></svg>`;
+  return L.divIcon({html:svg,className:'',iconSize:[22,22],iconAnchor:[11,11]});
+}
+const markers={}, seen={};
 PROJECTS.forEach(p=>{
-  const k=p.lat+','+p.lon; const n=(seenPt[k]=(seenPt[k]||0)+1)-1;
-  const off=n*0.03; // nudge markers that share a city center so all are clickable
-  const m = L.circleMarker([p.lat+off,p.lon+off],{radius:p.category==='related'?6:8,color:'#fff',weight:2,fillColor:color[level(p)],fillOpacity:0.95}).addTo(map);
-  m.bindPopup(`<b>${p.name}</b><br>${p.location}<br>${p.process} · ${p.latest_step}`);
+  const k=p.lat+','+p.lon, n=(seen[k]=(seen[k]||0)+1)-1;
+  const ang=n*1.9, off=n?0.035:0; // spread markers sharing a city center
+  const m=L.marker([p.lat+off*Math.sin(ang),p.lon+off*Math.cos(ang)],{icon:icon(p),title:p.name,keyboard:true,riseOnHover:true}).addTo(map);
+  m.bindTooltip(`<b>${p.name}</b><br>${KIND[p.category][0]}<br>${p.location}`,{direction:'top',offset:[0,-8]});
   m.on('click',()=>select(p.id,false));
   markers[p.id]=m;
 });
 
-function relevant(p,n){ return !n || p.relevant_nations.includes(n); }
+// ---- list ----
+const sel=document.getElementById('nation');
+[...new Set(BOUNDS.features.filter(f=>f.properties.layer==='reservation').map(f=>f.properties.name))].sort()
+  .forEach(n=>{const o=document.createElement('option');o.value=n;o.textContent=n;sel.appendChild(o)});
+
+function whereText(p){
+  const parts=[`${p.location} <span class="tip">(${p.location_precision})</span>`];
+  if(p.on_reservation_or_trust) parts.push(`<b>On ${p.on_reservation_or_trust}</b>`);
+  else parts.push(`${p.nearest_reservation_mi} miles from ${p.nearest_reservation}`);
+  if(p.cessions.length) parts.push(`Inside land ceded by treaty in ${[...new Set(p.cessions.map(c=>c.year))].join(', ')} (${term('Cession','approximate')})`);
+  return parts.join('<br>');
+}
+function commentText(p){
+  if(isOpen(p)) return `<span class="open">Yes, until ${fmt(p.comment_deadline)} (${daysLeft(p.comment_deadline)} days left)</span>`;
+  if(p.comment_deadline) return `Not now. The last ${term('Comment','comment period')} ended ${fmt(p.comment_deadline)}.`;
+  return `No open ${term('Comment','comment period')} listed. Later permits (air, water, power lines) may have their own.`;
+}
+function card(p){
+  const k=termKey(p.process);
+  const stage=(k?term(k,p.process):p.process)+' · '+p.latest_step;
+  return `<article class="card" data-cat="${p.category}" id="c-${p.id}" onclick="select('${p.id}',true)">
+    <span class="kind"><span class="dot" style="background:${KIND[p.category][1]}"></span>${KIND[p.category][0]}</span>
+    <h2>${p.name}</h2>
+    <dl class="facts">
+      <dt>Where</dt><dd>${whereText(p)}</dd>
+      <dt>Review stage</dt><dd>${stage}</dd>
+      <dt>Can I comment?</dt><dd>${commentText(p)}</dd>
+      <dt>Who decides</dt><dd>${p.rgu||'Not listed'} (${term('RGU','reviewing government')})</dd>
+      <dt>Tribal consultation</dt><dd>Not mentioned in the notices</dd>
+    </dl>
+    <div class="more">
+      ${p.note?`<div class="note"><b>Why it's flagged / what to check:</b> ${p.note}</div>`:''}
+      <b>Official notices</b> (newest first)
+      <ul>${p.notices.map(x=>`<li>${x.date}: ${x.step}${x.deadline?', comments due '+x.deadline:''}. <a href="${x.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">EQB Monitor ${x.volume}</a>${x.quote?`<br><q>${x.quote}</q>`:''}</li>`).join('')}</ul>
+    </div>
+    <button type="button" class="morebtn" aria-expanded="false" onclick="event.stopPropagation();select('${p.id}',true)">Show notices and details</button>
+  </article>`;
+}
+const relevant=(p,n)=>!n||p.relevant_nations.includes(n);
 function render(){
   const n=sel.value, f=document.getElementById('flt').value;
-  let ps = PROJECTS.filter(p=>relevant(p,n));
-  if(f==='open') ps=ps.filter(isOpen);
-  if(f==='hi') ps=ps.filter(p=>level(p)!=='lo');
+  let ps=PROJECTS.filter(p=>relevant(p,n));
   if(['confirmed','possible','related'].includes(f)) ps=ps.filter(p=>p.category===f);
-  ps.sort((a,b)=>(b.last_notice||'').localeCompare(a.last_notice||''));
-  Object.entries(markers).forEach(([id,m])=>{ps.find(p=>p.id===id)?m.addTo(map):m.remove()});
-  document.getElementById('sTot').textContent=ps.length;
-  document.getElementById('sCed').textContent=ps.filter(p=>p.cessions.length).length;
-  document.getElementById('sOpen').textContent=ps.filter(isOpen).length;
-  document.getElementById('list').innerHTML = ps.map(p=>{
-    const dl=daysLeft(p.comment_deadline);
-    const dls = p.comment_deadline ? (isOpen(p)?`<span class="dl-open">Comments due ${p.comment_deadline} (${dl} days left)</span>`:`Comment period ended ${p.comment_deadline}`) : 'No comment deadline listed';
-    const cat={confirmed:'<span class="badge" style="background:#1d2433">Confirmed data center</span>',possible:'<span class="badge" style="background:#6b4fa0">Possible data center: needs checking</span>',related:'<span class="badge" style="background:#5b6475">Related power line</span>'}[p.category];
-    const b=[cat];
-    if(p.on_reservation_or_trust) b.push(`<span class="badge b-hi">On ${p.on_reservation_or_trust}</span>`);
-    else if(p.nearest_reservation_mi!==null) b.push(`<span class="badge ${p.nearest_reservation_mi<=10?'b-hi':'b-grey'}">${p.nearest_reservation_mi} mi from ${p.nearest_reservation}</span>`);
-    p.cessions.forEach(c=>b.push(`<span class="badge b-mid">Ceded ${c.year||''} (cession ${c.cession})</span>`));
-    b.push(`<span class="badge b-grey">Tribal consultation noted: ${p.consultation_noted}</span>`);
-    return `<div class="card" id="c-${p.id}" onclick="select('${p.id}',true)">
-      <h3>${p.name}</h3>
-      <div class="meta">${p.location}${p.location_precision?` <i>(${p.location_precision})</i>`:''}<br>
-      <b>${p.process}</b> · ${p.latest_step}<br>${dls}<br>Reviewing government (RGU): ${p.rgu||'not listed'}</div>
-      ${b.join('')}
-      <div class="notices"><b>Notice history</b> (newest first)<ul>${p.notices.map(x=>`<li>${x.date}: ${x.step}${x.deadline?' · comments to '+x.deadline:''} · <a href="${x.url}" target="_blank">EQB Monitor ${x.volume}</a>${x.quote?`<br><i>"${x.quote}"</i>`:''}</li>`).join('')}</ul>${p.note?`<div>${p.note}</div>`:''}</div>
-    </div>`}).join('') || '<p class="meta">No projects match.</p>';
+  if(f==='near') ps=ps.filter(p=>p.on_reservation_or_trust||p.nearest_reservation_mi<=25);
+  if(f==='open') ps=ps.filter(isOpen);
+  const order={confirmed:0,possible:1,related:2};
+  ps.sort((a,b)=>(isOpen(b)-isOpen(a))||(order[a.category]-order[b.category])||(b.last_notice||'').localeCompare(a.last_notice||''));
+  Object.entries(markers).forEach(([id,m])=>ps.find(p=>p.id===id)?m.addTo(map):m.remove());
+  document.getElementById('count').textContent=`${ps.length} project${ps.length===1?'':'s'} shown${n?' for '+n:''}`;
+  document.getElementById('list').innerHTML=ps.map(card).join('')||'<p>No projects match. Try "Everything" or "All of Minnesota."</p>';
+  const all=PROJECTS.filter(p=>relevant(p,n)), c=k=>all.filter(p=>p.category===k).length;
+  const ced=all.filter(p=>p.cessions.length).length, open=all.filter(isOpen).length;
+  const near=all.filter(p=>p.nearest_reservation_mi<=25).map(p=>p.nearest_reservation);
+  document.getElementById('summary').innerHTML = all.length ?
+    `<b>${n?n+':':'Minnesota, June 2025 to November 2026:'}</b> ${c('confirmed')} confirmed data center${c('confirmed')===1?'':'s'}, ${c('possible')} possible, and ${c('related')} power line${c('related')===1?'':'s'} built for data centers. <b>${ced} of ${all.length}</b> sit inside land ceded by treaty. ${near.length?`<b>${near.length}</b> are within 25 miles of a reservation. `:''}${open?`<b class="open">${open} open for comment now.</b>`:'None are open for public comment right now.'}`
+    : `<b>${n}:</b> no data center projects found in the notices so far.`;
+  if(ps.length && (n||f!=='all')) map.fitBounds(L.latLngBounds(ps.map(p=>markers[p.id].getLatLng())).pad(0.6),{maxZoom:9});
 }
 function select(id,fly){
-  document.querySelectorAll('.card').forEach(c=>c.classList.remove('sel'));
-  const c=document.getElementById('c-'+id); if(c){c.classList.add('sel'); if(!fly) c.scrollIntoView({behavior:'smooth',block:'center'})}
-  const p=PROJECTS.find(p=>p.id===id); if(fly&&p){map.flyTo([p.lat,p.lon],9); markers[id].openPopup()}
+  document.querySelectorAll('.card').forEach(c=>{c.classList.remove('sel');const b=c.querySelector('.morebtn');b.setAttribute('aria-expanded','false');b.textContent='Show notices and details'});
+  const c=document.getElementById('c-'+id);
+  if(c){c.classList.add('sel');const b=c.querySelector('.morebtn');b.setAttribute('aria-expanded','true');b.textContent='Notices and details shown below';if(!fly)c.scrollIntoView({behavior:'smooth',block:'start'})}
+  if(fly){const m=markers[id];map.flyTo(m.getLatLng(),10,{duration:.6});m.openTooltip()}
 }
 sel.onchange=render; document.getElementById('flt').onchange=render;
 render();
